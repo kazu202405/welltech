@@ -31,13 +31,20 @@ export function Hero() {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-navy"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* 背景パターン */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-[#2563eb] rounded-full blur-[120px]" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#1e3a5f] rounded-full blur-[120px]" />
-      </div>
+      {/* 背景動画 */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="/hero.mp4" type="video/mp4" />
+      </video>
+      {/* オーバーレイ */}
+      <div className="absolute inset-0 bg-[#0a1628]/70" />
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-32">
         <div data-hero-animate className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-2 mb-8">

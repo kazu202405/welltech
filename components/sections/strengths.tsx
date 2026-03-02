@@ -1,41 +1,33 @@
 "use client";
 
-import { TrendingUp, MapPin, Banknote, Target } from "lucide-react";
+import { TrendingUp, Users, Banknote } from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const stats = [
   {
     icon: TrendingUp,
-    value: "20",
+    value: "最大20",
     unit: "倍",
-    label: "入札案件成長率",
-    description: "前年比で入札参加案件が20倍に成長。急拡大する案件を全国のパートナーと共に対応します。",
+    label: "月間入札件数",
+    description: "通常企業と比較して最大20倍の入札件数。案件を安定的に回せる体制が整っています。",
     color: "#f59e0b",
   },
   {
-    icon: MapPin,
-    value: "47",
-    unit: "都道府県",
-    label: "全国対応エリア",
-    description: "北海道から沖縄まで全国の案件に対応。地元の案件をお任せできるパートナーを探しています。",
+    icon: Users,
+    value: "全国",
+    unit: "",
+    label: "協力会社ネットワーク",
+    description: "北海道から沖縄まで全国の協力会社様と連携。地元の案件を地元のプロにお任せします。",
     color: "#2563eb",
   },
   {
     icon: Banknote,
-    value: "100万〜",
+    value: "10万〜数千万",
     unit: "",
     label: "案件規模",
-    description: "小規模修繕から大規模改修まで。規模に応じた適切な案件をマッチングします。",
+    description: "給湯器交換などの小規模案件から数千万規模の公共工事まで。幅広い案件に対応しています。",
     color: "#10b981",
-  },
-  {
-    icon: Target,
-    value: "100",
-    unit: "億",
-    label: "売上目標",
-    description: "3年以内に売上100億円を目指す成長企業。パートナーと共に大きな目標に挑戦します。",
-    color: "#f59e0b",
   },
 ];
 
@@ -48,10 +40,10 @@ export function Strengths() {
         <SectionHeading
           label="Strengths"
           title="ウェルテックの強み"
-          description="急成長する案件数と全国展開で、安定した仕事量を提供します"
+          description="案件を継続的に回せる体制が整っています"
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {stats.map((stat) => (
             <div
               key={stat.label}

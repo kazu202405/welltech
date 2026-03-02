@@ -5,7 +5,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const idealTraits = [
-  "地域密着で迅速に現場対応ができる会社",
+  "迅速に現場対応ができる会社",
   "丁寧な施工と品質管理を重視する会社",
   "長期的なパートナーシップを築ける会社",
   "報連相を大切にし、円滑なコミュニケーションができる会社",
@@ -14,14 +14,13 @@ const idealTraits = [
 ];
 
 const licenses = [
-  "建築一式工事",
-  "電気工事",
-  "管工事",
-  "内装仕上工事",
-  "空調衛生工事",
-  "塗装工事",
-  "防水工事",
-  "消防施設工事",
+  "建築一式工事業",
+  "電気工事業",
+  "内装工事業",
+  "管工事業",
+  "大工工事業",
+  "屋根工事業",
+  "タイル・れんが・ブロック工事業",
 ];
 
 export function IdealPartner() {
@@ -56,7 +55,7 @@ export function IdealPartner() {
           </div>
 
           {/* 建設業許可 */}
-          <div data-reveal className="bg-[#f8fafc] rounded-2xl p-8">
+          <div data-reveal className="bg-[#f8fafc] rounded-2xl p-6 sm:p-8">
             <h3 className="text-lg font-bold text-[#0a1628] mb-6 flex items-center gap-2">
               <Shield className="w-5 h-5 text-[#10b981]" />
               対象の建設業許可
@@ -64,12 +63,12 @@ export function IdealPartner() {
             <p className="text-sm text-[#64748b] mb-6">
               以下の建設業許可をお持ちの会社様を優先的にご案内いたします。許可取得前の会社様もご相談ください。
             </p>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-2">
               {licenses.map((license) => (
                 <div
                   key={license}
                   data-reveal
-                  className="flex items-center gap-2 bg-white rounded-xl px-4 py-3 border border-gray-100"
+                  className="flex items-center gap-2 bg-white rounded-xl px-3 py-3 border border-gray-100"
                 >
                   <div className="w-2 h-2 bg-[#10b981] rounded-full shrink-0" />
                   <span className="text-sm font-medium text-[#0a1628]">{license}</span>

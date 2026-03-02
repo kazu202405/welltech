@@ -28,7 +28,7 @@ const steps = [
   {
     icon: Rocket,
     title: "取引開始",
-    description: "継続的な案件供給でパートナーシップ構築",
+    description: "継続的にお取引開始",
   },
 ];
 
