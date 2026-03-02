@@ -37,7 +37,7 @@ export function RegistrationForm() {
             href={LINE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-glow inline-flex items-center gap-3 bg-[#06C755] hover:bg-[#05b34c] text-white font-semibold px-10 py-4 rounded-xl text-lg transition-colors"
+            className="btn-glow inline-flex items-center justify-center gap-3 bg-[#06C755] hover:bg-[#05b34c] text-white font-semibold px-8 sm:px-10 py-4 rounded-xl text-base sm:text-lg transition-colors w-full sm:w-auto"
           >
             <MessageCircle className="w-6 h-6" />
             LINEで友だち追加

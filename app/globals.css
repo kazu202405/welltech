@@ -158,6 +158,14 @@ html {
   transform: translateY(0);
 }
 
+/* タッチデバイスでhoverエフェクト無効化 */
+@media (hover: none) {
+  .card-hover:hover {
+    box-shadow: none;
+    transform: none;
+  }
+}
+
 /* モーション軽減 */
 @media (prefers-reduced-motion: reduce) {
   *,

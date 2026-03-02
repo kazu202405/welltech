@@ -43,7 +43,7 @@ export function Strengths() {
           description="案件を継続的に回せる体制が整っています"
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {stats.map((stat) => (
             <div
               key={stat.label}

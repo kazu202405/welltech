@@ -46,7 +46,7 @@ export function Hero() {
       {/* オーバーレイ */}
       <div className="absolute inset-0 bg-[#0a1628]/70" />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-32">
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-24 sm:py-32">
         <div data-hero-animate className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-2 mb-8">
           <Building2 className="w-4 h-4 text-[#f59e0b]" />
           <span className="text-sm text-white/90 font-medium">全国対応・安定案件供給</span>
@@ -69,7 +69,7 @@ export function Hero() {
         <div data-hero-animate className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <button
             onClick={scrollToRegistration}
-            className="btn-glow inline-flex items-center gap-2 bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-semibold px-8 py-4 rounded-xl text-lg transition-colors"
+            className="btn-glow inline-flex items-center gap-2 bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-semibold px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl text-base sm:text-lg transition-colors w-full sm:w-auto justify-center"
           >
             協力会社登録フォーム
             <ArrowRight className="w-5 h-5" />
@@ -82,7 +82,7 @@ export function Hero() {
                 window.scrollTo({ top: offset, behavior: "smooth" });
               }
             }}
-            className="inline-flex items-center gap-2 border border-white/30 hover:bg-white/10 text-white font-medium px-8 py-4 rounded-xl text-lg transition-colors"
+            className="inline-flex items-center gap-2 border border-white/30 hover:bg-white/10 text-white font-medium px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl text-base sm:text-lg transition-colors w-full sm:w-auto justify-center"
           >
             ウェルテックの強み
           </button>

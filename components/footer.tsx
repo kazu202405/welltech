@@ -40,13 +40,13 @@ export function Footer() {
             <ul className="space-y-2 text-sm text-white/70">
               <li>
                 TEL:{" "}
-                <a href="tel:06-6585-9405" className="hover:text-white transition-colors">
+                <a href="tel:0665859405" className="hover:text-white transition-colors">
                   06-6585-9405
                 </a>
               </li>
               <li>
                 Email:{" "}
-                <a href="mailto:info@well-tech2024.com" className="hover:text-white transition-colors">
+                <a href="mailto:info@well-tech2024.com" className="hover:text-white transition-colors break-all">
                   info@well-tech2024.com
                 </a>
               </li>

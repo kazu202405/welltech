@@ -42,7 +42,8 @@ function CaseCard({
       <img
         src={item.image}
         alt={item.label}
-        className="w-20 object-cover shrink-0"
+        loading="lazy"
+        className="w-16 sm:w-20 object-cover shrink-0"
       />
     </div>
   );
@@ -62,9 +63,9 @@ export function CaseTypes() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* 公共案件 */}
-          <div data-reveal className="bg-white rounded-2xl p-8 border border-gray-100">
+          <div data-reveal className="bg-white rounded-2xl p-5 sm:p-8 border border-gray-100">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 bg-[#10b981]/10 rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-[#10b981]/10 rounded-lg flex items-center justify-center shrink-0">
                 <Building className="w-5 h-5 text-[#10b981]" />
               </div>
               <div>
@@ -82,9 +83,9 @@ export function CaseTypes() {
           </div>
 
           {/* 民間案件 */}
-          <div data-reveal className="bg-white rounded-2xl p-8 border border-gray-100">
+          <div data-reveal className="bg-white rounded-2xl p-5 sm:p-8 border border-gray-100">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 bg-[#2563eb]/10 rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-[#2563eb]/10 rounded-lg flex items-center justify-center shrink-0">
                 <Building className="w-5 h-5 text-[#2563eb]" />
               </div>
               <div>

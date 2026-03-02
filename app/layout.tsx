@@ -22,6 +22,15 @@ export const metadata: Metadata = {
     title: "株式会社ウェルテック | 全国施工パートナー募集",
     description: "公共・民間の建設案件で全国の施工パートナーを募集中。入札案件20倍成長の安定企業。",
     type: "website",
+    locale: "ja_JP",
+    siteName: "株式会社ウェルテック",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  other: {
+    "format-detection": "telephone=no",
   },
 };
 

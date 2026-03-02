@@ -24,6 +24,18 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // モバイルメニュー展開時にbodyスクロールをロック
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   const scrollToSection = (href: string) => {
     setIsOpen(false);
     const id = href.replace("#", "");
@@ -105,7 +117,7 @@ export function Header() {
 
       {/* モバイルメニュー */}
       {isOpen && (
-        <div className="lg:hidden bg-white border-t border-gray-100 shadow-lg">
+        <div className="lg:hidden bg-white border-t border-gray-100 shadow-lg max-h-[calc(100dvh-4rem)] overflow-y-auto">
           <div className="px-4 py-4 space-y-1">
             {navItems.map((item) => (
               <button

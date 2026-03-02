@@ -37,9 +37,9 @@ export function IdealPartner() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* パートナー像 */}
-          <div data-reveal className="bg-[#f8fafc] rounded-2xl p-8">
+          <div data-reveal className="bg-[#f8fafc] rounded-2xl p-5 sm:p-8">
             <h3 className="text-lg font-bold text-[#0a1628] mb-6 flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-[#2563eb]" />
+              <CheckCircle2 className="w-5 h-5 text-[#2563eb] shrink-0" />
               理想のパートナー像
             </h3>
             <div className="space-y-4">
@@ -63,12 +63,12 @@ export function IdealPartner() {
             <p className="text-sm text-[#64748b] mb-6">
               以下の建設業許可をお持ちの会社様を優先的にご案内いたします。許可取得前の会社様もご相談ください。
             </p>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {licenses.map((license) => (
                 <div
                   key={license}
                   data-reveal
-                  className="flex items-center gap-2 bg-white rounded-xl px-3 py-3 border border-gray-100"
+                  className="flex items-center gap-2 bg-white rounded-xl px-3 py-2.5 sm:py-3 border border-gray-100"
                 >
                   <div className="w-2 h-2 bg-[#10b981] rounded-full shrink-0" />
                   <span className="text-sm font-medium text-[#0a1628]">{license}</span>

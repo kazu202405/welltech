@@ -60,6 +60,7 @@ export function PartnerTasks() {
                 <img
                   src={task.image}
                   alt={task.title}
+                  loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628] to-transparent" />
@@ -74,7 +75,7 @@ export function PartnerTasks() {
               </div>
 
               {/* テキストエリア */}
-              <div className="p-6">
+              <div className="p-4 sm:p-6">
                 <h3 className="text-lg font-bold text-white mb-2">{task.title}</h3>
                 <p className="text-sm text-white/60 leading-relaxed mb-3">{task.description}</p>
                 <span className="inline-block text-xs text-[#f59e0b] font-medium bg-[#f59e0b]/10 px-3 py-1 rounded-full">

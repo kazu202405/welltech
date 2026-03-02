@@ -36,7 +36,7 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
     <div className="border border-gray-100 rounded-xl overflow-hidden">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-between w-full text-left px-6 py-5 hover:bg-[#f8fafc] transition-colors"
+        className="flex items-center justify-between w-full text-left px-4 sm:px-6 py-5 hover:bg-[#f8fafc] transition-colors"
       >
         <span className="text-base font-semibold text-[#0a1628] pr-4">{question}</span>
         <ChevronDown
@@ -52,7 +52,7 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
           maxHeight: isOpen ? contentRef.current?.scrollHeight ?? 0 : 0,
         }}
       >
-        <div className="px-6 pb-5">
+        <div className="px-4 sm:px-6 pb-5">
           <p className="text-sm text-[#64748b] leading-relaxed">{answer}</p>
         </div>
       </div>
