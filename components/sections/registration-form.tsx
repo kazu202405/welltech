@@ -10,7 +10,11 @@ export function RegistrationForm() {
   const sectionRef = useScrollReveal();
 
   return (
-    <section ref={sectionRef} id="registration" className="py-20 md:py-28 bg-[#0a1628] relative">
+    <section ref={sectionRef} id="registration" className="py-20 md:py-28 bg-[#152a45] relative overflow-hidden">
+      {/* ブルーのラジアルグロー */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#2563eb]/[0.08] rounded-full blur-[100px]" />
+      </div>
 
       <div className="relative z-10 max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <SectionHeading

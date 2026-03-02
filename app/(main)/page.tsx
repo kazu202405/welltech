@@ -24,9 +24,9 @@ export default function Home() {
       <Flow />
       <SectionDivider from="#f8fafc" to="#ffffff" type="curve" />
       <Faq />
-      <SectionDivider from="#ffffff" to="#0a1628" type="angle" />
+      <SectionDivider from="#ffffff" to="#152a45" type="angle" />
       <RegistrationForm />
-      <SectionDivider from="#0a1628" to="#060e1a" type="wave" />
+      <SectionDivider from="#152a45" to="#060e1a" type="wave" />
     </>
   );
 }
