@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckCircle2, Shield } from "lucide-react";
+import { CheckCircle2, Shield, Award } from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
@@ -23,6 +23,22 @@ const licenses = [
   "タイル・れんが・ブロック工事業",
 ];
 
+const qualifications = [
+  "二級建築士",
+  "第二種電気工事士",
+  "認定電気工事従事者",
+  "特別管理産業廃棄物収集運搬",
+  "一般建築物石綿含有建材調査者",
+  "石綿作業主任者",
+  "足場組立作業主任者",
+  "玉掛け",
+  "小型移動式クレーン",
+  "高所作業車",
+  "フルハーネス",
+  "ガス溶接",
+  "低圧電気取扱者",
+];
+
 export function IdealPartner() {
   const sectionRef = useScrollReveal();
 
@@ -35,7 +51,7 @@ export function IdealPartner() {
           description="互いに成長できるパートナーシップを目指しています"
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-6 lg:mb-8">
           {/* パートナー像 */}
           <div data-reveal className="bg-[#f8fafc] rounded-2xl p-5 sm:p-8 border border-gray-100">
             <h3 className="text-lg font-bold text-[#0a1628] mb-6 flex items-center gap-2.5">
@@ -46,7 +62,7 @@ export function IdealPartner() {
             </h3>
             <div className="space-y-3.5">
               {idealTraits.map((trait) => (
-                <div key={trait} data-reveal className="flex items-start gap-3 group">
+                <div key={trait} className="flex items-start gap-3 group">
                   <div className="w-5 h-5 bg-[#2563eb]/10 rounded-full flex items-center justify-center shrink-0 mt-0.5 transition-colors group-hover:bg-[#2563eb]/20">
                     <CheckCircle2 className="w-3 h-3 text-[#2563eb]" />
                   </div>
@@ -71,7 +87,6 @@ export function IdealPartner() {
               {licenses.map((license) => (
                 <div
                   key={license}
-                  data-reveal
                   className="flex items-center gap-2.5 bg-white rounded-xl px-3.5 py-2.5 sm:py-3 border border-gray-100 transition-colors hover:border-[#10b981]/30 hover:bg-[#10b981]/[0.02]"
                 >
                   <div className="w-1.5 h-1.5 bg-[#10b981] rounded-full shrink-0" />
@@ -79,6 +94,27 @@ export function IdealPartner() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+
+        {/* 保有資格 */}
+        <div data-reveal className="bg-[#f8fafc] rounded-2xl p-5 sm:p-8 border border-gray-100">
+          <h3 className="text-lg font-bold text-[#0a1628] mb-6 flex items-center gap-2.5">
+            <div className="w-8 h-8 bg-[#f59e0b]/10 rounded-lg flex items-center justify-center shrink-0">
+              <Award className="w-4 h-4 text-[#f59e0b]" />
+            </div>
+            保有資格
+          </h3>
+          <div className="flex flex-wrap gap-2">
+            {qualifications.map((q) => (
+              <span
+                key={q}
+                className="inline-flex items-center gap-1.5 bg-white text-sm text-[#0a1628]/80 font-medium px-3.5 py-2 rounded-lg border border-gray-100"
+              >
+                <div className="w-1.5 h-1.5 bg-[#f59e0b] rounded-full shrink-0" />
+                {q}
+              </span>
+            ))}
           </div>
         </div>
       </div>
