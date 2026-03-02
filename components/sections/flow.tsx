@@ -46,8 +46,10 @@ export function Flow() {
 
         {/* デスクトップ: 横並び */}
         <div className="hidden md:flex items-start justify-between relative">
-          {/* 接続線 */}
-          <div className="absolute top-10 left-[10%] right-[10%] h-[2px] bg-[#2563eb]/20" />
+          {/* 接続線（グラデーション） */}
+          <div className="absolute top-10 left-[10%] right-[10%] h-px">
+            <div className="w-full h-full bg-gradient-to-r from-[#2563eb]/10 via-[#2563eb]/25 to-[#2563eb]/10" />
+          </div>
 
           {steps.map((step, index) => (
             <div
@@ -55,34 +57,42 @@ export function Flow() {
               data-reveal
               className="flex flex-col items-center text-center relative z-10 w-1/5 px-2"
             >
-              <div className="w-20 h-20 bg-white rounded-2xl border-2 border-[#2563eb]/20 flex items-center justify-center mb-4 shadow-sm">
-                <step.icon className="w-8 h-8 text-[#2563eb]" />
+              {/* アイコンコンテナ */}
+              <div className="relative mb-5">
+                <div className="w-20 h-20 bg-white rounded-2xl border border-[#2563eb]/15 flex items-center justify-center shadow-sm transition-all duration-300 hover:shadow-md hover:border-[#2563eb]/30 hover:-translate-y-1">
+                  <step.icon className="w-8 h-8 text-[#2563eb]" />
+                </div>
+                {/* ステップ番号バッジ */}
+                <div className="absolute -top-2 -right-2 w-7 h-7 bg-[#2563eb] rounded-lg flex items-center justify-center shadow-sm">
+                  <span className="text-[11px] font-bold text-white">{index + 1}</span>
+                </div>
               </div>
-              <span className="text-xs font-semibold text-[#2563eb] mb-1">
-                STEP {index + 1}
-              </span>
-              <h3 className="text-base font-bold text-[#0a1628] mb-1">{step.title}</h3>
+              <h3 className="text-base font-bold text-[#0a1628] mb-1.5">{step.title}</h3>
               <p className="text-xs text-[#64748b] leading-relaxed">{step.description}</p>
             </div>
           ))}
         </div>
 
         {/* モバイル: 縦並び */}
-        <div className="md:hidden space-y-6">
+        <div className="md:hidden space-y-1">
           {steps.map((step, index) => (
             <div key={step.title} data-reveal className="flex items-start gap-4">
               <div className="flex flex-col items-center">
-                <div className="w-14 h-14 bg-white rounded-xl border-2 border-[#2563eb]/20 flex items-center justify-center shadow-sm shrink-0">
-                  <step.icon className="w-6 h-6 text-[#2563eb]" />
+                <div className="relative">
+                  <div className="w-14 h-14 bg-white rounded-xl border border-[#2563eb]/15 flex items-center justify-center shadow-sm shrink-0">
+                    <step.icon className="w-6 h-6 text-[#2563eb]" />
+                  </div>
+                  <div className="absolute -top-1.5 -right-1.5 w-6 h-6 bg-[#2563eb] rounded-md flex items-center justify-center">
+                    <span className="text-[10px] font-bold text-white">{index + 1}</span>
+                  </div>
                 </div>
                 {index < steps.length - 1 && (
-                  <div className="w-[2px] h-6 bg-[#2563eb]/20 mt-2" />
+                  <div className="w-px h-8 bg-gradient-to-b from-[#2563eb]/20 to-transparent mt-2" />
                 )}
               </div>
-              <div className="pt-2">
-                <span className="text-xs font-semibold text-[#2563eb]">STEP {index + 1}</span>
+              <div className="pt-3 pb-4">
                 <h3 className="text-base font-bold text-[#0a1628]">{step.title}</h3>
-                <p className="text-sm text-[#64748b]">{step.description}</p>
+                <p className="text-sm text-[#64748b] mt-0.5">{step.description}</p>
               </div>
             </div>
           ))}

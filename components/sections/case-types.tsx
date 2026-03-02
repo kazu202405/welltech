@@ -26,11 +26,11 @@ function CaseCard({
   color: string;
 }) {
   return (
-    <div className="flex items-stretch bg-[#f8fafc] rounded-xl overflow-hidden">
+    <div className="group flex items-stretch bg-[#f8fafc] rounded-xl overflow-hidden transition-all duration-300 hover:bg-[#f1f5f9] hover:shadow-sm">
       <div className="flex items-center gap-3 p-3 flex-1 min-w-0">
         <div
-          className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
-          style={{ backgroundColor: `${color}15` }}
+          className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110"
+          style={{ backgroundColor: `${color}12` }}
         >
           <item.icon className="w-5 h-5" style={{ color }} />
         </div>
@@ -39,12 +39,14 @@ function CaseCard({
           <p className="text-xs text-[#64748b]">{item.description}</p>
         </div>
       </div>
-      <img
-        src={item.image}
-        alt={item.label}
-        loading="lazy"
-        className="w-16 sm:w-20 object-cover shrink-0"
-      />
+      <div className="relative w-16 sm:w-20 shrink-0 overflow-hidden">
+        <img
+          src={item.image}
+          alt={item.label}
+          loading="lazy"
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+      </div>
     </div>
   );
 }
@@ -61,21 +63,21 @@ export function CaseTypes() {
           description="公共・民間の幅広い案件で安定した仕事量を確保"
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
           {/* 公共案件 */}
-          <div data-reveal className="bg-white rounded-2xl p-5 sm:p-8 border border-gray-100">
+          <div data-reveal className="bg-white rounded-2xl p-5 sm:p-8 border border-gray-100 shadow-sm">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 bg-[#10b981]/10 rounded-lg flex items-center justify-center shrink-0">
+              <div className="w-11 h-11 bg-[#10b981]/10 rounded-xl flex items-center justify-center shrink-0">
                 <Building className="w-5 h-5 text-[#10b981]" />
               </div>
               <div>
-                <span className="inline-block bg-[#10b981]/10 text-[#10b981] text-xs font-semibold px-3 py-1 rounded-full mb-1">
+                <span className="inline-block bg-[#10b981]/10 text-[#10b981] text-[11px] font-semibold px-3 py-1 rounded-full mb-1 tracking-wide">
                   公共案件
                 </span>
                 <h3 className="text-lg font-bold text-[#0a1628]">国の入札案件</h3>
               </div>
             </div>
-            <div className="space-y-3">
+            <div className="space-y-2.5">
               {publicCases.map((item) => (
                 <CaseCard key={item.label} item={item} color="#10b981" />
               ))}
@@ -83,19 +85,19 @@ export function CaseTypes() {
           </div>
 
           {/* 民間案件 */}
-          <div data-reveal className="bg-white rounded-2xl p-5 sm:p-8 border border-gray-100">
+          <div data-reveal className="bg-white rounded-2xl p-5 sm:p-8 border border-gray-100 shadow-sm">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 bg-[#2563eb]/10 rounded-lg flex items-center justify-center shrink-0">
+              <div className="w-11 h-11 bg-[#2563eb]/10 rounded-xl flex items-center justify-center shrink-0">
                 <Building className="w-5 h-5 text-[#2563eb]" />
               </div>
               <div>
-                <span className="inline-block bg-[#2563eb]/10 text-[#2563eb] text-xs font-semibold px-3 py-1 rounded-full mb-1">
+                <span className="inline-block bg-[#2563eb]/10 text-[#2563eb] text-[11px] font-semibold px-3 py-1 rounded-full mb-1 tracking-wide">
                   民間案件
                 </span>
                 <h3 className="text-lg font-bold text-[#0a1628]">民間工事案件</h3>
               </div>
             </div>
-            <div className="space-y-3">
+            <div className="space-y-2.5">
               {privateCases.map((item) => (
                 <CaseCard key={item.label} item={item} color="#2563eb" />
               ))}

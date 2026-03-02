@@ -48,12 +48,12 @@ export function PartnerTasks() {
           variant="dark"
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
           {tasks.map((task, index) => (
             <div
               key={task.title}
               data-reveal
-              className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors group"
+              className="group relative bg-white/[0.04] border border-white/[0.08] rounded-2xl overflow-hidden hover:bg-white/[0.08] hover:border-white/[0.15] transition-all duration-400"
             >
               {/* 画像エリア */}
               <div className="relative h-40 overflow-hidden">
@@ -61,24 +61,24 @@ export function PartnerTasks() {
                   src={task.image}
                   alt={task.title}
                   loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628] to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628] via-[#0a1628]/40 to-transparent" />
                 {/* アイコン */}
-                <div className="absolute top-3 left-3 w-10 h-10 bg-white/15 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                <div className="absolute top-3 left-3 w-10 h-10 bg-white/10 backdrop-blur-md rounded-xl flex items-center justify-center border border-white/10">
                   <task.icon className="w-5 h-5 text-white" />
                 </div>
                 {/* 番号 */}
-                <span className="absolute top-3 right-3 text-4xl font-bold text-white/30">
+                <span className="absolute top-3 right-3 font-display text-4xl font-bold text-white/20 select-none">
                   {String(index + 1).padStart(2, "0")}
                 </span>
               </div>
 
               {/* テキストエリア */}
-              <div className="p-4 sm:p-6">
+              <div className="p-4 sm:p-5">
                 <h3 className="text-lg font-bold text-white mb-2">{task.title}</h3>
-                <p className="text-sm text-white/60 leading-relaxed mb-3">{task.description}</p>
-                <span className="inline-block text-xs text-[#f59e0b] font-medium bg-[#f59e0b]/10 px-3 py-1 rounded-full">
+                <p className="text-sm text-white/50 leading-relaxed mb-3">{task.description}</p>
+                <span className="inline-block text-xs text-[#f59e0b] font-medium bg-[#f59e0b]/10 px-3 py-1 rounded-full border border-[#f59e0b]/20">
                   {task.detail}
                 </span>
               </div>

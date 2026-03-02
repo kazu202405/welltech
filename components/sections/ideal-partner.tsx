@@ -27,7 +27,7 @@ export function IdealPartner() {
   const sectionRef = useScrollReveal();
 
   return (
-    <section ref={sectionRef} id="ideal-partner" className="py-20 md:py-28 bg-white">
+    <section ref={sectionRef} id="ideal-partner" className="py-20 md:py-28 bg-white section-line">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           label="Ideal Partner"
@@ -35,32 +35,36 @@ export function IdealPartner() {
           description="互いに成長できるパートナーシップを目指しています"
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
           {/* パートナー像 */}
-          <div data-reveal className="bg-[#f8fafc] rounded-2xl p-5 sm:p-8">
-            <h3 className="text-lg font-bold text-[#0a1628] mb-6 flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-[#2563eb] shrink-0" />
+          <div data-reveal className="bg-[#f8fafc] rounded-2xl p-5 sm:p-8 border border-gray-100">
+            <h3 className="text-lg font-bold text-[#0a1628] mb-6 flex items-center gap-2.5">
+              <div className="w-8 h-8 bg-[#2563eb]/10 rounded-lg flex items-center justify-center shrink-0">
+                <CheckCircle2 className="w-4 h-4 text-[#2563eb]" />
+              </div>
               理想のパートナー像
             </h3>
-            <div className="space-y-4">
+            <div className="space-y-3.5">
               {idealTraits.map((trait) => (
-                <div key={trait} data-reveal className="flex items-start gap-3">
-                  <div className="w-5 h-5 bg-[#2563eb]/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                <div key={trait} data-reveal className="flex items-start gap-3 group">
+                  <div className="w-5 h-5 bg-[#2563eb]/10 rounded-full flex items-center justify-center shrink-0 mt-0.5 transition-colors group-hover:bg-[#2563eb]/20">
                     <CheckCircle2 className="w-3 h-3 text-[#2563eb]" />
                   </div>
-                  <span className="text-sm text-[#0a1628]/80 leading-relaxed">{trait}</span>
+                  <span className="text-sm text-[#0a1628]/75 leading-relaxed">{trait}</span>
                 </div>
               ))}
             </div>
           </div>
 
           {/* 建設業許可 */}
-          <div data-reveal className="bg-[#f8fafc] rounded-2xl p-6 sm:p-8">
-            <h3 className="text-lg font-bold text-[#0a1628] mb-6 flex items-center gap-2">
-              <Shield className="w-5 h-5 text-[#10b981]" />
+          <div data-reveal className="bg-[#f8fafc] rounded-2xl p-5 sm:p-8 border border-gray-100">
+            <h3 className="text-lg font-bold text-[#0a1628] mb-6 flex items-center gap-2.5">
+              <div className="w-8 h-8 bg-[#10b981]/10 rounded-lg flex items-center justify-center shrink-0">
+                <Shield className="w-4 h-4 text-[#10b981]" />
+              </div>
               対象の建設業許可
             </h3>
-            <p className="text-sm text-[#64748b] mb-6">
+            <p className="text-sm text-[#64748b] mb-5 leading-relaxed">
               以下の建設業許可をお持ちの会社様を優先的にご案内いたします。許可取得前の会社様もご相談ください。
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -68,9 +72,9 @@ export function IdealPartner() {
                 <div
                   key={license}
                   data-reveal
-                  className="flex items-center gap-2 bg-white rounded-xl px-3 py-2.5 sm:py-3 border border-gray-100"
+                  className="flex items-center gap-2.5 bg-white rounded-xl px-3.5 py-2.5 sm:py-3 border border-gray-100 transition-colors hover:border-[#10b981]/30 hover:bg-[#10b981]/[0.02]"
                 >
-                  <div className="w-2 h-2 bg-[#10b981] rounded-full shrink-0" />
+                  <div className="w-1.5 h-1.5 bg-[#10b981] rounded-full shrink-0" />
                   <span className="text-sm font-medium text-[#0a1628]">{license}</span>
                 </div>
               ))}

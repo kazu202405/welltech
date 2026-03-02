@@ -33,17 +33,15 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
   const contentRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="border border-gray-100 rounded-xl overflow-hidden">
+    <div className={`border rounded-xl overflow-hidden transition-colors duration-300 ${isOpen ? "border-[#2563eb]/20 bg-[#2563eb]/[0.02]" : "border-gray-100 bg-white"}`}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-between w-full text-left px-4 sm:px-6 py-5 hover:bg-[#f8fafc] transition-colors"
+        className="flex items-center justify-between w-full text-left px-4 sm:px-6 py-5 transition-colors"
       >
-        <span className="text-base font-semibold text-[#0a1628] pr-4">{question}</span>
-        <ChevronDown
-          className={`w-5 h-5 text-[#64748b] shrink-0 transition-transform duration-300 ${
-            isOpen ? "rotate-180" : ""
-          }`}
-        />
+        <span className="text-base font-semibold text-[#0a1628] pr-4 leading-snug">{question}</span>
+        <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-all duration-300 ${isOpen ? "bg-[#2563eb]/10 rotate-180" : "bg-gray-50"}`}>
+          <ChevronDown className={`w-4 h-4 transition-colors ${isOpen ? "text-[#2563eb]" : "text-[#64748b]"}`} />
+        </div>
       </button>
       <div
         ref={contentRef}
@@ -64,7 +62,7 @@ export function Faq() {
   const sectionRef = useScrollReveal();
 
   return (
-    <section ref={sectionRef} id="faq" className="py-20 md:py-28 bg-white">
+    <section ref={sectionRef} id="faq" className="py-20 md:py-28 bg-white section-line">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           label="FAQ"
