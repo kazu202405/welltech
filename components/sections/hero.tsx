@@ -72,10 +72,9 @@ export function Hero() {
         <source src="/hero.mp4" type="video/mp4" />
       </video>
 
-      {/* 多層オーバーレイ */}
-      <div className="absolute inset-0 bg-[#0a1628]/75" />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0a1628]/40 via-transparent to-[#0a1628]/60" />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0a1628]/30 via-transparent to-[#0a1628]/30" />
+      {/* オーバーレイ（下部を完全不透明にしてディバイダーと色を合わせる） */}
+      <div className="absolute inset-0 bg-[#0a1628]/70" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0a1628]" />
 
       {/* 幾何学的装飾 */}
       <div

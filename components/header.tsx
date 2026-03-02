@@ -15,6 +15,7 @@ const navItems = [
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,6 +23,29 @@ export function Header() {
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // アクティブセクション検出
+  useEffect(() => {
+    const sectionIds = navItems.map((item) => item.href.replace("#", ""));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: "-40% 0px -55% 0px" }
+    );
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
   }, []);
 
   // モバイルメニュー展開時にbodyスクロールをロック
@@ -80,19 +104,26 @@ export function Header() {
 
           {/* デスクトップナビ */}
           <nav className="hidden lg:flex items-center gap-1">
-            {navItems.map((item) => (
-              <button
-                key={item.href}
-                onClick={() => scrollToSection(item.href)}
-                className={`text-sm font-medium px-3 py-2 rounded-lg transition-all duration-300 ${
-                  scrolled
-                    ? "text-[#0a1628]/60 hover:text-[#0a1628] hover:bg-gray-50"
-                    : "text-white/70 hover:text-white hover:bg-white/[0.06]"
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
+            {navItems.map((item) => {
+              const isActive = activeSection === item.href.replace("#", "");
+              return (
+                <button
+                  key={item.href}
+                  onClick={() => scrollToSection(item.href)}
+                  className={`text-sm font-medium px-3 py-2 rounded-lg transition-all duration-300 ${
+                    scrolled
+                      ? isActive
+                        ? "text-[#2563eb] bg-[#2563eb]/[0.06]"
+                        : "text-[#0a1628]/60 hover:text-[#0a1628] hover:bg-gray-50"
+                      : isActive
+                        ? "text-white bg-white/[0.1]"
+                        : "text-white/70 hover:text-white hover:bg-white/[0.06]"
+                  }`}
+                >
+                  {item.label}
+                </button>
+              );
+            })}
             <div className="w-px h-5 bg-current opacity-10 mx-2" />
             <button
               onClick={() => scrollToSection("#registration")}
@@ -120,15 +151,22 @@ export function Header() {
       {isOpen && (
         <div className="lg:hidden bg-white/95 backdrop-blur-xl border-t border-gray-100 shadow-xl max-h-[calc(100dvh-4rem)] overflow-y-auto">
           <div className="px-4 py-4 space-y-1">
-            {navItems.map((item) => (
-              <button
-                key={item.href}
-                onClick={() => scrollToSection(item.href)}
-                className="block w-full text-left text-sm font-medium text-[#0a1628]/70 hover:text-[#0a1628] hover:bg-gray-50 px-4 py-3 rounded-lg transition-colors"
-              >
-                {item.label}
-              </button>
-            ))}
+            {navItems.map((item) => {
+              const isActive = activeSection === item.href.replace("#", "");
+              return (
+                <button
+                  key={item.href}
+                  onClick={() => scrollToSection(item.href)}
+                  className={`block w-full text-left text-sm font-medium px-4 py-3 rounded-lg transition-colors ${
+                    isActive
+                      ? "text-[#2563eb] bg-[#2563eb]/[0.06]"
+                      : "text-[#0a1628]/70 hover:text-[#0a1628] hover:bg-gray-50"
+                  }`}
+                >
+                  {item.label}
+                </button>
+              );
+            })}
             <button
               onClick={() => scrollToSection("#registration")}
               className="block w-full text-center bg-[#2563eb] hover:bg-[#1d4ed8] text-white text-sm font-semibold px-5 py-3 rounded-lg transition-colors mt-3"

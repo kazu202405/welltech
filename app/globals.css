@@ -81,7 +81,7 @@ html {
 
 /* セクション背景 */
 .bg-navy {
-  background: linear-gradient(135deg, var(--wt-navy) 0%, var(--wt-navy-light) 100%);
+  background-color: var(--wt-navy);
 }
 
 .bg-gray-section {

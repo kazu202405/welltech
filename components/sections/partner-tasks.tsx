@@ -39,7 +39,7 @@ export function PartnerTasks() {
   const sectionRef = useScrollReveal();
 
   return (
-    <section ref={sectionRef} id="partner-tasks" className="py-20 md:py-28 bg-navy">
+    <section ref={sectionRef} id="partner-tasks" className="py-20 md:py-28 bg-[#0a1628]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           label="Tasks"
