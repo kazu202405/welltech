@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -30,36 +31,23 @@ const qualifications = [
 ];
 
 export function IdealPartner() {
+  const revealRef = useScrollReveal();
   const sectionRef = useRef<HTMLElement>(null);
+
+  const setRefs = (el: HTMLElement | null) => {
+    (sectionRef as React.MutableRefObject<HTMLElement | null>).current = el;
+    (revealRef as React.MutableRefObject<HTMLElement | null>).current = el;
+  };
 
   useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
 
     const ctx = gsap.context(() => {
-      // オーブ
+      // 装飾要素のみGSAP
       gsap.to("[data-orb-1]", {
         y: -30, duration: 1,
         scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: 1.5 },
-      });
-
-      // シェイプ
-      gsap.from("[data-shape-ring]", {
-        scale: 0.3, opacity: 0, duration: 1.5, ease: "power3.out",
-        scrollTrigger: { trigger: el, start: "top 70%" },
-      });
-
-      gsap.from("[data-heading]", {
-        y: 30, opacity: 0, duration: 0.8, ease: "power3.out",
-        scrollTrigger: { trigger: el, start: "top 75%" },
-      });
-      gsap.from("[data-image-reveal]", {
-        clipPath: "inset(0 100% 0 0)", duration: 1, ease: "power3.inOut",
-        scrollTrigger: { trigger: el, start: "top 65%" },
-      });
-      gsap.from("[data-reveal-item]", {
-        y: 16, opacity: 0, duration: 0.5, stagger: 0.06, ease: "power3.out",
-        scrollTrigger: { trigger: el, start: "top 55%" },
       });
     }, el);
 
@@ -67,7 +55,7 @@ export function IdealPartner() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="ideal-partner" className="py-24 md:py-32 bg-[var(--wt-bg)] relative overflow-hidden">
+    <section ref={setRefs} id="ideal-partner" className="py-24 md:py-32 bg-[var(--wt-bg)] relative overflow-hidden">
       {/* グラデーションオーブ */}
       <div data-orb-1 className="orb orb-blue absolute top-[-30px] right-[5%] w-[280px] h-[280px]" aria-hidden="true" />
 
@@ -85,7 +73,7 @@ export function IdealPartner() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-20">
           <div>
-            <div data-heading>
+            <div data-reveal>
               <SectionHeading
                 number="06"
                 label="Ideal Partner"
@@ -94,7 +82,7 @@ export function IdealPartner() {
                 align="left"
               />
             </div>
-            <div className="mt-8 overflow-hidden rounded-lg" data-image-reveal style={{ clipPath: "inset(0 0 0 0)" }}>
+            <div className="mt-8 overflow-hidden rounded-lg" data-reveal-image>
               <img
                 src="/photo/S__49889493_0.jpg"
                 alt="施工現場"

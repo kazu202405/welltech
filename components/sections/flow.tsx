@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,19 +17,20 @@ const steps = [
 ];
 
 export function Flow() {
+  const revealRef = useScrollReveal();
   const sectionRef = useRef<HTMLElement>(null);
+
+  const setRefs = (el: HTMLElement | null) => {
+    (sectionRef as React.MutableRefObject<HTMLElement | null>).current = el;
+    (revealRef as React.MutableRefObject<HTMLElement | null>).current = el;
+  };
 
   useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
 
     const ctx = gsap.context(() => {
-      gsap.from("[data-watermark]", {
-        x: -60, opacity: 0, duration: 1.4, ease: "power3.out",
-        scrollTrigger: { trigger: el, start: "top 75%" },
-      });
-
-      // オーブのパララックス
+      // 装飾要素のみGSAP
       gsap.to("[data-orb-1]", {
         y: -35, duration: 1,
         scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: 1.5 },
@@ -37,40 +39,13 @@ export function Flow() {
         y: 25, duration: 1,
         scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: 2 },
       });
-
-      // 幾何学シェイプ
-      gsap.from("[data-shape-hex]", {
-        scale: 0, rotation: -30, opacity: 0, duration: 1.2, ease: "back.out(1.5)",
-        scrollTrigger: { trigger: el, start: "top 70%" },
-      });
-      gsap.from("[data-shape-ring]", {
-        scale: 0.3, opacity: 0, duration: 1.5, ease: "power3.out",
-        scrollTrigger: { trigger: el, start: "top 70%" },
-      });
-
-      gsap.from("[data-heading]", {
-        y: 30, opacity: 0, duration: 0.8, ease: "power3.out",
-        scrollTrigger: { trigger: el, start: "top 75%" },
-      });
-      gsap.from("[data-progress-line]", {
-        scaleY: 0, duration: 1.2, ease: "power2.out",
-        scrollTrigger: { trigger: el, start: "top 60%" },
-      });
-      gsap.from("[data-step-dot]", {
-        scale: 0, duration: 0.5, stagger: 0.15, ease: "back.out(2)",
-        scrollTrigger: { trigger: el, start: "top 55%" },
-      });
-      gsap.from("[data-step-content]", {
-        x: 30, opacity: 0, duration: 0.6, stagger: 0.12, ease: "power3.out",
-        scrollTrigger: { trigger: el, start: "top 55%" },
-      });
     }, el);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={sectionRef} id="flow" className="py-24 md:py-32 bg-white relative overflow-hidden">
+    <section ref={setRefs} id="flow" className="py-24 md:py-32 bg-white relative overflow-hidden">
       {/* グラデーションオーブ */}
       <div data-orb-1 className="orb orb-blue absolute top-[-30px] right-[-50px] w-[300px] h-[300px]" aria-hidden="true" />
       <div data-orb-2 className="orb orb-accent absolute bottom-[-50px] left-[5%] w-[250px] h-[250px]" aria-hidden="true" />
@@ -108,14 +83,13 @@ export function Flow() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-20 relative">
           <div
-            data-watermark
             className="absolute -top-8 -left-2 lg:-left-6 text-[8rem] md:text-[10rem] font-bold text-[var(--wt-primary)]/[0.04] leading-none select-none pointer-events-none font-mono"
             aria-hidden="true"
           >
             07
           </div>
 
-          <div data-heading>
+          <div data-reveal>
             <SectionHeading
               number="07"
               label="Flow"
@@ -127,20 +101,19 @@ export function Flow() {
 
           <div className="relative">
             <div
-              data-progress-line
+              data-reveal-line
               className="absolute left-[15px] top-4 bottom-4 w-px bg-gradient-to-b from-[var(--wt-primary)]/30 via-[var(--wt-primary)]/15 to-transparent origin-top"
               aria-hidden="true"
             />
 
             {steps.map((step, index) => (
-              <div key={step.title} className="flex gap-6 py-5 relative">
+              <div key={step.title} data-reveal-item className="flex gap-6 py-5 relative">
                 <div className="relative shrink-0 w-[30px] flex justify-center pt-1.5">
                   <div
-                    data-step-dot
                     className="w-3 h-3 rounded-full bg-[var(--wt-primary)] shadow-[0_0_0_4px_rgba(0,85,184,0.1)]"
                   />
                 </div>
-                <div data-step-content className="flex-1 pb-2 border-b border-black/[0.06]">
+                <div className="flex-1 pb-2 border-b border-black/[0.06]">
                   <div className="flex items-baseline gap-3 mb-1">
                     <span className="text-2xl font-bold text-[var(--wt-primary)]/15 leading-none font-mono">
                       {String(index + 1).padStart(2, "0")}

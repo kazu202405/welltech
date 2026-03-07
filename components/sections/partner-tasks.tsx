@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -31,19 +32,20 @@ const tasks = [
 ];
 
 export function PartnerTasks() {
+  const revealRef = useScrollReveal();
   const sectionRef = useRef<HTMLElement>(null);
+
+  const setRefs = (el: HTMLElement | null) => {
+    (sectionRef as React.MutableRefObject<HTMLElement | null>).current = el;
+    (revealRef as React.MutableRefObject<HTMLElement | null>).current = el;
+  };
 
   useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
 
     const ctx = gsap.context(() => {
-      gsap.from("[data-watermark]", {
-        x: -60, opacity: 0, duration: 1.4, ease: "power3.out",
-        scrollTrigger: { trigger: el, start: "top 75%" },
-      });
-
-      // オーブのパララックス
+      // 装飾要素のみGSAP
       gsap.to("[data-orb-1]", {
         y: -50, duration: 1,
         scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: 2 },
@@ -52,36 +54,13 @@ export function PartnerTasks() {
         y: 35, x: 15, duration: 1,
         scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: 1.5 },
       });
-
-      // 幾何学シェイプ
-      gsap.from("[data-shape-diamond]", {
-        scale: 0, rotation: 0, opacity: 0, duration: 1.2, ease: "back.out(1.5)",
-        scrollTrigger: { trigger: el, start: "top 70%" },
-      });
-      gsap.from("[data-shape-tri]", {
-        y: 30, opacity: 0, duration: 1, delay: 0.2, ease: "power3.out",
-        scrollTrigger: { trigger: el, start: "top 70%" },
-      });
-
-      gsap.from("[data-heading]", {
-        y: 30, opacity: 0, duration: 0.8, ease: "power3.out",
-        scrollTrigger: { trigger: el, start: "top 75%" },
-      });
-      gsap.from("[data-image-reveal]", {
-        clipPath: "inset(0 100% 0 0)", duration: 1, ease: "power3.inOut",
-        scrollTrigger: { trigger: el, start: "top 65%" },
-      });
-      gsap.from("[data-task-item]", {
-        x: 40, opacity: 0, duration: 0.7, stagger: 0.12, ease: "power3.out",
-        scrollTrigger: { trigger: el, start: "top 55%" },
-      });
     }, el);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={sectionRef} id="partner-tasks" className="py-24 md:py-32 bg-white relative overflow-hidden">
+    <section ref={setRefs} id="partner-tasks" className="py-24 md:py-32 bg-white relative overflow-hidden">
       {/* グラデーションオーブ */}
       <div data-orb-1 className="orb orb-blue absolute top-[-40px] left-[60%] w-[350px] h-[350px]" aria-hidden="true" />
       <div data-orb-2 className="orb orb-accent absolute bottom-[-40px] right-[-60px] w-[200px] h-[200px]" aria-hidden="true" />
@@ -113,7 +92,6 @@ export function PartnerTasks() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-20 relative">
           <div
-            data-watermark
             className="absolute -top-8 -left-2 lg:-left-6 text-[8rem] md:text-[10rem] font-bold text-[var(--wt-primary)]/[0.04] leading-none select-none pointer-events-none font-mono"
             aria-hidden="true"
           >
@@ -121,7 +99,7 @@ export function PartnerTasks() {
           </div>
 
           <div>
-            <div data-heading>
+            <div data-reveal>
               <SectionHeading
                 number="05"
                 label="Tasks"
@@ -130,7 +108,7 @@ export function PartnerTasks() {
                 align="left"
               />
             </div>
-            <div className="mt-8 overflow-hidden rounded-lg" data-image-reveal style={{ clipPath: "inset(0 0 0 0)" }}>
+            <div className="mt-8 overflow-hidden rounded-lg" data-reveal-image>
               <img
                 src="/photo/S__49889469_0.jpg"
                 alt="施工現場"
@@ -144,8 +122,8 @@ export function PartnerTasks() {
             {tasks.map((task, index) => (
               <div
                 key={task.title}
-                data-task-item
-                className="list-item-accent revealed py-6 border-b border-black/[0.08] cursor-default"
+                data-reveal-item
+                className="list-item-accent py-6 border-b border-black/[0.08] cursor-default"
               >
                 <div className="flex items-baseline gap-4 mb-2">
                   <span className="text-xs font-semibold text-[var(--wt-primary)] tracking-wider">

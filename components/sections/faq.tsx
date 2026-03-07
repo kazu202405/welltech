@@ -5,6 +5,7 @@ import { ChevronDown } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -58,28 +59,23 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
 }
 
 export function Faq() {
+  const revealRef = useScrollReveal();
   const sectionRef = useRef<HTMLElement>(null);
+
+  const setRefs = (el: HTMLElement | null) => {
+    (sectionRef as React.MutableRefObject<HTMLElement | null>).current = el;
+    (revealRef as React.MutableRefObject<HTMLElement | null>).current = el;
+  };
 
   useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
 
     const ctx = gsap.context(() => {
+      // 装飾要素のみGSAP
       gsap.to("[data-orb-1]", {
         y: -25, duration: 1,
         scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: 1.5 },
-      });
-      gsap.from("[data-shape-cross]", {
-        scale: 0, rotation: 90, opacity: 0, duration: 1, ease: "back.out(1.5)",
-        scrollTrigger: { trigger: el, start: "top 70%" },
-      });
-      gsap.from("[data-heading]", {
-        y: 30, opacity: 0, duration: 0.8, ease: "power3.out",
-        scrollTrigger: { trigger: el, start: "top 75%" },
-      });
-      gsap.from("[data-faq-list]", {
-        y: 20, opacity: 0, duration: 0.8, delay: 0.2, ease: "power3.out",
-        scrollTrigger: { trigger: el, start: "top 65%" },
       });
     }, el);
 
@@ -87,7 +83,7 @@ export function Faq() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="faq" className="py-24 md:py-32 bg-[var(--wt-bg)] relative overflow-hidden">
+    <section ref={setRefs} id="faq" className="py-24 md:py-32 bg-[var(--wt-bg)] relative overflow-hidden">
       {/* グラデーションオーブ */}
       <div data-orb-1 className="orb orb-blue absolute top-[-40px] left-[50%] w-[300px] h-[300px]" aria-hidden="true" />
 
@@ -104,7 +100,7 @@ export function Faq() {
 
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-20">
-          <div data-heading>
+          <div data-reveal>
             <SectionHeading
               number="08"
               label="FAQ"
@@ -114,7 +110,7 @@ export function Faq() {
             />
           </div>
 
-          <div data-faq-list>
+          <div data-reveal>
             {faqs.map((faq) => (
               <FaqItem key={faq.question} question={faq.question} answer={faq.answer} />
             ))}

@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -26,19 +27,21 @@ const strengths = [
 ];
 
 export function Strengths() {
+  const revealRef = useScrollReveal();
   const sectionRef = useRef<HTMLElement>(null);
+
+  // 両方のrefを統合
+  const setRefs = (el: HTMLElement | null) => {
+    (sectionRef as React.MutableRefObject<HTMLElement | null>).current = el;
+    (revealRef as React.MutableRefObject<HTMLElement | null>).current = el;
+  };
 
   useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
 
     const ctx = gsap.context(() => {
-      gsap.from("[data-watermark]", {
-        x: -60, opacity: 0, duration: 1.4, ease: "power3.out",
-        scrollTrigger: { trigger: el, start: "top 75%" },
-      });
-
-      // オーブのパララックス移動
+      // 装飾要素のみGSAP（オーブ、シェイプ）
       gsap.to("[data-orb-1]", {
         y: -40, duration: 1,
         scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: 1.5 },
@@ -47,39 +50,13 @@ export function Strengths() {
         y: 30, x: -20, duration: 1,
         scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: 2 },
       });
-
-      // SVG幾何学シェイプ
-      gsap.from("[data-shape-ring]", {
-        scale: 0.5, opacity: 0, rotation: -90, duration: 1.5, ease: "power3.out",
-        scrollTrigger: { trigger: el, start: "top 70%" },
-      });
-      gsap.from("[data-shape-cross]", {
-        scale: 0, rotation: 45, opacity: 0, duration: 1, delay: 0.3, ease: "back.out(1.5)",
-        scrollTrigger: { trigger: el, start: "top 70%" },
-      });
-
-      // ドットグリッドのフェードイン
-      gsap.from("[data-dot-grid]", {
-        opacity: 0, duration: 1.5, ease: "power2.out",
-        scrollTrigger: { trigger: el, start: "top 80%" },
-      });
-
-      gsap.from("[data-heading]", {
-        y: 30, opacity: 0, duration: 0.8, ease: "power3.out",
-        scrollTrigger: { trigger: el, start: "top 75%" },
-      });
-
-      gsap.from("[data-strength-item]", {
-        x: 40, opacity: 0, duration: 0.7, stagger: 0.15, ease: "power3.out",
-        scrollTrigger: { trigger: el, start: "top 65%" },
-      });
     }, el);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={sectionRef} id="strengths" className="py-24 md:py-32 bg-white relative overflow-hidden">
+    <section ref={setRefs} id="strengths" className="py-24 md:py-32 bg-white relative overflow-hidden">
       {/* グラデーションオーブ */}
       <div data-orb-1 className="orb orb-blue absolute -top-20 right-[10%] w-[300px] h-[300px] md:w-[400px] md:h-[400px]" aria-hidden="true" />
       <div data-orb-2 className="orb orb-accent absolute bottom-[-60px] left-[-80px] w-[250px] h-[250px]" aria-hidden="true" />
@@ -110,14 +87,13 @@ export function Strengths() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-20 relative">
           <div
-            data-watermark
             className="absolute -top-8 -left-2 lg:-left-6 text-[8rem] md:text-[10rem] font-bold text-[var(--wt-primary)]/[0.04] leading-none select-none pointer-events-none font-mono"
             aria-hidden="true"
           >
             02
           </div>
 
-          <div data-heading>
+          <div data-reveal>
             <SectionHeading
               number="02"
               label="Strengths"
@@ -131,8 +107,8 @@ export function Strengths() {
             {strengths.map((item) => (
               <div
                 key={item.number}
-                data-strength-item
-                className="list-item-accent revealed py-6 border-b border-black/[0.08] cursor-default"
+                data-reveal-item
+                className="list-item-accent py-6 border-b border-black/[0.08] cursor-default"
               >
                 <div className="flex items-baseline gap-4 mb-2">
                   <span className="text-xs font-semibold text-[var(--wt-primary)] tracking-wider">{item.number}</span>
