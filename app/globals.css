@@ -167,6 +167,62 @@ html {
   display: none;
 }
 
+/* 矢印マイクロアニメーション（CTA内） */
+@keyframes arrow-nudge {
+  0% { opacity: 1; transform: translateX(0); }
+  45% { opacity: 0; transform: translateX(40%); }
+  50% { opacity: 0; transform: translateX(-40%); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+.arrow-loop {
+  animation: arrow-nudge 2s ease-in-out infinite;
+}
+
+/* ホバー下線アニメーション */
+.hover-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  transition: background-size 0.4s ease;
+}
+.hover-underline:hover {
+  background-size: 100% 1px;
+}
+
+/* SVGセクション区切りライン描画 */
+@keyframes draw-line {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+.section-line svg {
+  overflow: visible;
+}
+.section-line path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+.section-line.revealed path {
+  animation: draw-line 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+/* ページロードイントロ */
+@keyframes loader-fade {
+  0% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; pointer-events: none; }
+}
+@keyframes loader-logo {
+  0% { opacity: 0; transform: scale(1.1); }
+  40% { opacity: 1; transform: scale(1); }
+  75% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.95); }
+}
+@keyframes loading-circle {
+  0% { stroke-dashoffset: 163; }
+  100% { stroke-dashoffset: 0; }
+}
+
 /* モーション軽減 */
 @media (prefers-reduced-motion: reduce) {
   *,

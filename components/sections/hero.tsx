@@ -115,7 +115,7 @@ export function Hero() {
               className="group btn-bounce inline-flex items-center justify-center gap-2 bg-[var(--wt-primary)] hover:bg-[var(--wt-primary-dark)] text-white font-semibold px-7 py-4 rounded-md text-base"
             >
               協力会社登録フォーム
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="w-4 h-4 arrow-loop" />
             </button>
             <button
               onClick={() => scrollToSection("about")}

@@ -52,9 +52,9 @@ export function Footer() {
             &copy; {new Date().getFullYear()} 株式会社ウェルテック All rights reserved.
           </p>
           <div className="flex gap-6 text-xs text-white/25">
-            <a href="/privacy" className="hover:text-white/40 transition-colors">プライバシーポリシー</a>
-            <a href="/terms" className="hover:text-white/40 transition-colors">利用規約</a>
-            <a href="/tokushoho" className="hover:text-white/40 transition-colors">特定商取引法</a>
+            <a href="/privacy" className="hover:text-white/40 transition-colors hover-underline">プライバシーポリシー</a>
+            <a href="/terms" className="hover:text-white/40 transition-colors hover-underline">利用規約</a>
+            <a href="/tokushoho" className="hover:text-white/40 transition-colors hover-underline">特定商取引法</a>
           </div>
         </div>
       </div>

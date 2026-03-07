@@ -19,7 +19,9 @@ export function About() {
           style={{ transform: "translateY(0) scale(1.2)" }}
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-[var(--wt-bg-dark)]/70" />
+        <div className="absolute inset-0 bg-[var(--wt-bg-dark)]/60" />
+        {/* ガラスモーフィズム風ぼかしオーバーレイ */}
+        <div className="absolute inset-0 backdrop-blur-[6px]" />
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto px-5 sm:px-8 lg:px-10">
@@ -39,16 +41,16 @@ export function About() {
           </p>
         </div>
 
-        <div data-reveal className="mt-12 flex items-center gap-12">
-          <div>
+        <div className="mt-12 flex items-center gap-12">
+          <div data-reveal>
             <p className="text-3xl md:text-4xl font-bold text-white">20<span className="text-lg text-white/40">倍</span></p>
             <p className="text-xs text-white/30 mt-1">月間入札件数</p>
           </div>
-          <div>
+          <div data-reveal>
             <p className="text-3xl md:text-4xl font-bold text-white">全国</p>
             <p className="text-xs text-white/30 mt-1">対応エリア</p>
           </div>
-          <div>
+          <div data-reveal>
             <p className="text-3xl md:text-4xl font-bold text-white">2018</p>
             <p className="text-xs text-white/30 mt-1">創業年</p>
           </div>

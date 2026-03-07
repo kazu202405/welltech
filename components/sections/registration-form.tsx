@@ -44,7 +44,7 @@ export function RegistrationForm() {
           >
             <MessageCircle className="w-5 h-5" />
             LINEで友だち追加
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            <ArrowRight className="w-4 h-4 arrow-loop" />
           </a>
         </div>
 
