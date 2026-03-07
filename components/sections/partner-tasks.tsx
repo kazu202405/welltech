@@ -44,7 +44,7 @@ export function PartnerTasks() {
             />
             <div className="mt-8">
               <img
-                src="/photo/S__49889465_0.jpg"
+                src="/photo/S__49889469_0.jpg"
                 alt="施工現場"
                 className="w-full max-w-sm rounded-lg"
                 loading="lazy"

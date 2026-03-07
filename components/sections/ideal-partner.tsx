@@ -56,7 +56,7 @@ export function IdealPartner() {
             />
             <div className="mt-8">
               <img
-                src="/photo/S__49889560_0.jpg"
+                src="/photo/S__49889493_0.jpg"
                 alt="施工現場"
                 className="w-full max-w-sm rounded-lg"
                 loading="lazy"

@@ -1,18 +1,37 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ArrowRight } from "lucide-react";
 
 const heroImages = [
   "/photo/S__49889490_0.jpg",
-  "/photo/S__49889550_0.jpg",
+  "/photo/S__49889586_0.jpg",
   "/photo/S__49889495_0.jpg",
-  "/photo/S__49889470_0.jpg",
+  "/photo/S__49889550_0.jpg",
 ];
 
 export function Hero() {
   const heroRef = useRef<HTMLElement>(null);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+
+  // 全画像をプリロードしてからスライドショー開始
+  useEffect(() => {
+    let cancelled = false;
+    const promises = heroImages.map(
+      (src) =>
+        new Promise<void>((resolve) => {
+          const img = new Image();
+          img.onload = () => resolve();
+          img.onerror = () => resolve();
+          img.src = src;
+        })
+    );
+    Promise.all(promises).then(() => {
+      if (!cancelled) setImagesLoaded(true);
+    });
+    return () => { cancelled = true; };
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -35,24 +54,31 @@ export function Hero() {
   };
 
   return (
-    <section ref={heroRef} className="relative h-screen min-h-[600px] flex items-center overflow-hidden">
+    <section ref={heroRef} className="relative h-screen min-h-[600px] flex items-center overflow-hidden bg-[var(--wt-bg-dark)]">
       {/* 背景画像スライドショー */}
       {heroImages.map((src, i) => (
         <div
           key={src}
           className="absolute inset-0"
-          style={{
-            animation: `hero-slide ${heroImages.length * 5}s ease-in-out infinite`,
-            animationDelay: `${i * 5}s`,
-            opacity: i === 0 ? 1 : 0,
-          }}
+          style={
+            imagesLoaded
+              ? {
+                  animation: `hero-slide ${heroImages.length * 5}s ease-in-out infinite`,
+                  animationDelay: `${i === 0 ? 0 : -(heroImages.length * 5 - i * 5)}s`,
+                }
+              : { opacity: i === 0 ? 1 : 0 }
+          }
         >
           <img
             src={src}
             alt=""
             className="w-full h-full object-cover"
-            style={{ animation: "ken-burns 20s ease-out infinite alternate" }}
-            loading={i === 0 ? "eager" : "lazy"}
+            style={
+              imagesLoaded
+                ? { animation: `ken-burns ${heroImages.length * 5 * 2}s ease-in-out infinite alternate` }
+                : undefined
+            }
+            loading="eager"
           />
         </div>
       ))}
