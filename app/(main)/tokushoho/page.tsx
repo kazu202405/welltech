@@ -20,8 +20,32 @@ export default function TokushohoPage() {
         ]}
       />
       <RevealWrapper>
-        <div className="bg-white py-12 sm:py-16">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="relative py-24 md:py-32 bg-white overflow-hidden">
+          {/* 斜線装飾 */}
+          <div
+            data-reveal-diag
+            className="absolute top-[10%] -left-[10%] w-[110%] h-[120px] bg-gradient-to-r from-[rgba(0,85,184,0.07)] via-[rgba(0,85,184,0.03)] to-transparent pointer-events-none"
+            style={{ "--diag-angle": "-12deg" } as React.CSSProperties}
+            aria-hidden="true"
+          />
+          {/* 斜線装飾（右から） */}
+          <div
+            data-reveal-diag-r
+            className="absolute bottom-[20%] -right-[10%] w-[70%] h-[80px] bg-gradient-to-l from-[rgba(232,168,23,0.05)] to-transparent pointer-events-none"
+            style={{ "--diag-angle": "10deg" } as React.CSSProperties}
+            aria-hidden="true"
+          />
+          {/* オーブ */}
+          <div className="orb orb-blue absolute -top-16 right-[8%] w-[280px] h-[280px] md:w-[360px] md:h-[360px]" aria-hidden="true" />
+          <div className="orb orb-accent absolute bottom-[-40px] left-[-60px] w-[200px] h-[200px]" aria-hidden="true" />
+          <div className="orb orb-blue absolute bottom-[10%] right-[-80px] w-[260px] h-[260px]" aria-hidden="true" />
+          {/* ドットグリッド */}
+          <div className="absolute top-0 right-0 w-[200px] h-[200px] md:w-[280px] md:h-[280px] dot-grid opacity-40" aria-hidden="true" />
+          <div className="absolute bottom-0 left-0 w-[180px] h-[180px] md:w-[240px] md:h-[240px] dot-grid opacity-30" aria-hidden="true" />
+          {/* ウォーターマーク */}
+          <div className="watermark-bold absolute top-6 -left-4 lg:left-0 font-mono z-0" aria-hidden="true">LEGAL</div>
+
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="overflow-x-auto" data-reveal>
               <table className="w-full text-left border-collapse">
                 <tbody>
@@ -77,7 +101,7 @@ export default function TokushohoPage() {
               </table>
             </div>
           </div>
-        </div>
+        </section>
       </RevealWrapper>
       <script
         type="application/ld+json"
