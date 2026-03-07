@@ -4,6 +4,7 @@ import { SubPageHero } from "@/components/ui/sub-page-hero";
 import { RevealWrapper } from "@/components/ui/reveal-wrapper";
 import { AreaCrossLinks } from "@/components/ui/area-cross-links";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { CountUp } from "@/components/ui/count-up";
 
 export const metadata: Metadata = {
   title: "中国・四国エリアの施工パートナー募集",
@@ -297,7 +298,7 @@ export default function ChugokuShikokuAreaPage() {
                 >
                   <p className="text-sm text-[var(--wt-gray)] mb-3">{stat.label}</p>
                   <p className="text-4xl sm:text-5xl font-bold text-[var(--wt-primary)] tracking-tight">
-                    {stat.value}
+                    <CountUp value={stat.value} />
                     <span className="text-base font-medium text-[var(--wt-gray)] ml-1">
                       {stat.unit}
                     </span>
