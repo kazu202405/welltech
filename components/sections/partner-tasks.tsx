@@ -42,7 +42,7 @@ export function PartnerTasks() {
               description="案件に応じて以下の業務をお任せします。現地調査から施工まで、一貫して対応いただける体制を歓迎します。"
               align="left"
             />
-            <div className="mt-8">
+            <div className="mt-8 overflow-hidden" data-reveal-image>
               <img
                 src="/photo/S__49889469_0.jpg"
                 alt="施工現場"
@@ -53,9 +53,9 @@ export function PartnerTasks() {
           </div>
 
           {/* 右: タスクリスト */}
-          <div data-reveal>
+          <div>
             {tasks.map((task, index) => (
-              <div key={task.title} className="py-6 border-b border-black/[0.08]">
+              <div key={task.title} data-reveal-item className="py-6 border-b border-black/[0.08]">
                 <div className="flex items-baseline gap-4 mb-2">
                   <span className="text-xs font-semibold text-[var(--wt-primary)] tracking-wider">
                     {String(index + 1).padStart(2, "0")}

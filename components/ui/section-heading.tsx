@@ -20,7 +20,7 @@ export function SectionHeading({
 
   return (
     <div className={`mb-8 md:mb-14 ${isCenter ? "lg:mb-20 text-center" : "lg:mb-0"}`}>
-      {/* セクション番号＋ラベル */}
+      {/* セクション番号＋ライン＋ラベル */}
       <div className={`flex items-center gap-3 mb-4 ${isCenter ? "justify-center" : ""}`}>
         {number && (
           <span className={`text-sm font-mono font-semibold tracking-wider ${isDark ? "text-white/40" : "text-[var(--wt-primary)]/40"}`}>
@@ -29,7 +29,12 @@ export function SectionHeading({
         )}
         {label && (
           <>
-            {number && <span className={`w-6 h-px ${isDark ? "bg-white/20" : "bg-[var(--wt-primary)]/20"}`} />}
+            {number && (
+              <span
+                data-reveal-line
+                className={`w-8 h-px inline-block ${isDark ? "bg-white/20" : "bg-[var(--wt-primary)]/30"}`}
+              />
+            )}
             <span className={`text-xs font-semibold tracking-[0.15em] uppercase ${isDark ? "text-[var(--wt-accent)]" : "text-[var(--wt-primary)]"}`}>
               {label}
             </span>

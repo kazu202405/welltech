@@ -96,6 +96,36 @@ html {
   transform: translateY(0);
 }
 
+/* 画像clip-pathリビール（横からスライド） */
+[data-reveal-image] {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+[data-reveal-image].revealed {
+  clip-path: inset(0 0 0 0);
+}
+
+/* リスト項目の個別フェードイン */
+[data-reveal-item] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+[data-reveal-item].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* セクション見出しの線伸長アニメーション */
+[data-reveal-line] {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+[data-reveal-line].revealed {
+  transform: scaleX(1);
+}
+
 /* ヒーロースライドショー（4枚 x 5秒 = 20秒サイクル） */
 @keyframes hero-slide {
   0% { opacity: 1; }

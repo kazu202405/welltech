@@ -54,7 +54,7 @@ export function IdealPartner() {
               description="互いに成長できるパートナーシップを目指しています。以下の建設業許可をお持ちの会社様を優先的にご案内いたします。許可取得前の会社様もご相談ください。"
               align="left"
             />
-            <div className="mt-8">
+            <div className="mt-8 overflow-hidden" data-reveal-image>
               <img
                 src="/photo/S__49889493_0.jpg"
                 alt="施工現場"
@@ -65,7 +65,7 @@ export function IdealPartner() {
           </div>
 
           {/* 右: リスト */}
-          <div data-reveal>
+          <div>
             {/* パートナー像 */}
             <div className="mb-8">
               <p className="text-[var(--wt-gray-light)] text-xs font-semibold tracking-[0.15em] uppercase mb-4">Partner</p>
@@ -73,6 +73,7 @@ export function IdealPartner() {
                 {idealTraits.map((trait) => (
                   <div
                     key={trait}
+                    data-reveal-item
                     className="py-4 px-1 border-b border-black/[0.08] text-[var(--wt-dark)] text-[15px] font-medium"
                   >
                     {trait}

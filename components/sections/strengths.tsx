@@ -40,9 +40,9 @@ export function Strengths() {
           </div>
 
           {/* 右: 強みリスト */}
-          <div data-reveal>
+          <div>
             {strengths.map((item) => (
-              <div key={item.number} className="py-6 border-b border-black/[0.08]">
+              <div key={item.number} data-reveal-item className="py-6 border-b border-black/[0.08]">
                 <div className="flex items-baseline gap-4 mb-2">
                   <span className="text-xs font-semibold text-[var(--wt-primary)] tracking-wider">{item.number}</span>
                   <h3 className="text-lg font-bold text-[var(--wt-dark)]">{item.title}</h3>
