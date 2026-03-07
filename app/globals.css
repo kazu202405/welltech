@@ -35,34 +35,35 @@
 :root {
   --radius: 0.625rem;
   --background: #ffffff;
-  --foreground: #0a1628;
+  --foreground: #1a1a1a;
   --card: #ffffff;
-  --card-foreground: #0a1628;
+  --card-foreground: #1a1a1a;
   --popover: #ffffff;
-  --popover-foreground: #0a1628;
-  --primary: #2563eb;
+  --popover-foreground: #1a1a1a;
+  --primary: #0055B8;
   --primary-foreground: #ffffff;
-  --secondary: #f1f5f9;
-  --secondary-foreground: #0a1628;
-  --muted: #f1f5f9;
-  --muted-foreground: #64748b;
-  --accent: #f1f5f9;
-  --accent-foreground: #0a1628;
+  --secondary: #f5f5f5;
+  --secondary-foreground: #1a1a1a;
+  --muted: #f5f5f5;
+  --muted-foreground: #666666;
+  --accent: #f5f5f5;
+  --accent-foreground: #1a1a1a;
   --destructive: #ef4444;
-  --border: #e2e8f0;
-  --input: #e2e8f0;
-  --ring: #2563eb;
+  --border: #e5e5e5;
+  --input: #e5e5e5;
+  --ring: #0055B8;
 
-  /* WellTech ブランドカラー */
-  --wt-navy: #0a1628;
-  --wt-navy-light: #1e3a5f;
-  --wt-blue: #2563eb;
-  --wt-blue-light: #3b82f6;
-  --wt-amber: #f59e0b;
-  --wt-emerald: #10b981;
-  --wt-gray-50: #f8fafc;
-  --wt-gray-100: #f1f5f9;
-  --wt-gray-200: #e2e8f0;
+  /* ブランドカラー */
+  --wt-primary: #0055B8;
+  --wt-primary-dark: #003d85;
+  --wt-primary-light: #0070E0;
+  --wt-dark: #1a1a1a;
+  --wt-gray: #666666;
+  --wt-gray-light: #999999;
+  --wt-bg: #f7f7f7;
+  --wt-bg-dark: #0d1b2e;
+  --wt-accent: #e8a817;
+  --wt-green: #06C755;
 }
 
 @layer base {
@@ -74,190 +75,61 @@
   }
 }
 
-/* スクロール動作 */
 html {
   scroll-behavior: smooth;
 }
 
-/* セクション背景 */
-.bg-navy {
-  background-color: var(--wt-navy);
-}
-
-.bg-gray-section {
-  background-color: var(--wt-gray-50);
-}
-
-/* CTAボタン グロー */
-.btn-glow {
-  position: relative;
-  z-index: 1;
-  overflow: visible;
-}
-.btn-glow::after {
-  content: "";
-  position: absolute;
-  inset: -3px;
-  border-radius: inherit;
-  background: linear-gradient(135deg, #2563eb, #3b82f6, #2563eb);
-  z-index: -1;
-  opacity: 0;
-  filter: blur(16px);
-  transition: opacity 0.4s ease;
-}
-.btn-glow:hover::after {
-  opacity: 0.5;
-}
-
-/* カードホバー */
-.card-hover {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.card-hover:hover {
-  box-shadow: 0 8px 32px rgba(37, 99, 235, 0.12), 0 0 0 1px rgba(37, 99, 235, 0.06);
-  transform: translateY(-4px);
-}
-
-/* パルスリング（CTA用） */
-@keyframes pulse-ring {
-  0% { transform: scale(1); opacity: 0.4; }
-  100% { transform: scale(2); opacity: 0; }
-}
-
-/* スクロール進捗バー */
-@keyframes scroll-line {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(300%); }
-}
-
-/* ノイズオーバーレイ */
-.noise-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 9998;
-  pointer-events: none;
-  opacity: 0.02;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 256px 256px;
-}
-
-/* セレクションカラー */
+/* セレクション */
 ::selection {
-  background: rgba(37, 99, 235, 0.15);
+  background: rgba(0, 85, 184, 0.12);
   color: inherit;
 }
 
-/* スクロールリビールアニメーション */
+/* スクロールリビール */
 [data-reveal] {
   opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(24px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 [data-reveal].revealed {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* タッチデバイスでhoverエフェクト無効化 */
-@media (hover: none) {
-  .card-hover:hover {
-    box-shadow: none;
-    transform: none;
-  }
+/* ヒーロースライドショー（4枚 x 5秒 = 20秒サイクル） */
+@keyframes hero-slide {
+  0% { opacity: 1; }
+  22% { opacity: 1; }
+  27% { opacity: 0; }
+  95% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
-/* === Enhanced Design System === */
-
-/* フロートアニメーション */
-@keyframes float {
-  0%, 100% { transform: translateY(0) rotate(var(--rotate, 45deg)); }
-  50% { transform: translateY(-20px) rotate(var(--rotate, 45deg)); }
-}
-@keyframes float-slow {
-  0%, 100% { transform: translateY(0) rotate(var(--rotate, 12deg)); }
-  50% { transform: translateY(-12px) rotate(var(--rotate, 12deg)); }
+/* Ken Burns ズーム効果 */
+@keyframes ken-burns {
+  0% { transform: scale(1.02); }
+  100% { transform: scale(1.18); }
 }
 
-/* グラデーションフロー */
-@keyframes gradient-flow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* CTAボタン バウンスホバー */
+.btn-bounce {
+  transition: all 0.4s cubic-bezier(0.5, -0.3, 0.17, 1.2);
+}
+.btn-bounce:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 85, 184, 0.3);
 }
 
-/* シマー効果 */
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(200%); }
+/* カードホバー */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.card-hover:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
 }
 
-/* パルスリング */
-@keyframes pulse-soft {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.7; transform: scale(1.05); }
-}
-
-/* アクセントボーダー グラデーション */
-.accent-border-top {
-  position: relative;
-  overflow: hidden;
-}
-.accent-border-top::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--wt-blue), var(--wt-amber), var(--wt-emerald));
-  border-radius: 0 0 2px 2px;
-}
-
-/* カード プレミアムホバー */
-.card-hover-premium {
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.card-hover-premium:hover {
-  box-shadow:
-    0 20px 60px rgba(37, 99, 235, 0.12),
-    0 8px 24px rgba(10, 22, 40, 0.08),
-    0 0 0 1px rgba(37, 99, 235, 0.06);
-  transform: translateY(-6px);
-}
-
-/* グリッドパターン背景 */
-.bg-grid-pattern {
-  background-image:
-    linear-gradient(rgba(37,99,235,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(37,99,235,0.04) 1px, transparent 1px);
-  background-size: 48px 48px;
-}
-
-/* セクション区切り グラデーションライン */
-.section-line {
-  position: relative;
-}
-.section-line::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(80%, 600px);
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(37,99,235,0.15), transparent);
-}
-
-/* グラステキスト */
-.text-gradient {
-  background: linear-gradient(135deg, var(--wt-blue), #60a5fa);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* LINE CTA グロー */
+/* LINE CTAグロー */
 .btn-glow-green {
   position: relative;
   z-index: 1;
@@ -275,7 +147,24 @@ html {
   transition: opacity 0.4s ease;
 }
 .btn-glow-green:hover::after {
-  opacity: 0.4;
+  opacity: 0.35;
+}
+
+/* タッチデバイス */
+@media (hover: none) {
+  .card-hover:hover {
+    box-shadow: none;
+    transform: none;
+  }
+}
+
+/* スクロールバー非表示（水平スクロールセクション用） */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
 /* モーション軽減 */

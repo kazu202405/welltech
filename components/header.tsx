@@ -1,13 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const navItems = [
+  { label: "事業紹介", href: "#about" },
   { label: "強み", href: "#strengths" },
+  { label: "施工実績", href: "#works" },
   { label: "案件種別", href: "#case-types" },
   { label: "業務内容", href: "#partner-tasks" },
-  { label: "パートナー像", href: "#ideal-partner" },
   { label: "取引の流れ", href: "#flow" },
   { label: "FAQ", href: "#faq" },
 ];
@@ -18,56 +19,39 @@ export function Header() {
   const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // アクティブセクション検出
   useEffect(() => {
     const sectionIds = navItems.map((item) => item.href.replace("#", ""));
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
+          if (entry.isIntersecting) setActiveSection(entry.target.id);
         });
       },
       { rootMargin: "-40% 0px -55% 0px" }
     );
-
     sectionIds.forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
-
     return () => observer.disconnect();
   }, []);
 
-  // モバイルメニュー展開時にbodyスクロールをロック
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
+    document.body.style.overflow = isOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
   }, [isOpen]);
 
   const scrollToSection = (href: string) => {
     setIsOpen(false);
-    const id = href.replace("#", "");
-    const el = document.getElementById(id);
+    const el = document.getElementById(href.replace("#", ""));
     if (el) {
-      const headerOffset = 80;
-      const elementPosition = el.getBoundingClientRect().top + window.scrollY;
-      window.scrollTo({ top: elementPosition - headerOffset, behavior: "smooth" });
+      const offset = el.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top: offset, behavior: "smooth" });
     }
   };
 
@@ -75,11 +59,11 @@ export function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-white/90 backdrop-blur-xl shadow-[0_1px_0_rgba(0,0,0,0.06)]"
+          ? "bg-white/95 backdrop-blur-lg border-b border-black/[0.04]"
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* ロゴ */}
           <a
@@ -88,17 +72,14 @@ export function Header() {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
-            className="flex items-center gap-2.5 group"
+            className="flex items-center gap-2"
           >
-            <div className="w-8 h-8 bg-[#2563eb] rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-              <span className="text-white font-bold text-sm">W</span>
-            </div>
             <span
-              className={`text-lg font-bold transition-colors duration-300 ${
-                scrolled ? "text-[#0a1628]" : "text-white"
+              className={`text-xl font-bold tracking-tight transition-colors duration-300 ${
+                scrolled ? "text-[var(--wt-dark)]" : "text-white"
               }`}
             >
-              ウェルテック
+              WELLTECH
             </span>
           </a>
 
@@ -110,35 +91,33 @@ export function Header() {
                 <button
                   key={item.href}
                   onClick={() => scrollToSection(item.href)}
-                  className={`text-sm font-medium px-3 py-2 rounded-lg transition-all duration-300 ${
+                  className={`text-[13px] font-medium px-3.5 py-2 rounded-md transition-all duration-300 ${
                     scrolled
                       ? isActive
-                        ? "text-[#2563eb] bg-[#2563eb]/[0.06]"
-                        : "text-[#0a1628]/60 hover:text-[#0a1628] hover:bg-gray-50"
+                        ? "text-[var(--wt-primary)]"
+                        : "text-[var(--wt-dark)]/60 hover:text-[var(--wt-dark)]"
                       : isActive
-                        ? "text-white bg-white/[0.1]"
-                        : "text-white/70 hover:text-white hover:bg-white/[0.06]"
+                        ? "text-white"
+                        : "text-white/60 hover:text-white"
                   }`}
                 >
                   {item.label}
                 </button>
               );
             })}
-            <div className="w-px h-5 bg-current opacity-10 mx-2" />
             <button
               onClick={() => scrollToSection("#registration")}
-              className="inline-flex items-center gap-2 bg-[#2563eb] hover:bg-[#1d4ed8] text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-[#2563eb]/20"
+              className="ml-4 bg-[var(--wt-primary)] hover:bg-[var(--wt-primary-dark)] text-white text-[13px] font-semibold px-5 py-2.5 rounded-md transition-all duration-300"
             >
-              <Phone className="w-3.5 h-3.5" />
-              協力会社登録
+              パートナー登録
             </button>
           </nav>
 
           {/* モバイルメニューボタン */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className={`lg:hidden p-2 rounded-lg transition-colors ${
-              scrolled ? "text-[#0a1628]" : "text-white"
+            className={`lg:hidden p-2 rounded-md transition-colors ${
+              scrolled ? "text-[var(--wt-dark)]" : "text-white"
             }`}
             aria-label="メニュー"
           >
@@ -148,34 +127,36 @@ export function Header() {
       </div>
 
       {/* モバイルメニュー */}
-      {isOpen && (
-        <div className="lg:hidden bg-white/95 backdrop-blur-xl border-t border-gray-100 shadow-xl max-h-[calc(100dvh-4rem)] overflow-y-auto">
-          <div className="px-4 py-4 space-y-1">
-            {navItems.map((item) => {
-              const isActive = activeSection === item.href.replace("#", "");
-              return (
-                <button
-                  key={item.href}
-                  onClick={() => scrollToSection(item.href)}
-                  className={`block w-full text-left text-sm font-medium px-4 py-3 rounded-lg transition-colors ${
-                    isActive
-                      ? "text-[#2563eb] bg-[#2563eb]/[0.06]"
-                      : "text-[#0a1628]/70 hover:text-[#0a1628] hover:bg-gray-50"
-                  }`}
-                >
-                  {item.label}
-                </button>
-              );
-            })}
-            <button
-              onClick={() => scrollToSection("#registration")}
-              className="block w-full text-center bg-[#2563eb] hover:bg-[#1d4ed8] text-white text-sm font-semibold px-5 py-3 rounded-lg transition-colors mt-3"
-            >
-              協力会社登録
-            </button>
-          </div>
+      <div
+        className={`lg:hidden transition-all duration-300 overflow-hidden ${
+          isOpen ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <div className="bg-white border-t border-black/[0.04] px-5 py-5 space-y-1">
+          {navItems.map((item) => {
+            const isActive = activeSection === item.href.replace("#", "");
+            return (
+              <button
+                key={item.href}
+                onClick={() => scrollToSection(item.href)}
+                className={`block w-full text-left text-sm font-medium px-4 py-3 rounded-md transition-colors ${
+                  isActive
+                    ? "text-[var(--wt-primary)] bg-[var(--wt-primary)]/5"
+                    : "text-[var(--wt-dark)]/60 hover:text-[var(--wt-dark)] hover:bg-gray-50"
+                }`}
+              >
+                {item.label}
+              </button>
+            );
+          })}
+          <button
+            onClick={() => scrollToSection("#registration")}
+            className="block w-full text-center bg-[var(--wt-primary)] text-white text-sm font-semibold px-5 py-3 rounded-md mt-3"
+          >
+            パートナー登録
+          </button>
         </div>
-      )}
+      </div>
     </header>
   );
 }

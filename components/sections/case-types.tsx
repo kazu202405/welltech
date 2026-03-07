@@ -1,106 +1,88 @@
 "use client";
 
-import { Landmark, Building, Zap, PaintBucket, Wind, Flame, Wrench } from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const publicCases = [
-  { icon: Landmark, label: "建築一式工事", description: "国発注の建築・改修工事入札案件", image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=200&h=200&fit=crop" },
-  { icon: Zap, label: "電気工事", description: "国の施設における電気設備工事・改修", image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=200&h=200&fit=crop" },
-  { icon: Wrench, label: "管工事", description: "国の施設における給排水・衛生設備の施工", image: "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=200&h=200&fit=crop" },
-  { icon: PaintBucket, label: "内装仕上工事", description: "国の建築物の内装仕上げ工事", image: "https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=200&h=200&fit=crop" },
+  "建築一式工事",
+  "電気工事",
+  "管工事",
+  "内装仕上工事",
+  "大工工事",
+  "屋根工事",
 ];
 
 const privateCases = [
-  { icon: Zap, label: "電気工事", description: "商業施設・住宅の電気設備工事", image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=200&h=200&fit=crop" },
-  { icon: PaintBucket, label: "内装工事", description: "オフィス・店舗の内装仕上げ工事", image: "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=200&h=200&fit=crop" },
-  { icon: Wind, label: "空調設備工事", description: "エアコン・換気設備の設置・更新", image: "https://images.unsplash.com/photo-1551522435-a13afa10f103?w=200&h=200&fit=crop" },
-  { icon: Flame, label: "給湯器設置", description: "給湯器の設置・交換・メンテナンス", image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=200&h=200&fit=crop" },
+  "電気設備工事",
+  "内装工事",
+  "空調設備工事",
+  "給湯器設置・交換",
+  "LED照明工事",
+  "太陽光パネル設置",
 ];
-
-function CaseCard({
-  item,
-  color,
-}: {
-  item: (typeof publicCases)[number];
-  color: string;
-}) {
-  return (
-    <div className="group flex items-stretch bg-[#f8fafc] rounded-xl overflow-hidden transition-all duration-300 hover:bg-[#f1f5f9] hover:shadow-sm">
-      <div className="flex items-center gap-3 p-3 flex-1 min-w-0">
-        <div
-          className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110"
-          style={{ backgroundColor: `${color}12` }}
-        >
-          <item.icon className="w-5 h-5" style={{ color }} />
-        </div>
-        <div className="min-w-0">
-          <h4 className="font-semibold text-[#0a1628] mb-0.5 text-sm">{item.label}</h4>
-          <p className="text-xs text-[#64748b]">{item.description}</p>
-        </div>
-      </div>
-      <div className="relative w-16 sm:w-20 shrink-0 overflow-hidden">
-        <img
-          src={item.image}
-          alt={item.label}
-          loading="lazy"
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-        />
-      </div>
-    </div>
-  );
-}
 
 export function CaseTypes() {
   const sectionRef = useScrollReveal();
 
   return (
-    <section ref={sectionRef} id="case-types" className="py-20 md:py-28 bg-gray-section">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          label="Case Types"
-          title="取り扱い案件"
-          description="公共・民間の幅広い案件で安定した仕事量を確保"
-        />
+    <section ref={sectionRef} id="case-types" className="py-24 md:py-32 bg-[var(--wt-primary)] relative overflow-hidden">
+      {/* 背景装飾 */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/[0.03] rounded-full -translate-y-1/2 translate-x-1/3" />
+      </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
-          {/* 公共案件 */}
-          <div data-reveal className="bg-white rounded-2xl p-5 sm:p-8 border border-gray-100 shadow-sm">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-11 h-11 bg-[#10b981]/10 rounded-xl flex items-center justify-center shrink-0">
-                <Building className="w-5 h-5 text-[#10b981]" />
-              </div>
-              <div>
-                <span className="inline-block bg-[#10b981]/10 text-[#10b981] text-[11px] font-semibold px-3 py-1 rounded-full mb-1 tracking-wide">
-                  公共案件
-                </span>
-                <h3 className="text-lg font-bold text-[#0a1628]">国の入札案件</h3>
-              </div>
-            </div>
-            <div className="space-y-2.5">
-              {publicCases.map((item) => (
-                <CaseCard key={item.label} item={item} color="#10b981" />
-              ))}
+      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+          {/* 左: ヘッディング */}
+          <div data-reveal>
+            <SectionHeading
+              number="04"
+              label="Case Types"
+              title="取り扱い案件"
+              description="公共建築入札から民間案件まで、幅広い建設案件で安定した仕事量を確保。地元の案件を地元のプロにお任せする体制を整えています。"
+              variant="dark"
+              align="left"
+            />
+            <div className="mt-8">
+              <img
+                src="/photo/S__49889495_0.jpg"
+                alt="施工現場"
+                className="w-full max-w-sm rounded-lg opacity-80"
+                loading="lazy"
+              />
             </div>
           </div>
 
-          {/* 民間案件 */}
-          <div data-reveal className="bg-white rounded-2xl p-5 sm:p-8 border border-gray-100 shadow-sm">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-11 h-11 bg-[#2563eb]/10 rounded-xl flex items-center justify-center shrink-0">
-                <Building className="w-5 h-5 text-[#2563eb]" />
-              </div>
-              <div>
-                <span className="inline-block bg-[#2563eb]/10 text-[#2563eb] text-[11px] font-semibold px-3 py-1 rounded-full mb-1 tracking-wide">
-                  民間案件
-                </span>
-                <h3 className="text-lg font-bold text-[#0a1628]">民間工事案件</h3>
+          {/* 右: 案件リスト */}
+          <div data-reveal>
+            {/* 公共案件 */}
+            <div className="mb-8">
+              <p className="text-white/50 text-xs font-semibold tracking-[0.15em] uppercase mb-4">Public</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2">
+                {publicCases.map((item) => (
+                  <div
+                    key={item}
+                    className="py-4 px-1 border-b border-white/[0.12] text-white text-[15px] font-medium"
+                  >
+                    {item}
+                  </div>
+                ))}
               </div>
             </div>
-            <div className="space-y-2.5">
-              {privateCases.map((item) => (
-                <CaseCard key={item.label} item={item} color="#2563eb" />
-              ))}
+
+            {/* 民間案件 */}
+            <div>
+              <p className="text-white/50 text-xs font-semibold tracking-[0.15em] uppercase mb-4">Private</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2">
+                {privateCases.map((item) => (
+                  <div
+                    key={item}
+                    className="py-4 px-1 border-b border-white/[0.12] text-white text-[15px] font-medium"
+                  >
+                    {item}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

@@ -33,25 +33,21 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
   const contentRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className={`border rounded-xl overflow-hidden transition-colors duration-300 ${isOpen ? "border-[#2563eb]/20 bg-[#2563eb]/[0.02]" : "border-gray-100 bg-white"}`}>
+    <div className="border-b border-black/[0.08]">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-between w-full text-left px-4 sm:px-6 py-5 transition-colors"
+        className="flex items-center justify-between w-full text-left py-5 transition-colors"
       >
-        <span className="text-base font-semibold text-[#0a1628] pr-4 leading-snug">{question}</span>
-        <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-all duration-300 ${isOpen ? "bg-[#2563eb]/10 rotate-180" : "bg-gray-50"}`}>
-          <ChevronDown className={`w-4 h-4 transition-colors ${isOpen ? "text-[#2563eb]" : "text-[#64748b]"}`} />
-        </div>
+        <span className="text-[15px] font-semibold text-[var(--wt-dark)] pr-4 leading-snug">{question}</span>
+        <ChevronDown className={`w-4 h-4 text-[var(--wt-gray-light)] shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
       </button>
       <div
         ref={contentRef}
         className="overflow-hidden transition-all duration-300"
-        style={{
-          maxHeight: isOpen ? contentRef.current?.scrollHeight ?? 0 : 0,
-        }}
+        style={{ maxHeight: isOpen ? contentRef.current?.scrollHeight ?? 0 : 0 }}
       >
-        <div className="px-4 sm:px-6 pb-5">
-          <p className="text-sm text-[#64748b] leading-relaxed">{answer}</p>
+        <div className="pb-5">
+          <p className="text-sm text-[var(--wt-gray)] leading-relaxed">{answer}</p>
         </div>
       </div>
     </div>
@@ -62,20 +58,26 @@ export function Faq() {
   const sectionRef = useScrollReveal();
 
   return (
-    <section ref={sectionRef} id="faq" className="py-20 md:py-28 bg-white section-line">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          label="FAQ"
-          title="よくあるご質問"
-          description="パートナー登録に関するよくあるご質問にお答えします"
-        />
+    <section ref={sectionRef} id="faq" className="py-24 md:py-32 bg-[var(--wt-bg)]">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-20">
+          {/* 左: ヘッディング */}
+          <div data-reveal>
+            <SectionHeading
+              number="08"
+              label="FAQ"
+              title="よくあるご質問"
+              description="パートナー登録に関するよくあるご質問にお答えします"
+              align="left"
+            />
+          </div>
 
-        <div className="space-y-3">
-          {faqs.map((faq) => (
-            <div key={faq.question} data-reveal>
-              <FaqItem question={faq.question} answer={faq.answer} />
-            </div>
-          ))}
+          {/* 右: FAQ リスト */}
+          <div data-reveal>
+            {faqs.map((faq) => (
+              <FaqItem key={faq.question} question={faq.question} answer={faq.answer} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

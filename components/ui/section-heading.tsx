@@ -1,43 +1,48 @@
 interface SectionHeadingProps {
+  number?: string;
   label?: string;
   title: string;
   description?: string;
   variant?: "light" | "dark";
+  align?: "center" | "left";
 }
 
 export function SectionHeading({
+  number,
   label,
   title,
   description,
   variant = "light",
+  align = "center",
 }: SectionHeadingProps) {
-  const textColor = variant === "dark" ? "text-white" : "text-[#0a1628]";
-  const subColor = variant === "dark" ? "text-white/60" : "text-[#64748b]";
-  const labelColor = variant === "dark" ? "text-[#f59e0b]" : "text-[#2563eb]";
-  const lineColor = variant === "dark" ? "bg-[#f59e0b]/30" : "bg-[#2563eb]/20";
-  const diamondColor = variant === "dark" ? "bg-[#f59e0b]" : "bg-[#2563eb]";
+  const isDark = variant === "dark";
+  const isCenter = align === "center";
 
   return (
-    <div className="text-center mb-12 md:mb-16">
-      {label && (
-        <div className="inline-flex items-center gap-3 mb-4">
-          <div className={`w-8 h-px ${lineColor}`} />
-          <span className={`text-xs font-semibold tracking-[0.2em] uppercase ${labelColor}`}>
-            {label}
+    <div className={`mb-8 md:mb-14 ${isCenter ? "lg:mb-20 text-center" : "lg:mb-0"}`}>
+      {/* セクション番号＋ラベル */}
+      <div className={`flex items-center gap-3 mb-4 ${isCenter ? "justify-center" : ""}`}>
+        {number && (
+          <span className={`text-sm font-mono font-semibold tracking-wider ${isDark ? "text-white/40" : "text-[var(--wt-primary)]/40"}`}>
+            {number}
           </span>
-          <div className={`w-8 h-px ${lineColor}`} />
-        </div>
-      )}
-      <h2 className={`font-display text-3xl md:text-4xl lg:text-[2.5rem] font-bold ${textColor} mb-5 leading-tight`}>
+        )}
+        {label && (
+          <>
+            {number && <span className={`w-6 h-px ${isDark ? "bg-white/20" : "bg-[var(--wt-primary)]/20"}`} />}
+            <span className={`text-xs font-semibold tracking-[0.15em] uppercase ${isDark ? "text-[var(--wt-accent)]" : "text-[var(--wt-primary)]"}`}>
+              {label}
+            </span>
+          </>
+        )}
+      </div>
+
+      <h2 className={`text-3xl md:text-4xl lg:text-[2.75rem] font-bold leading-tight mb-5 ${isDark ? "text-white" : "text-[var(--wt-dark)]"}`}>
         {title}
       </h2>
-      <div className="flex items-center justify-center gap-2 mb-5">
-        <div className={`w-10 h-px ${lineColor}`} />
-        <div className={`w-2 h-2 ${diamondColor} rotate-45`} />
-        <div className={`w-10 h-px ${lineColor}`} />
-      </div>
+
       {description && (
-        <p className={`text-base md:text-lg ${subColor} max-w-2xl mx-auto leading-relaxed`}>
+        <p className={`text-base md:text-lg leading-relaxed max-w-2xl ${isCenter ? "mx-auto" : ""} ${isDark ? "text-white/55" : "text-[var(--wt-gray)]"}`}>
           {description}
         </p>
       )}
