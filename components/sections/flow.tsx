@@ -49,6 +49,20 @@ export function Flow() {
 
   return (
     <section ref={setRefs} id="flow" className="py-24 md:py-32 bg-white relative overflow-hidden">
+      {/* 斜線スライドイン */}
+      <div
+        data-reveal-diag
+        className="absolute top-[12%] -left-[10%] w-[100%] h-[120px] bg-gradient-to-r from-[rgba(0,85,184,0.07)] via-[rgba(0,85,184,0.03)] to-transparent pointer-events-none"
+        style={{ "--diag-angle": "-14deg" } as React.CSSProperties}
+        aria-hidden="true"
+      />
+      <div
+        data-reveal-diag-r
+        className="absolute bottom-[15%] -right-[10%] w-[90%] h-[80px] bg-gradient-to-l from-[rgba(232,168,23,0.07)] via-[rgba(232,168,23,0.03)] to-transparent pointer-events-none"
+        style={{ "--diag-angle": "10deg" } as React.CSSProperties}
+        aria-hidden="true"
+      />
+
       {/* グラデーションオーブ */}
       <div data-orb-1 className="orb orb-blue absolute top-[-30px] right-[-50px] w-[300px] h-[300px]" aria-hidden="true" />
       <div data-orb-2 className="orb orb-accent absolute bottom-[-50px] left-[5%] w-[250px] h-[250px]" aria-hidden="true" />
