@@ -41,7 +41,7 @@ export function Strengths() {
     if (!el) return;
 
     const ctx = gsap.context(() => {
-      // 装飾要素のみGSAP（オーブ、シェイプ）
+      // オーブのパララックス
       gsap.to("[data-orb-1]", {
         y: -40, duration: 1,
         scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: 1.5 },
@@ -50,6 +50,11 @@ export function Strengths() {
         y: 30, x: -20, duration: 1,
         scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: 2 },
       });
+      // ウォーターマークのパララックス
+      gsap.to("[data-wm]", {
+        y: -60, duration: 1,
+        scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: 1 },
+      });
     }, el);
 
     return () => ctx.revert();
@@ -57,41 +62,38 @@ export function Strengths() {
 
   return (
     <section ref={setRefs} id="strengths" className="py-24 md:py-32 bg-white relative overflow-hidden">
+      {/* 斜線スライドイン */}
+      <div
+        data-reveal-diag
+        className="absolute top-[15%] -left-[10%] w-[110%] h-[140px] bg-gradient-to-r from-[rgba(0,85,184,0.08)] via-[rgba(0,85,184,0.04)] to-transparent pointer-events-none"
+        style={{ "--diag-angle": "-15deg" } as React.CSSProperties}
+        aria-hidden="true"
+      />
+      <div
+        data-reveal-diag-r
+        className="absolute bottom-[10%] -right-[10%] w-[80%] h-[60px] bg-gradient-to-l from-[rgba(0,85,184,0.06)] to-transparent pointer-events-none"
+        style={{ "--diag-angle": "-12deg" } as React.CSSProperties}
+        aria-hidden="true"
+      />
+
       {/* グラデーションオーブ */}
       <div data-orb-1 className="orb orb-blue absolute -top-20 right-[10%] w-[300px] h-[300px] md:w-[400px] md:h-[400px]" aria-hidden="true" />
       <div data-orb-2 className="orb orb-accent absolute bottom-[-60px] left-[-80px] w-[250px] h-[250px]" aria-hidden="true" />
 
       {/* ドットグリッド */}
-      <div data-dot-grid className="absolute top-0 right-0 w-[200px] h-[200px] md:w-[300px] md:h-[300px] dot-grid opacity-50" aria-hidden="true" />
+      <div className="absolute top-0 right-0 w-[200px] h-[200px] md:w-[300px] md:h-[300px] dot-grid opacity-50" aria-hidden="true" />
 
-      {/* SVG幾何学シェイプ */}
-      <div className="absolute top-16 right-[12%] pointer-events-none" aria-hidden="true">
-        <svg data-shape-ring width="120" height="120" viewBox="0 0 120 120" fill="none">
-          <circle cx="60" cy="60" r="50" stroke="rgba(0,85,184,0.08)" strokeWidth="1.5" fill="none" />
-          <circle cx="60" cy="60" r="35" stroke="rgba(0,85,184,0.05)" strokeWidth="1" fill="none" />
-        </svg>
-      </div>
-      <div className="absolute bottom-24 left-[8%] pointer-events-none" aria-hidden="true">
-        <svg data-shape-cross width="40" height="40" viewBox="0 0 40 40" fill="none">
-          <line x1="0" y1="20" x2="40" y2="20" stroke="rgba(0,85,184,0.1)" strokeWidth="1.5" />
-          <line x1="20" y1="0" x2="20" y2="40" stroke="rgba(0,85,184,0.1)" strokeWidth="1.5" />
-        </svg>
-      </div>
-      {/* 角度のある装飾ライン */}
-      <div className="absolute top-[40%] right-0 pointer-events-none" aria-hidden="true">
-        <svg width="200" height="1" viewBox="0 0 200 1" fill="none">
-          <line x1="0" y1="0.5" x2="200" y2="0.5" stroke="rgba(0,85,184,0.06)" strokeWidth="1" />
-        </svg>
+      {/* 大胆なウォーターマーク */}
+      <div
+        data-wm
+        className="watermark-bold absolute top-8 -left-4 lg:left-0 font-mono z-0"
+        aria-hidden="true"
+      >
+        02
       </div>
 
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-20 relative">
-          <div
-            className="absolute -top-8 -left-2 lg:-left-6 text-[8rem] md:text-[10rem] font-bold text-[var(--wt-primary)]/[0.04] leading-none select-none pointer-events-none font-mono"
-            aria-hidden="true"
-          >
-            02
-          </div>
 
           <div data-reveal>
             <SectionHeading

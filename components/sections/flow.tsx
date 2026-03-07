@@ -30,7 +30,6 @@ export function Flow() {
     if (!el) return;
 
     const ctx = gsap.context(() => {
-      // 装飾要素のみGSAP
       gsap.to("[data-orb-1]", {
         y: -35, duration: 1,
         scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: 1.5 },
@@ -38,6 +37,10 @@ export function Flow() {
       gsap.to("[data-orb-2]", {
         y: 25, duration: 1,
         scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: 2 },
+      });
+      gsap.to("[data-wm]", {
+        y: -60, duration: 1,
+        scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: 1 },
       });
     }, el);
 
@@ -53,41 +56,17 @@ export function Flow() {
       {/* ドットグリッド */}
       <div className="absolute top-0 right-0 w-[250px] h-[200px] dot-grid opacity-30" aria-hidden="true" />
 
-      {/* 六角形シェイプ */}
-      <div className="absolute top-20 right-[10%] pointer-events-none" aria-hidden="true">
-        <svg data-shape-hex width="80" height="90" viewBox="0 0 80 90" fill="none">
-          <path
-            d="M40 2 L74 24 L74 66 L40 88 L6 66 L6 24 Z"
-            stroke="rgba(0,85,184,0.08)"
-            strokeWidth="1.5"
-            fill="none"
-          />
-        </svg>
+      {/* 大胆なウォーターマーク */}
+      <div
+        data-wm
+        className="watermark-bold absolute top-4 -left-4 lg:left-[2%] font-mono z-0"
+        aria-hidden="true"
+      >
+        07
       </div>
 
-      {/* 二重リングシェイプ */}
-      <div className="absolute bottom-16 left-[12%] pointer-events-none" aria-hidden="true">
-        <svg data-shape-ring width="90" height="90" viewBox="0 0 90 90" fill="none">
-          <circle cx="45" cy="45" r="40" stroke="rgba(0,85,184,0.06)" strokeWidth="1" fill="none" />
-          <circle cx="45" cy="45" r="25" stroke="rgba(232,168,23,0.06)" strokeWidth="1" fill="none" />
-        </svg>
-      </div>
-
-      {/* 装飾ライン */}
-      <div className="absolute top-[50%] right-0 pointer-events-none" aria-hidden="true">
-        <svg width="150" height="1" viewBox="0 0 150 1" fill="none">
-          <line x1="0" y1="0.5" x2="150" y2="0.5" stroke="rgba(0,85,184,0.05)" strokeWidth="1" />
-        </svg>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-20 relative">
-          <div
-            className="absolute -top-8 -left-2 lg:-left-6 text-[8rem] md:text-[10rem] font-bold text-[var(--wt-primary)]/[0.04] leading-none select-none pointer-events-none font-mono"
-            aria-hidden="true"
-          >
-            07
-          </div>
 
           <div data-reveal>
             <SectionHeading

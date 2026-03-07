@@ -41,6 +41,14 @@ export function useScrollReveal() {
               }, delay);
             });
 
+            // data-reveal-diag / data-reveal-diag-r: 斜線ワイプイン
+            const diags = el.querySelectorAll("[data-reveal-diag], [data-reveal-diag-r]");
+            diags.forEach((item, index) => {
+              setTimeout(() => {
+                (item as HTMLElement).classList.add("revealed");
+              }, 200 + index * 200);
+            });
+
             // data-reveal-item: リスト項目の順次出現
             const items = el.querySelectorAll("[data-reveal-item]");
             items.forEach((item, index) => {

@@ -45,7 +45,6 @@ export function PartnerTasks() {
     if (!el) return;
 
     const ctx = gsap.context(() => {
-      // 装飾要素のみGSAP
       gsap.to("[data-orb-1]", {
         y: -50, duration: 1,
         scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: 2 },
@@ -54,6 +53,10 @@ export function PartnerTasks() {
         y: 35, x: 15, duration: 1,
         scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: 1.5 },
       });
+      gsap.to("[data-wm]", {
+        y: -60, duration: 1,
+        scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: 1 },
+      });
     }, el);
 
     return () => ctx.revert();
@@ -61,6 +64,20 @@ export function PartnerTasks() {
 
   return (
     <section ref={setRefs} id="partner-tasks" className="py-24 md:py-32 bg-white relative overflow-hidden">
+      {/* 斜線スライドイン（下部配置） */}
+      <div
+        data-reveal-diag-r
+        className="absolute bottom-[8%] -right-[10%] w-[110%] h-[160px] bg-gradient-to-l from-[rgba(0,85,184,0.08)] via-[rgba(0,85,184,0.04)] to-transparent pointer-events-none"
+        style={{ "--diag-angle": "12deg" } as React.CSSProperties}
+        aria-hidden="true"
+      />
+      <div
+        data-reveal-diag
+        className="absolute bottom-[20%] -left-[5%] w-[70%] h-[50px] bg-gradient-to-r from-[rgba(232,168,23,0.06)] to-transparent pointer-events-none"
+        style={{ "--diag-angle": "8deg" } as React.CSSProperties}
+        aria-hidden="true"
+      />
+
       {/* グラデーションオーブ */}
       <div data-orb-1 className="orb orb-blue absolute top-[-40px] left-[60%] w-[350px] h-[350px]" aria-hidden="true" />
       <div data-orb-2 className="orb orb-accent absolute bottom-[-40px] right-[-60px] w-[200px] h-[200px]" aria-hidden="true" />
@@ -68,35 +85,17 @@ export function PartnerTasks() {
       {/* ドットグリッド */}
       <div className="absolute bottom-0 left-0 w-[200px] h-[250px] dot-grid opacity-40" aria-hidden="true" />
 
-      {/* 幾何学シェイプ: ダイヤモンド */}
-      <div className="absolute top-20 right-[8%] pointer-events-none" aria-hidden="true">
-        <svg data-shape-diamond width="60" height="60" viewBox="0 0 60 60" fill="none">
-          <rect x="30" y="2" width="38" height="38" rx="2" transform="rotate(45 30 2)" stroke="rgba(0,85,184,0.1)" strokeWidth="1.5" fill="none" />
-        </svg>
+      {/* 大胆なウォーターマーク */}
+      <div
+        data-wm
+        className="watermark-bold absolute top-8 right-0 lg:right-[5%] font-mono z-0"
+        aria-hidden="true"
+      >
+        05
       </div>
 
-      {/* 幾何学シェイプ: 三角形 */}
-      <div className="absolute bottom-32 right-[20%] pointer-events-none" aria-hidden="true">
-        <svg data-shape-tri width="50" height="44" viewBox="0 0 50 44" fill="none">
-          <path d="M25 2 L48 42 L2 42 Z" stroke="rgba(232,168,23,0.1)" strokeWidth="1.5" fill="none" />
-        </svg>
-      </div>
-
-      {/* 装飾ライン */}
-      <div className="absolute top-[30%] left-0 pointer-events-none" aria-hidden="true">
-        <svg width="120" height="1" viewBox="0 0 120 1" fill="none">
-          <line x1="0" y1="0.5" x2="120" y2="0.5" stroke="rgba(0,85,184,0.06)" strokeWidth="1" />
-        </svg>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-20 relative">
-          <div
-            className="absolute -top-8 -left-2 lg:-left-6 text-[8rem] md:text-[10rem] font-bold text-[var(--wt-primary)]/[0.04] leading-none select-none pointer-events-none font-mono"
-            aria-hidden="true"
-          >
-            05
-          </div>
 
           <div>
             <div data-reveal>

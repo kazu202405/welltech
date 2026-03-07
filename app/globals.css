@@ -88,8 +88,8 @@ html {
 /* スクロールリビール */
 [data-reveal] {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.8s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+  transform: translateY(40px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 [data-reveal].revealed {
   opacity: 1;
@@ -108,12 +108,12 @@ html {
 /* リスト項目の個別フェードイン */
 [data-reveal-item] {
   opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+  transform: translateX(30px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 [data-reveal-item].revealed {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(0);
 }
 
 /* セクション見出しの線伸長アニメーション */
@@ -236,21 +236,35 @@ html {
   animation: draw-line 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
 }
 
-/* 大きなウォーターマーク番号 */
-.watermark-number {
-  opacity: 0;
-  transform: translateX(-30px);
-  transition: opacity 1.2s cubic-bezier(0.25, 0.1, 0.25, 1), transform 1.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+/* 大胆なウォーターマーク番号 */
+.watermark-bold {
+  font-size: clamp(10rem, 25vw, 22rem);
+  font-weight: 900;
+  line-height: 0.8;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(0, 85, 184, 0.12);
+  letter-spacing: -0.04em;
+  user-select: none;
+  pointer-events: none;
+  will-change: transform;
 }
-.watermark-number.revealed {
-  opacity: 1;
-  transform: translateX(0);
+/* 塗りつぶし版（より大胆） */
+.watermark-bold-fill {
+  font-size: clamp(10rem, 25vw, 22rem);
+  font-weight: 900;
+  line-height: 0.8;
+  color: rgba(0, 85, 184, 0.04);
+  -webkit-text-stroke: 1px rgba(0, 85, 184, 0.08);
+  letter-spacing: -0.04em;
+  user-select: none;
+  pointer-events: none;
+  will-change: transform;
 }
 
 /* リスト項目のアクセントバー + ホバー */
 .list-item-accent {
   position: relative;
-  padding-left: 0;
+  padding-left: 16px;
   transition: all 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 .list-item-accent::before {
@@ -269,7 +283,7 @@ html {
   transform: translateY(-50%) scaleY(1);
 }
 .list-item-accent:hover {
-  padding-left: 12px;
+  padding-left: 24px;
   background: rgba(0, 85, 184, 0.03);
 }
 
@@ -337,6 +351,29 @@ html {
 }
 .flow-dot.revealed::before {
   transform: translateY(-50%) scale(1);
+}
+
+/* 斜線スライドイン（左から） — Tailwind v4は個別transformプロパティを使用 */
+[data-reveal-diag] {
+  opacity: 0;
+  rotate: var(--diag-angle, -15deg);
+  translate: -110% 0;
+  transition: opacity 0.5s ease, translate 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal-diag].revealed {
+  opacity: 1;
+  translate: 0 0;
+}
+/* 斜線スライドイン（右から） */
+[data-reveal-diag-r] {
+  opacity: 0;
+  rotate: var(--diag-angle, 12deg);
+  translate: 110% 0;
+  transition: opacity 0.5s ease, translate 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal-diag-r].revealed {
+  opacity: 1;
+  translate: 0 0;
 }
 
 /* グラデーションオーブ（光の玉） */
