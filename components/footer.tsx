@@ -25,25 +25,33 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* お問い合わせ */}
+          {/* 対応エリア */}
           <div>
-            <h4 className="text-sm font-semibold text-white/60 tracking-wide mb-4">お問い合わせ</h4>
-            <ul className="space-y-2.5 text-sm text-white/40">
-              <li>
-                TEL:{" "}
-                <a href="tel:0869410882" className="hover:text-white/60 transition-colors">
-                  086-941-0882
-                </a>
-              </li>
-              <li>FAX: 086-236-6387</li>
-              <li>
-                Email:{" "}
-                <a href="mailto:info@well-tech.top" className="hover:text-white/60 transition-colors break-all">
-                  info@well-tech.top
-                </a>
-              </li>
-              <li>営業時間: 7:30 - 17:00</li>
+            <h4 className="text-sm font-semibold text-white/60 tracking-wide mb-4">対応エリア</h4>
+            <ul className="space-y-2 text-sm text-white/40">
+              <li><a href="/area/chugoku-shikoku" className="hover:text-white/60 transition-colors hover-underline">中国・四国</a></li>
+              <li><a href="/area/kansai" className="hover:text-white/60 transition-colors hover-underline">関西</a></li>
+              <li><a href="/area/kanto" className="hover:text-white/60 transition-colors hover-underline">関東</a></li>
+              <li><a href="/area/chubu" className="hover:text-white/60 transition-colors hover-underline">中部・北陸</a></li>
+              <li><a href="/area/kyushu" className="hover:text-white/60 transition-colors hover-underline">九州・沖縄</a></li>
+              <li><a href="/area/tohoku-hokkaido" className="hover:text-white/60 transition-colors hover-underline">東北・北海道</a></li>
             </ul>
+          </div>
+        </div>
+
+        {/* お問い合わせ */}
+        <div className="border-t border-white/[0.06] pt-8 mb-12 grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm text-white/40">
+          <div className="flex items-center gap-2">
+            <span className="text-white/25">TEL</span>
+            <a href="tel:0869410882" className="hover:text-white/60 transition-colors">086-941-0882</a>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-white/25">FAX</span>
+            <span>086-236-6387</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-white/25">Email</span>
+            <a href="mailto:info@well-tech.top" className="hover:text-white/60 transition-colors break-all">info@well-tech.top</a>
           </div>
         </div>
 

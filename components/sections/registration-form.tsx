@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { MessageCircle, ArrowRight, Phone, Mail } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useParallax } from "@/hooks/useParallax";
@@ -13,14 +14,18 @@ export function RegistrationForm() {
   return (
     <section ref={sectionRef} id="registration" className="py-20 md:py-28 bg-[var(--wt-bg-dark)] relative overflow-hidden">
       {/* 背景写真オーバーレイ（zein.jp Contact風） */}
-      <div className="absolute inset-0" aria-hidden="true">
-        <img
-          ref={parallaxRef}
+      <div
+        ref={parallaxRef}
+        className="absolute inset-0 will-change-transform"
+        style={{ transform: "translateY(0) scale(1.2)" }}
+        aria-hidden="true"
+      >
+        <Image
           src="/photo/S__49889550_0.jpg"
           alt=""
-          className="w-full h-full object-cover opacity-15 will-change-transform"
-          style={{ transform: "translateY(0) scale(1.2)" }}
-          loading="lazy"
+          fill
+          className="object-cover opacity-15"
+          sizes="100vw"
         />
         <div className="absolute inset-0 bg-[var(--wt-bg-dark)]/60" />
       </div>

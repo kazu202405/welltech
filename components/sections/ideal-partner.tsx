@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -82,12 +83,13 @@ export function IdealPartner() {
                 align="left"
               />
             </div>
-            <div className="mt-8 overflow-hidden rounded-lg" data-reveal-image>
-              <img
+            <div className="relative mt-8 max-w-sm aspect-[4/3] overflow-hidden rounded-lg" data-reveal-image>
+              <Image
                 src="/photo/S__49889493_0.jpg"
                 alt="ウェルテックの協力会社パートナーによる施工作業"
-                className="w-full max-w-sm rounded-lg"
-                loading="lazy"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 384px"
               />
             </div>
           </div>

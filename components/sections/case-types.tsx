@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
@@ -43,12 +44,13 @@ export function CaseTypes() {
               variant="dark"
               align="left"
             />
-            <div className="mt-8">
-              <img
+            <div className="relative mt-8 max-w-sm aspect-[4/3] rounded-lg overflow-hidden">
+              <Image
                 src="/photo/S__49889495_0.jpg"
                 alt="ウェルテックの公共建築・民間工事の施工現場"
-                className="w-full max-w-sm rounded-lg opacity-80"
-                loading="lazy"
+                fill
+                className="object-cover opacity-80"
+                sizes="(max-width: 768px) 100vw, 384px"
               />
             </div>
           </div>

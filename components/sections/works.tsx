@@ -5,18 +5,18 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const works = [
-  { src: "/photo/S__49889490_0.jpg", title: "通信設備施設", category: "電気工事" },
-  { src: "/photo/S__49889550_0.jpg", title: "太陽光パネル設置", category: "電気工事" },
-  { src: "/photo/S__49889495_0.jpg", title: "ホテル照明設備工事", category: "建築工事" },
-  { src: "/photo/S__49889470_0.jpg", title: "空調設備設置工事", category: "空調設備" },
-  { src: "/photo/S__49889457_0.jpg", title: "倉庫電気工事", category: "電気工事" },
-  { src: "/photo/S__49889465_0.jpg", title: "鉄骨溶接工事", category: "建築工事" },
-  { src: "/photo/S__49889480_0.jpg", title: "LED照明工事", category: "電気工事" },
-  { src: "/photo/S__49889485_0.jpg", title: "天井埋込エアコン設置", category: "空調設備" },
-  { src: "/photo/S__49889515_0.jpg", title: "制御盤配線工事", category: "電気工事" },
-  { src: "/photo/S__49889545_0.jpg", title: "分電盤設備工事", category: "電気工事" },
-  { src: "/photo/S__49889505_0.jpg", title: "住宅電気設備工事", category: "電気工事" },
-  { src: "/photo/S__49889560_0.jpg", title: "屋上防水工事", category: "建築工事" },
+  { src: "/photo/S__49889490_0.jpg", title: "通信設備施設", category: "電気工事", desc: "公共施設の通信インフラ整備。配線・機器設置・試験調整まで一貫対応。" },
+  { src: "/photo/S__49889550_0.jpg", title: "太陽光パネル設置", category: "電気工事", desc: "産業用太陽光発電システムの設計施工。架台設置から系統連系まで。" },
+  { src: "/photo/S__49889495_0.jpg", title: "ホテル照明設備工事", category: "建築工事", desc: "宿泊施設の照明リニューアル。省エネLED化と調光システム導入。" },
+  { src: "/photo/S__49889470_0.jpg", title: "空調設備設置工事", category: "空調設備", desc: "商業施設の大型空調設備新設。ダクト工事から試運転まで。" },
+  { src: "/photo/S__49889457_0.jpg", title: "倉庫電気工事", category: "電気工事", desc: "物流倉庫の電気設備全般。照明・動力・防災設備を施工。" },
+  { src: "/photo/S__49889465_0.jpg", title: "鉄骨溶接工事", category: "建築工事", desc: "建築鉄骨の現場溶接。有資格者による品質管理体制。" },
+  { src: "/photo/S__49889480_0.jpg", title: "LED照明工事", category: "電気工事", desc: "オフィスビルの照明LED化工事。電気代削減と作業環境改善を実現。" },
+  { src: "/photo/S__49889485_0.jpg", title: "天井埋込エアコン設置", category: "空調設備", desc: "店舗・オフィスの天井カセット型エアコン新設・更新工事。" },
+  { src: "/photo/S__49889515_0.jpg", title: "制御盤配線工事", category: "電気工事", desc: "工場設備の制御盤製作・配線。PLCプログラム対応も可能。" },
+  { src: "/photo/S__49889545_0.jpg", title: "分電盤設備工事", category: "電気工事", desc: "ビル・施設の分電盤新設・増設。容量計算から施工・検査まで。" },
+  { src: "/photo/S__49889505_0.jpg", title: "住宅電気設備工事", category: "電気工事", desc: "新築・リフォームの住宅電気工事。コンセント増設からIH対応まで。" },
+  { src: "/photo/S__49889560_0.jpg", title: "屋上防水工事", category: "建築工事", desc: "RC造建築物の屋上防水改修。ウレタン・シート防水に対応。" },
 ];
 
 // 無限ループ用に先頭と末尾のアイテムを複製
@@ -135,7 +135,7 @@ export function Works() {
             >
               <img
                 src={work.src}
-                alt={work.title}
+                alt={`${work.title} - ${work.category} | ウェルテック施工実績`}
                 loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
@@ -143,6 +143,7 @@ export function Works() {
               <div className="absolute bottom-0 left-0 right-0 p-4">
                 <span className="text-[10px] text-white/50 font-medium tracking-wider uppercase">{work.category}</span>
                 <p className="text-sm text-white font-semibold mt-0.5">{work.title}</p>
+                <p className="text-[11px] text-white/40 mt-1 leading-snug line-clamp-2">{work.desc}</p>
               </div>
             </div>
           ))}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
@@ -11,12 +12,15 @@ const navItems = [
   { label: "業務内容", href: "#partner-tasks" },
   { label: "取引の流れ", href: "#flow" },
   { label: "FAQ", href: "#faq" },
+  { label: "対応エリア", href: "/area" },
 ];
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const pathname = usePathname();
+  const isSubPage = pathname !== "/";
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -55,10 +59,12 @@ export function Header() {
     }
   };
 
+  const solid = scrolled || isSubPage;
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
+        solid
           ? "bg-white/95 backdrop-blur-lg border-b border-black/[0.04]"
           : "bg-transparent"
       }`}
@@ -76,7 +82,7 @@ export function Header() {
           >
             <span
               className={`text-xl font-bold tracking-tight transition-colors duration-300 ${
-                scrolled ? "text-[var(--wt-dark)]" : "text-white"
+                solid ? "text-[var(--wt-dark)]" : "text-white"
               }`}
             >
               WELLTECH
@@ -86,23 +92,29 @@ export function Header() {
           {/* デスクトップナビ */}
           <nav aria-label="メインナビゲーション" className="hidden lg:flex items-center gap-1">
             {navItems.map((item) => {
-              const isActive = activeSection === item.href.replace("#", "");
-              return (
+              const isHash = item.href.startsWith("#");
+              const isActive = isHash && activeSection === item.href.replace("#", "");
+              const className = `text-[13px] font-medium px-3.5 py-2 rounded-md transition-all duration-300 ${
+                solid
+                  ? isActive
+                    ? "text-[var(--wt-primary)]"
+                    : "text-[var(--wt-dark)]/60 hover:text-[var(--wt-dark)]"
+                  : isActive
+                    ? "text-white"
+                    : "text-white/60 hover:text-white"
+              }`;
+              return isHash ? (
                 <button
                   key={item.href}
                   onClick={() => scrollToSection(item.href)}
-                  className={`text-[13px] font-medium px-3.5 py-2 rounded-md transition-all duration-300 ${
-                    scrolled
-                      ? isActive
-                        ? "text-[var(--wt-primary)]"
-                        : "text-[var(--wt-dark)]/60 hover:text-[var(--wt-dark)]"
-                      : isActive
-                        ? "text-white"
-                        : "text-white/60 hover:text-white"
-                  }`}
+                  className={className}
                 >
                   {item.label}
                 </button>
+              ) : (
+                <a key={item.href} href={item.href} className={className}>
+                  {item.label}
+                </a>
               );
             })}
             <button
@@ -117,7 +129,7 @@ export function Header() {
           <button
             onClick={() => setIsOpen(!isOpen)}
             className={`lg:hidden p-2 rounded-md transition-colors ${
-              scrolled ? "text-[var(--wt-dark)]" : "text-white"
+              solid ? "text-[var(--wt-dark)]" : "text-white"
             }`}
             aria-label="メニュー"
           >
@@ -134,19 +146,25 @@ export function Header() {
       >
         <div className="bg-white border-t border-black/[0.04] px-5 py-5 space-y-1">
           {navItems.map((item) => {
-            const isActive = activeSection === item.href.replace("#", "");
-            return (
+            const isHash = item.href.startsWith("#");
+            const isActive = isHash && activeSection === item.href.replace("#", "");
+            const className = `block w-full text-left text-sm font-medium px-4 py-3 rounded-md transition-colors ${
+              isActive
+                ? "text-[var(--wt-primary)] bg-[var(--wt-primary)]/5"
+                : "text-[var(--wt-dark)]/60 hover:text-[var(--wt-dark)] hover:bg-gray-50"
+            }`;
+            return isHash ? (
               <button
                 key={item.href}
                 onClick={() => scrollToSection(item.href)}
-                className={`block w-full text-left text-sm font-medium px-4 py-3 rounded-md transition-colors ${
-                  isActive
-                    ? "text-[var(--wt-primary)] bg-[var(--wt-primary)]/5"
-                    : "text-[var(--wt-dark)]/60 hover:text-[var(--wt-dark)] hover:bg-gray-50"
-                }`}
+                className={className}
               >
                 {item.label}
               </button>
+            ) : (
+              <a key={item.href} href={item.href} className={className}>
+                {item.label}
+              </a>
             );
           })}
           <button
