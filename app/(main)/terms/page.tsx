@@ -1,7 +1,9 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "利用規約 | ガイアの酒場",
+  title: "利用規約",
+  description: "株式会社ウェルテックの利用規約。本ウェブサイトの利用条件を定めています。",
+  alternates: { canonical: "/terms" },
 };
 
 export default function TermsPage() {

@@ -46,7 +46,7 @@ export function CaseTypes() {
             <div className="mt-8">
               <img
                 src="/photo/S__49889495_0.jpg"
-                alt="施工現場"
+                alt="ウェルテックの公共建築・民間工事の施工現場"
                 className="w-full max-w-sm rounded-lg opacity-80"
                 loading="lazy"
               />

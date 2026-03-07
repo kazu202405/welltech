@@ -84,7 +84,7 @@ export function Header() {
           </a>
 
           {/* デスクトップナビ */}
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav aria-label="メインナビゲーション" className="hidden lg:flex items-center gap-1">
             {navItems.map((item) => {
               const isActive = activeSection === item.href.replace("#", "");
               return (

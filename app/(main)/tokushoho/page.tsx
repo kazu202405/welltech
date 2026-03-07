@@ -1,7 +1,9 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "特定商取引法に基づく表記 | ガイアの酒場",
+  title: "特定商取引法に基づく表記",
+  description: "株式会社ウェルテックの特定商取引法に基づく表記。",
+  alternates: { canonical: "/tokushoho" },
 };
 
 export default function TokushohoPage() {

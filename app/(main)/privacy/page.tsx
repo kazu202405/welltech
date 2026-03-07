@@ -1,7 +1,9 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "プライバシーポリシー | ガイアの酒場",
+  title: "プライバシーポリシー",
+  description: "株式会社ウェルテックのプライバシーポリシー。個人情報の取り扱いについて定めています。",
+  alternates: { canonical: "/privacy" },
 };
 
 export default function PrivacyPage() {

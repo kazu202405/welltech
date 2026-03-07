@@ -85,7 +85,7 @@ export function IdealPartner() {
             <div className="mt-8 overflow-hidden rounded-lg" data-reveal-image>
               <img
                 src="/photo/S__49889493_0.jpg"
-                alt="施工現場"
+                alt="ウェルテックの協力会社パートナーによる施工作業"
                 className="w-full max-w-sm rounded-lg"
                 loading="lazy"
               />
