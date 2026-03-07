@@ -1,9 +1,12 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { useScrollReveal } from "@/hooks/useScrollReveal";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const faqs = [
   {
@@ -55,14 +58,53 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
 }
 
 export function Faq() {
-  const sectionRef = useScrollReveal();
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const ctx = gsap.context(() => {
+      gsap.to("[data-orb-1]", {
+        y: -25, duration: 1,
+        scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: 1.5 },
+      });
+      gsap.from("[data-shape-cross]", {
+        scale: 0, rotation: 90, opacity: 0, duration: 1, ease: "back.out(1.5)",
+        scrollTrigger: { trigger: el, start: "top 70%" },
+      });
+      gsap.from("[data-heading]", {
+        y: 30, opacity: 0, duration: 0.8, ease: "power3.out",
+        scrollTrigger: { trigger: el, start: "top 75%" },
+      });
+      gsap.from("[data-faq-list]", {
+        y: 20, opacity: 0, duration: 0.8, delay: 0.2, ease: "power3.out",
+        scrollTrigger: { trigger: el, start: "top 65%" },
+      });
+    }, el);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section ref={sectionRef} id="faq" className="py-24 md:py-32 bg-[var(--wt-bg)]">
+    <section ref={sectionRef} id="faq" className="py-24 md:py-32 bg-[var(--wt-bg)] relative overflow-hidden">
+      {/* グラデーションオーブ */}
+      <div data-orb-1 className="orb orb-blue absolute top-[-40px] left-[50%] w-[300px] h-[300px]" aria-hidden="true" />
+
+      {/* ドットグリッド */}
+      <div className="absolute top-0 left-0 w-[200px] h-[200px] dot-grid opacity-25" aria-hidden="true" />
+
+      {/* クロスシェイプ */}
+      <div className="absolute bottom-24 right-[12%] pointer-events-none" aria-hidden="true">
+        <svg data-shape-cross width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <line x1="0" y1="18" x2="36" y2="18" stroke="rgba(0,85,184,0.1)" strokeWidth="1.5" />
+          <line x1="18" y1="0" x2="18" y2="36" stroke="rgba(0,85,184,0.1)" strokeWidth="1.5" />
+        </svg>
+      </div>
+
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-20">
-          {/* 左: ヘッディング */}
-          <div data-reveal>
+          <div data-heading>
             <SectionHeading
               number="08"
               label="FAQ"
@@ -72,8 +114,7 @@ export function Faq() {
             />
           </div>
 
-          {/* 右: FAQ リスト */}
-          <div data-reveal>
+          <div data-faq-list>
             {faqs.map((faq) => (
               <FaqItem key={faq.question} question={faq.question} answer={faq.answer} />
             ))}

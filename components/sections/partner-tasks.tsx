@@ -38,47 +38,41 @@ export function PartnerTasks() {
     if (!el) return;
 
     const ctx = gsap.context(() => {
-      // ウォーターマーク
       gsap.from("[data-watermark]", {
-        x: -60,
-        opacity: 0,
-        duration: 1.4,
-        ease: "power3.out",
+        x: -60, opacity: 0, duration: 1.4, ease: "power3.out",
         scrollTrigger: { trigger: el, start: "top 75%" },
       });
 
-      // 装飾SVG
-      gsap.from("[data-deco-circle]", {
-        strokeDashoffset: 440,
-        duration: 2.2,
-        ease: "power2.inOut",
+      // オーブのパララックス
+      gsap.to("[data-orb-1]", {
+        y: -50, duration: 1,
+        scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: 2 },
+      });
+      gsap.to("[data-orb-2]", {
+        y: 35, x: 15, duration: 1,
+        scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: 1.5 },
+      });
+
+      // 幾何学シェイプ
+      gsap.from("[data-shape-diamond]", {
+        scale: 0, rotation: 0, opacity: 0, duration: 1.2, ease: "back.out(1.5)",
+        scrollTrigger: { trigger: el, start: "top 70%" },
+      });
+      gsap.from("[data-shape-tri]", {
+        y: 30, opacity: 0, duration: 1, delay: 0.2, ease: "power3.out",
         scrollTrigger: { trigger: el, start: "top 70%" },
       });
 
-      // 見出し
       gsap.from("[data-heading]", {
-        y: 30,
-        opacity: 0,
-        duration: 0.8,
-        ease: "power3.out",
+        y: 30, opacity: 0, duration: 0.8, ease: "power3.out",
         scrollTrigger: { trigger: el, start: "top 75%" },
       });
-
-      // 画像のclip-pathリビール
       gsap.from("[data-image-reveal]", {
-        clipPath: "inset(0 100% 0 0)",
-        duration: 1,
-        ease: "power3.inOut",
+        clipPath: "inset(0 100% 0 0)", duration: 1, ease: "power3.inOut",
         scrollTrigger: { trigger: el, start: "top 65%" },
       });
-
-      // タスクリスト項目
       gsap.from("[data-task-item]", {
-        x: 40,
-        opacity: 0,
-        duration: 0.7,
-        stagger: 0.12,
-        ease: "power3.out",
+        x: 40, opacity: 0, duration: 0.7, stagger: 0.12, ease: "power3.out",
         scrollTrigger: { trigger: el, start: "top 55%" },
       });
     }, el);
@@ -88,36 +82,36 @@ export function PartnerTasks() {
 
   return (
     <section ref={sectionRef} id="partner-tasks" className="py-24 md:py-32 bg-white relative overflow-hidden">
-      {/* 装飾SVG */}
-      <div className="absolute bottom-16 right-[5%] pointer-events-none" aria-hidden="true">
-        <svg width="160" height="160" viewBox="0 0 160 160" fill="none">
-          <circle
-            data-deco-circle
-            cx="80" cy="80" r="70"
-            stroke="rgba(0,85,184,0.04)"
-            strokeWidth="1"
-            fill="none"
-            strokeDasharray="440"
-            strokeDashoffset="0"
-          />
+      {/* グラデーションオーブ */}
+      <div data-orb-1 className="orb orb-blue absolute top-[-40px] left-[60%] w-[350px] h-[350px]" aria-hidden="true" />
+      <div data-orb-2 className="orb orb-accent absolute bottom-[-40px] right-[-60px] w-[200px] h-[200px]" aria-hidden="true" />
+
+      {/* ドットグリッド */}
+      <div className="absolute bottom-0 left-0 w-[200px] h-[250px] dot-grid opacity-40" aria-hidden="true" />
+
+      {/* 幾何学シェイプ: ダイヤモンド */}
+      <div className="absolute top-20 right-[8%] pointer-events-none" aria-hidden="true">
+        <svg data-shape-diamond width="60" height="60" viewBox="0 0 60 60" fill="none">
+          <rect x="30" y="2" width="38" height="38" rx="2" transform="rotate(45 30 2)" stroke="rgba(0,85,184,0.1)" strokeWidth="1.5" fill="none" />
         </svg>
       </div>
-      <div className="absolute top-24 right-[15%] pointer-events-none" aria-hidden="true">
-        <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-          <line
-            data-deco-line
-            x1="0" y1="80" x2="80" y2="0"
-            stroke="rgba(0,85,184,0.05)"
-            strokeWidth="1"
-            strokeDasharray="200"
-            strokeDashoffset="0"
-          />
+
+      {/* 幾何学シェイプ: 三角形 */}
+      <div className="absolute bottom-32 right-[20%] pointer-events-none" aria-hidden="true">
+        <svg data-shape-tri width="50" height="44" viewBox="0 0 50 44" fill="none">
+          <path d="M25 2 L48 42 L2 42 Z" stroke="rgba(232,168,23,0.1)" strokeWidth="1.5" fill="none" />
+        </svg>
+      </div>
+
+      {/* 装飾ライン */}
+      <div className="absolute top-[30%] left-0 pointer-events-none" aria-hidden="true">
+        <svg width="120" height="1" viewBox="0 0 120 1" fill="none">
+          <line x1="0" y1="0.5" x2="120" y2="0.5" stroke="rgba(0,85,184,0.06)" strokeWidth="1" />
         </svg>
       </div>
 
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-20 relative">
-          {/* ウォーターマーク */}
           <div
             data-watermark
             className="absolute -top-8 -left-2 lg:-left-6 text-[8rem] md:text-[10rem] font-bold text-[var(--wt-primary)]/[0.04] leading-none select-none pointer-events-none font-mono"
@@ -126,7 +120,6 @@ export function PartnerTasks() {
             05
           </div>
 
-          {/* 左: ヘッディング + 写真 */}
           <div>
             <div data-heading>
               <SectionHeading
@@ -147,7 +140,6 @@ export function PartnerTasks() {
             </div>
           </div>
 
-          {/* 右: タスクリスト */}
           <div>
             {tasks.map((task, index) => (
               <div
