@@ -73,10 +73,12 @@ export function Header() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* ロゴ */}
           <a
-            href="#"
+            href={isSubPage ? "/" : "#"}
             onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: "smooth" });
+              if (!isSubPage) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
             }}
             className="flex items-center gap-2"
           >

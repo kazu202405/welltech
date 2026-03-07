@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { Breadcrumb } from "@/components/ui/breadcrumb";
+import { SubPageHero } from "@/components/ui/sub-page-hero";
+import { RevealWrapper } from "@/components/ui/reveal-wrapper";
 
 export const metadata: Metadata = {
   title: "対応エリア一覧 - 全国の施工パートナー募集",
@@ -62,85 +63,78 @@ const areas = [
 export default function AreaIndexPage() {
   return (
     <div className="min-h-screen">
-      <Breadcrumb items={[
-        { label: "ホーム", href: "/" },
-        { label: "対応エリア" },
-      ]} />
-      {/* ヒーロー */}
-      <section className="relative bg-[var(--wt-primary)] py-20 sm:py-28">
-        <div className="absolute inset-0 bg-gradient-to-br from-[var(--wt-primary)] to-[#003d85] opacity-90" />
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-sm sm:text-base font-medium tracking-widest text-blue-200 uppercase mb-4">
-            Service Area
-          </p>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
-            全国対応エリア
-          </h1>
-          <p className="text-lg sm:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed">
-            北海道から沖縄まで、全国6エリアで
-            <br className="hidden sm:block" />
-            施工パートナーを募集しています
-          </p>
-        </div>
-      </section>
+      <SubPageHero
+        title="全国対応エリア"
+        label="Service Area"
+        description="北海道から沖縄まで、全国6エリアで施工パートナーを募集しています"
+        breadcrumbItems={[
+          { label: "ホーム", href: "/" },
+          { label: "対応エリア" },
+        ]}
+      />
 
-      {/* エリア一覧 */}
-      <section className="bg-white py-16 sm:py-20">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {areas.map((area) => (
-              <Link
-                key={area.slug}
-                href={`/area/${area.slug}`}
-                className="group block bg-white border border-gray-200 rounded-xl p-6 sm:p-8 hover:shadow-lg hover:border-[var(--wt-primary)]/30 transition-all"
-              >
-                <div className="flex items-start justify-between mb-3">
-                  <h2 className="text-xl sm:text-2xl font-bold text-[var(--wt-dark)] group-hover:text-[var(--wt-primary)] transition-colors">
-                    {area.name}エリア
-                  </h2>
-                  <span className="shrink-0 text-[10px] font-semibold tracking-wider text-[var(--wt-primary)] bg-[var(--wt-primary)]/8 px-2.5 py-1 rounded-full">
-                    {area.highlight}
+      <RevealWrapper>
+        {/* エリア一覧 */}
+        <section className="bg-white py-16 sm:py-20">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {areas.map((area, i) => (
+                <Link
+                  key={area.slug}
+                  href={`/area/${area.slug}`}
+                  data-reveal
+                  style={{ transitionDelay: `${i * 80}ms` }}
+                  className="group block bg-white border border-gray-200 rounded-xl p-6 sm:p-8 hover:shadow-lg hover:border-[var(--wt-primary)]/30 hover:-translate-y-1 transition-all duration-300"
+                >
+                  <div className="flex items-start justify-between mb-3">
+                    <h2 className="text-xl sm:text-2xl font-bold text-[var(--wt-dark)] group-hover:text-[var(--wt-primary)] transition-colors">
+                      {area.name}エリア
+                    </h2>
+                    <span className="shrink-0 text-[10px] font-semibold tracking-wider text-[var(--wt-primary)] bg-[var(--wt-primary)]/8 px-2.5 py-1 rounded-full">
+                      {area.highlight}
+                    </span>
+                  </div>
+                  <p className="text-xs text-[var(--wt-gray-light)] mb-3">{area.prefectures}</p>
+                  <p className="text-sm text-[var(--wt-gray)] leading-relaxed mb-4">{area.description}</p>
+                  <span className="text-sm font-semibold text-[var(--wt-primary)] group-hover:underline">
+                    詳しく見る →
                   </span>
-                </div>
-                <p className="text-xs text-[var(--wt-gray-light)] mb-3">{area.prefectures}</p>
-                <p className="text-sm text-[var(--wt-gray)] leading-relaxed mb-4">{area.description}</p>
-                <span className="text-sm font-semibold text-[var(--wt-primary)] group-hover:underline">
-                  詳しく見る →
-                </span>
-              </Link>
-            ))}
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA */}
-      <section className="bg-[var(--wt-bg)] py-16 sm:py-20">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-[var(--wt-dark)] mb-4">
-            全国どこでもパートナー登録可能
-          </h2>
-          <p className="text-[var(--wt-gray)] mb-8 leading-relaxed">
-            対応可能なエリアが限定されていても問題ありません。<br className="hidden sm:block" />
-            お住まいの地域の案件を優先的にご紹介いたします。
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="https://line.me/R/ti/p/@384jyztd"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-[var(--wt-green)] hover:brightness-110 text-white font-bold py-4 px-8 rounded-full transition-all text-lg shadow-lg"
-            >
-              LINEで相談する
-            </Link>
-            <a
-              href="tel:086-941-0882"
-              className="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-[var(--wt-primary)] font-bold py-4 px-8 rounded-full transition-all text-lg shadow-lg border border-gray-200"
-            >
-              086-941-0882
-            </a>
+        {/* CTA */}
+        <section className="relative bg-[var(--wt-bg)] py-16 sm:py-20 overflow-hidden">
+          <div className="orb orb-blue absolute top-[-60px] left-[-40px] w-[220px] h-[220px]" aria-hidden="true" />
+          <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
+            <h2 data-reveal className="text-2xl sm:text-3xl font-bold text-[var(--wt-dark)] mb-4">
+              全国どこでもパートナー登録可能
+            </h2>
+            <p data-reveal className="text-[var(--wt-gray)] mb-8 leading-relaxed">
+              対応可能なエリアが限定されていても問題ありません。<br className="hidden sm:block" />
+              お住まいの地域の案件を優先的にご紹介いたします。
+            </p>
+            <div data-reveal className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="https://line.me/R/ti/p/@384jyztd"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-glow-green inline-flex items-center justify-center gap-2 bg-[var(--wt-green)] hover:brightness-110 text-white font-bold py-4 px-8 rounded-full transition-all text-lg shadow-lg"
+              >
+                LINEで相談する
+              </Link>
+              <a
+                href="tel:086-941-0882"
+                className="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-[var(--wt-primary)] font-bold py-4 px-8 rounded-full transition-all text-lg shadow-lg border border-gray-200"
+              >
+                086-941-0882
+              </a>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </RevealWrapper>
     </div>
   );
 }
