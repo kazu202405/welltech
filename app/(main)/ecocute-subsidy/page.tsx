@@ -1,7 +1,9 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import { SubPageHero } from "@/components/ui/sub-page-hero";
 import { RevealWrapper } from "@/components/ui/reveal-wrapper";
 import { EcocuteFaq } from "@/components/sections/ecocute-faq";
+import { EligibilityCheck } from "@/components/sections/ecocute-eligibility-check";
 
 export const metadata: Metadata = {
   title: "エコキュート補助金ガイド2026 | 給湯省エネ事業をわかりやすく解説",
@@ -41,6 +43,28 @@ export default function EcocuteSubsidyPage() {
         </div>
       </SubPageHero>
 
+      {/* 社会的証明バー（バンドワゴン効果） */}
+      <div className="bg-white border-b border-black/[0.04]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+            <div className="flex items-center gap-2">
+              <span className="text-xl sm:text-2xl font-bold text-[var(--wt-primary)]">900万台</span>
+              <span className="text-xs text-[var(--wt-gray)]">以上の<br/>エコキュート累計出荷</span>
+            </div>
+            <div className="w-px h-8 bg-gray-200 hidden sm:block" />
+            <div className="flex items-center gap-2">
+              <span className="text-xl sm:text-2xl font-bold text-[var(--wt-primary)]">3省庁</span>
+              <span className="text-xs text-[var(--wt-gray)]">連携の<br/>国の支援事業</span>
+            </div>
+            <div className="w-px h-8 bg-gray-200 hidden sm:block" />
+            <div className="flex items-center gap-2">
+              <span className="text-xl sm:text-2xl font-bold text-[var(--wt-accent)]">昨年度</span>
+              <span className="text-xs text-[var(--wt-gray)]">予算消化で<br/>早期終了</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <RevealWrapper>
         {/* ============================================ */}
         {/* 01: そもそもエコキュートって？ */}
@@ -63,6 +87,20 @@ export default function EcocuteSubsidyPage() {
                 そもそもエコキュートって？
               </h2>
             </div>
+
+            {/* プロダクトイラスト */}
+            <div data-reveal className="mb-8 flex justify-center">
+              <div className="relative w-full max-w-md">
+                <Image
+                  src="/photo/ecocute/product.svg"
+                  alt="エコキュートの仕組み - 貯湯タンクユニットとヒートポンプユニット"
+                  width={400}
+                  height={320}
+                  className="w-full h-auto rounded-2xl"
+                />
+              </div>
+            </div>
+
             <div className="prose prose-lg max-w-none text-[var(--wt-gray)] leading-relaxed">
               <p data-reveal>
                 エコキュートは、<strong>空気の熱</strong>を使ってお湯を沸かす「ヒートポンプ式」の給湯器です。
@@ -129,10 +167,18 @@ export default function EcocuteSubsidyPage() {
                 </div>
               ))}
             </div>
-            <div data-reveal className="mt-8 p-5 rounded-2xl bg-white border border-[rgba(0,85,184,0.08)] text-center">
-              <p className="text-base text-[var(--wt-gray)]">
-                1つでも当てはまれば、<strong className="text-[var(--wt-primary)]">補助金を使っておトクに交換</strong>するチャンスです。
+            <div data-reveal className="mt-8 p-6 rounded-2xl bg-white border border-[rgba(0,85,184,0.08)]">
+              <p className="text-base text-[var(--wt-dark)] leading-relaxed mb-3">
+                「まだ使えるし...」と思っていても、給湯器は<strong>ある日突然壊れる</strong>ケースが少なくありません。
               </p>
+              <p className="text-sm text-[var(--wt-gray)] leading-relaxed mb-4">
+                真冬にお湯が出なくなってからの緊急交換では、機種を選ぶ余裕がなく、補助金の申請も間に合いません。
+                <strong className="text-[var(--wt-primary)]">症状が出ている今が、補助金を活用して計画的に交換できるベストタイミングです。</strong>
+              </p>
+              <div className="flex items-center gap-2 text-xs text-[var(--wt-gray)]">
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--wt-accent)]" />
+                1つでも当てはまる方は、まず無料相談をおすすめします
+              </div>
             </div>
           </div>
         </section>
@@ -295,6 +341,19 @@ export default function EcocuteSubsidyPage() {
               </p>
             </div>
 
+            {/* ビフォーアフター比較イラスト */}
+            <div data-reveal className="mb-10 flex justify-center">
+              <div className="relative w-full max-w-md">
+                <Image
+                  src="/photo/ecocute/cost-compare.svg"
+                  alt="従来の給湯器とエコキュートの光熱費比較 - 年間約3〜5万円おトク"
+                  width={400}
+                  height={240}
+                  className="w-full h-auto rounded-2xl"
+                />
+              </div>
+            </div>
+
             <div data-reveal className="rounded-2xl bg-[var(--wt-bg)] border border-[rgba(0,85,184,0.08)] p-6 sm:p-8">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
                 {/* 通常価格 */}
@@ -329,6 +388,33 @@ export default function EcocuteSubsidyPage() {
                   光熱費の節約分を考えると、<strong className="text-[var(--wt-primary)]">約5〜8年で導入コストを回収</strong>できる計算です
                 </p>
               </div>
+            </div>
+
+            {/* 10年間トータル試算（アンカリング + エンダウメント効果） */}
+            <div data-reveal className="mt-10 rounded-2xl bg-gradient-to-br from-[rgba(0,85,184,0.06)] to-[rgba(6,199,85,0.06)] p-6 sm:p-8">
+              <h4 className="text-lg font-bold text-[var(--wt-dark)] mb-6 text-center">
+                10年間のトータルで見ると...
+              </h4>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+                <div className="p-5 rounded-xl bg-white">
+                  <p className="text-xs text-[var(--wt-gray)] mb-1">実質導入コスト</p>
+                  <p className="text-xl font-bold text-[var(--wt-dark)]">約30万円</p>
+                  <p className="text-xs text-[var(--wt-gray)]">（補助金適用後中央値）</p>
+                </div>
+                <div className="p-5 rounded-xl bg-white">
+                  <p className="text-xs text-[var(--wt-gray)] mb-1">10年間の光熱費節約</p>
+                  <p className="text-xl font-bold text-[#06C755]">約30〜50万円</p>
+                  <p className="text-xs text-[var(--wt-gray)]">（年間3〜5万円 × 10年）</p>
+                </div>
+                <div className="p-5 rounded-xl bg-white border-2 border-[var(--wt-primary)]/20">
+                  <p className="text-xs text-[var(--wt-gray)] mb-1">10年間の実質負担</p>
+                  <p className="text-2xl font-bold text-[var(--wt-primary)]">実質0円〜</p>
+                  <p className="text-xs text-[var(--wt-primary)] font-semibold">むしろプラスに</p>
+                </div>
+              </div>
+              <p className="mt-4 text-xs text-center text-[var(--wt-gray)]">
+                ※光熱費の節約額はご家庭の使用状況や電力プランにより異なります。
+              </p>
             </div>
           </div>
         </section>
@@ -412,6 +498,9 @@ export default function EcocuteSubsidyPage() {
                   </div>
                 </div>
               </div>
+
+              {/* 適格チェックリスト（コミットメント + 一貫性） */}
+              <EligibilityCheck />
             </div>
           </div>
         </section>
@@ -512,6 +601,35 @@ export default function EcocuteSubsidyPage() {
                 </div>
               </div>
             </div>
+
+            {/* 予算消化インジケーター（希少性 + 損失回避） */}
+            <div data-reveal className="mt-10 rounded-2xl bg-white p-6 border border-[rgba(232,168,23,0.2)]">
+              <div className="flex items-center justify-between mb-4">
+                <p className="text-sm font-bold text-[var(--wt-dark)]">予算消化状況（参考）</p>
+                <span className="text-xs text-[var(--wt-gray)]">※過去実績ベース</span>
+              </div>
+              <div className="mb-4">
+                <div className="flex items-center justify-between text-xs mb-1.5">
+                  <span className="text-[var(--wt-gray)]">2024年度実績</span>
+                  <span className="font-bold text-red-500">予算到達 ― 早期終了</span>
+                </div>
+                <div className="w-full h-3 rounded-full bg-gray-100 overflow-hidden">
+                  <div className="h-full rounded-full bg-red-400" style={{ width: "100%" }} />
+                </div>
+              </div>
+              <div>
+                <div className="flex items-center justify-between text-xs mb-1.5">
+                  <span className="text-[var(--wt-gray)]">2026年度</span>
+                  <span className="font-bold text-[var(--wt-accent)]">受付中 ― お早めに</span>
+                </div>
+                <div className="w-full h-3 rounded-full bg-gray-100 overflow-hidden">
+                  <div className="h-full rounded-full bg-gradient-to-r from-[var(--wt-primary)] to-[var(--wt-accent)]" style={{ width: "30%" }} />
+                </div>
+              </div>
+              <p className="mt-4 text-xs text-[var(--wt-gray)]">
+                ※2026年度の消化率は公式発表に基づく推定値です。2024年度は予算到達により受付が<strong>早期終了</strong>しました。
+              </p>
+            </div>
           </div>
         </section>
 
@@ -595,6 +713,53 @@ export default function EcocuteSubsidyPage() {
           </div>
         </section>
 
+        {/* エコキュートのある暮らしイメージ */}
+        <section className="relative py-12 md:py-16 bg-[var(--wt-bg)] overflow-hidden">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div data-reveal className="flex justify-center">
+              <div className="relative w-full max-w-lg">
+                <Image
+                  src="/photo/ecocute/comfort.svg"
+                  alt="太陽光パネルとエコキュートのある快適な住まいのイメージ"
+                  width={400}
+                  height={280}
+                  className="w-full h-auto rounded-2xl"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ============================================ */}
+        {/* 10.5: 動かないことのコスト（損失回避） */}
+        {/* ============================================ */}
+        <section className="relative py-16 md:py-20 bg-gradient-to-b from-[var(--wt-bg)] to-white overflow-hidden">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div data-reveal className="text-center mb-8">
+              <h2 className="text-xl sm:text-2xl font-bold text-[var(--wt-dark)] leading-snug">
+                「もう少し考えよう」が<br className="sm:hidden" />コストになっています
+              </h2>
+            </div>
+            <div data-reveal className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="p-5 rounded-2xl bg-white border border-red-100 text-center shadow-sm">
+                <p className="text-sm text-[var(--wt-gray)] mb-2">1か月先延ばしにすると</p>
+                <p className="text-2xl font-bold text-red-500">約3,000〜4,000円</p>
+                <p className="text-xs text-[var(--wt-gray)] mt-1">光熱費の差額が失われます</p>
+              </div>
+              <div className="p-5 rounded-2xl bg-white border border-red-100 text-center shadow-sm">
+                <p className="text-sm text-[var(--wt-gray)] mb-2">半年先延ばしにすると</p>
+                <p className="text-2xl font-bold text-red-500">約2〜2.5万円</p>
+                <p className="text-xs text-[var(--wt-gray)] mt-1">節約できたはずの金額</p>
+              </div>
+              <div className="p-5 rounded-2xl bg-white border border-red-200 text-center shadow-sm">
+                <p className="text-sm text-[var(--wt-gray)] mb-2">補助金が終了してからだと</p>
+                <p className="text-2xl font-bold text-red-600">最大14万円</p>
+                <p className="text-xs text-[var(--wt-gray)] mt-1">補助金がゼロになります</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ============================================ */}
         {/* 11: デュアルCTA（一般ユーザー + 施工業者） */}
         {/* ============================================ */}
@@ -607,10 +772,10 @@ export default function EcocuteSubsidyPage() {
             <div data-reveal className="text-center mb-12">
               <p className="text-white/40 text-xs font-semibold tracking-[0.2em] uppercase mb-4">Contact</p>
               <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
-                お気軽にご相談ください
+                まずは補助金額だけ確認してみませんか？
               </h2>
               <p className="text-white/50 text-sm max-w-lg mx-auto">
-                エコキュートの導入を検討されている方も、施工のお仕事をお探しの方も、お気軽にお問い合わせください。
+                エコキュートの導入を検討されている方も、施工のお仕事をお探しの方も。30秒で簡単にお問い合わせいただけます。
               </p>
             </div>
 
@@ -631,9 +796,10 @@ export default function EcocuteSubsidyPage() {
                   className="inline-flex items-center justify-center gap-2 bg-[var(--wt-green)] hover:brightness-110 text-white font-semibold px-6 py-3 rounded-lg text-sm transition-all w-full sm:w-auto"
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.5c0 2.72 1.65 5.13 4.14 6.67-.14.5-.53 1.86-.61 2.15-.1.36.13.35.28.26.11-.07 1.78-1.18 2.52-1.66.54.08 1.1.13 1.67.13 5.52 0 10-3.32 10-7.55C20 5.82 17.52 2 12 2z"/></svg>
-                  LINEでお問い合わせ
+                  補助金が使えるか30秒で確認する
                 </a>
-                <div className="mt-4 flex items-center justify-center gap-2 text-white/30 text-xs">
+                <p className="mt-3 text-xs text-white/35">※ しつこい営業は一切ありません。LINEでやりとりするだけです。</p>
+                <div className="mt-3 flex items-center justify-center gap-2 text-white/30 text-xs">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
                   086-941-0882
                 </div>
@@ -653,7 +819,7 @@ export default function EcocuteSubsidyPage() {
                   className="inline-flex items-center justify-center gap-2 bg-[var(--wt-primary)] hover:bg-[var(--wt-primary-dark)] text-white font-semibold px-6 py-3 rounded-lg text-sm transition-all w-full sm:w-auto"
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-                  協力会社登録はこちら
+                  エコキュート案件を受け取る
                 </a>
                 <div className="mt-4 flex items-center justify-center gap-2 text-white/30 text-xs">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>

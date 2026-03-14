@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" fill="none">
+  <rect width="400" height="240" rx="16" fill="#fafbfd"/>
+
+  <!-- 左: ガス給湯器 (Before) -->
+  <g transform="translate(40, 30)">
+    <rect width="130" height="160" rx="10" fill="#fff0f0" stroke="#e8a8a8" stroke-width="1.5"/>
+    <text x="65" y="25" text-anchor="middle" fill="#c44" font-size="11" font-weight="bold" font-family="sans-serif">従来の給湯器</text>
+
+    <!-- ガス給湯器イラスト -->
+    <rect x="35" y="40" width="60" height="50" rx="6" fill="#d4d4d4" stroke="#aaa" stroke-width="1"/>
+    <rect x="45" y="48" width="40" height="18" rx="2" fill="#888"/>
+    <circle cx="55" cy="57" r="4" fill="#ff6b6b" opacity="0.8"/>
+    <circle cx="65" cy="57" r="4" fill="#ff6b6b" opacity="0.5"/>
+    <path d="M50 40 Q55 32 50 26" stroke="#ff6b6b" stroke-width="1.5" opacity="0.4" stroke-linecap="round"/>
+    <path d="M60 40 Q65 32 60 26" stroke="#ff6b6b" stroke-width="1.5" opacity="0.3" stroke-linecap="round"/>
+    <path d="M70 40 Q75 32 70 26" stroke="#ff6b6b" stroke-width="1.5" opacity="0.4" stroke-linecap="round"/>
+
+    <!-- コスト -->
+    <text x="65" y="110" text-anchor="middle" fill="#666" font-size="9" font-family="sans-serif">年間光熱費</text>
+    <text x="65" y="130" text-anchor="middle" fill="#c44" font-size="18" font-weight="bold" font-family="sans-serif">約10万円</text>
+    <text x="65" y="148" text-anchor="middle" fill="#999" font-size="9" font-family="sans-serif">CO2排出量: 多い</text>
+  </g>
+
+  <!-- 矢印 -->
+  <g transform="translate(185, 90)">
+    <polygon points="0,15 25,0 25,10 50,10 50,20 25,20 25,30" fill="#0055B8" opacity="0.7"/>
+    <text x="25" y="50" text-anchor="middle" fill="#0055B8" font-size="10" font-weight="bold" font-family="sans-serif">乗り換え</text>
+  </g>
+
+  <!-- 右: エコキュート (After) -->
+  <g transform="translate(230, 30)">
+    <rect width="130" height="160" rx="10" fill="#f0f9f4" stroke="#86d4a0" stroke-width="1.5"/>
+    <text x="65" y="25" text-anchor="middle" fill="#06C755" font-size="11" font-weight="bold" font-family="sans-serif">エコキュート</text>
+
+    <!-- エコキュートイラスト -->
+    <rect x="30" y="38" width="35" height="52" rx="5" fill="#c8d8e8" stroke="#8ba8c8" stroke-width="1"/>
+    <rect x="70" y="50" width="30" height="30" rx="4" fill="#d4dfe8" stroke="#8ba8c8" stroke-width="1"/>
+    <circle cx="85" cy="65" r="10" fill="none" stroke="#0055B8" stroke-width="1.5"/>
+    <text x="48" y="60" text-anchor="middle" fill="#0055B8" font-size="7" font-weight="bold" font-family="sans-serif">ECO</text>
+    <path d="M42 38 Q47 28 42 22" stroke="#0055B8" stroke-width="1.5" opacity="0.3" stroke-linecap="round"/>
+    <path d="M52 38 Q57 28 52 22" stroke="#0055B8" stroke-width="1.5" opacity="0.25" stroke-linecap="round"/>
+
+    <!-- コスト -->
+    <text x="65" y="110" text-anchor="middle" fill="#666" font-size="9" font-family="sans-serif">年間光熱費</text>
+    <text x="65" y="130" text-anchor="middle" fill="#06C755" font-size="18" font-weight="bold" font-family="sans-serif">約5〜7万円</text>
+    <text x="65" y="148" text-anchor="middle" fill="#06C755" font-size="9" font-family="sans-serif">CO2排出量: 約50%減</text>
+  </g>
+
+  <!-- 節約額ハイライト -->
+  <rect x="100" y="200" width="200" height="30" rx="15" fill="#0055B8" opacity="0.1"/>
+  <text x="200" y="220" text-anchor="middle" fill="#0055B8" font-size="12" font-weight="bold" font-family="sans-serif">年間 約3〜5万円 おトク!</text>
+</svg>
