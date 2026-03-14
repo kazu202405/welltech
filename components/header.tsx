@@ -6,13 +6,11 @@ import Image from "next/image";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
-  { label: "事業紹介", href: "#about" },
-  { label: "強み", href: "#strengths" },
+  { label: "会社概要", href: "#about" },
   { label: "施工実績", href: "#works" },
-  { label: "案件種別", href: "#case-types" },
   { label: "業務内容", href: "#partner-tasks" },
-  { label: "取引の流れ", href: "#flow" },
-  { label: "FAQ", href: "#faq" },
+  { label: "ご登録の流れ", href: "#flow" },
+  { label: "エコキュート補助金", href: "/ecocute-subsidy" },
   { label: "対応エリア", href: "/area" },
 ];
 

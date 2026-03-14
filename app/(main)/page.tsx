@@ -253,13 +253,13 @@ export default function Home() {
       <CaseTypes />
       <LineAccent />
       <PartnerTasks />
-      <EcocuteBanner />
       <LineAccent variant="gray" />
       <IdealPartner />
       <LineAccent />
       <Flow />
       <LineAccent variant="gray" />
       <Faq />
+      <EcocuteBanner />
       <RegistrationForm />
     </>
   );
