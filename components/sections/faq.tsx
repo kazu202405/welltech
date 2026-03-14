@@ -72,7 +72,7 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center justify-between w-full text-left py-5 transition-colors"
       >
-        <span className="text-[15px] font-semibold text-[var(--wt-dark)] pr-4 leading-snug">{question}</span>
+        <span className="text-sm sm:text-[15px] font-semibold text-[var(--wt-dark)] pr-4 leading-snug">{question}</span>
         <ChevronDown className={`w-4 h-4 text-[var(--wt-gray-light)] shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
       </button>
       <div

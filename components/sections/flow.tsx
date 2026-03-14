@@ -95,7 +95,7 @@ export function Flow() {
           <div className="relative">
             <div
               data-reveal-line
-              className="absolute left-[15px] top-4 bottom-4 w-px bg-gradient-to-b from-[var(--wt-primary)]/30 via-[var(--wt-primary)]/15 to-transparent origin-top"
+              className="absolute left-[15px] top-4 bottom-4 w-px bg-gradient-to-b from-[var(--wt-primary)]/30 via-[var(--wt-primary)]/15 to-transparent origin-top hidden lg:block"
               aria-hidden="true"
             />
 

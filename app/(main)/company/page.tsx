@@ -116,10 +116,10 @@ export default function CompanyPage() {
                           i % 2 === 1 ? "bg-[var(--wt-bg)]" : ""
                         }`}
                       >
-                        <th className="py-4 px-4 w-[160px] sm:w-[200px] bg-[var(--wt-bg)] font-semibold text-sm text-[var(--wt-dark)] align-top whitespace-nowrap">
+                        <th className="py-4 px-3 sm:px-4 w-[120px] sm:w-[200px] bg-[var(--wt-bg)] font-semibold text-xs sm:text-sm text-[var(--wt-dark)] align-top">
                           {item.label}
                         </th>
-                        <td className="py-4 px-4 text-sm text-[var(--wt-gray)] whitespace-pre-line leading-relaxed">
+                        <td className="py-4 px-3 sm:px-4 text-xs sm:text-sm text-[var(--wt-gray)] whitespace-pre-line leading-relaxed">
                           {item.value}
                         </td>
                       </tr>

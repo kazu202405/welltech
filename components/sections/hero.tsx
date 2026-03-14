@@ -95,7 +95,7 @@ export function Hero() {
           </div>
 
           <div data-hero-title className="mb-6">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight">
               <span className="block">全国の</span>
               <span className="block mt-1">施工パートナーを</span>
               <span className="block mt-1">

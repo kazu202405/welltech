@@ -45,7 +45,7 @@ export function RegistrationForm() {
             href={LINE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="group btn-glow-green btn-bounce inline-flex items-center justify-center gap-3 bg-[var(--wt-green)] hover:brightness-110 text-white font-semibold px-8 sm:px-10 py-4 rounded-lg text-base sm:text-lg"
+            className="group btn-glow-green btn-bounce inline-flex items-center justify-center gap-3 bg-[var(--wt-green)] hover:brightness-110 text-white font-semibold px-6 sm:px-10 py-4 rounded-lg text-sm sm:text-lg"
           >
             <MessageCircle className="w-5 h-5" />
             LINEで友だち追加
