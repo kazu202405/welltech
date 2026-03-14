@@ -8,6 +8,7 @@ import { IdealPartner } from "@/components/sections/ideal-partner";
 import { Flow } from "@/components/sections/flow";
 import { Faq } from "@/components/sections/faq";
 import { RegistrationForm } from "@/components/sections/registration-form";
+import { EcocuteBanner } from "@/components/sections/ecocute-banner";
 import { LineAccent } from "@/components/ui/line-accent";
 
 const jsonLd = {
@@ -252,6 +253,7 @@ export default function Home() {
       <CaseTypes />
       <LineAccent />
       <PartnerTasks />
+      <EcocuteBanner />
       <LineAccent variant="gray" />
       <IdealPartner />
       <LineAccent />

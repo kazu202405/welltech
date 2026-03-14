@@ -2,7 +2,7 @@ export function Footer() {
   return (
     <footer className="bg-[var(--wt-bg-dark)] text-white pt-16 pb-6">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 mb-12">
           {/* 会社情報 */}
           <div>
             <span className="text-xl font-bold tracking-tight block mb-5">WELLTECH</span>
@@ -22,6 +22,18 @@ export function Footer() {
               <li>岡山県知事許可（般-6）第27090号</li>
               <li>登録電気工事業者 岡山県知事登録2023-168</li>
               <li>産業廃棄物収集運搬業許可</li>
+            </ul>
+          </div>
+
+          {/* お役立ち情報 */}
+          <div>
+            <h4 className="text-sm font-semibold text-white/60 tracking-wide mb-4">お役立ち情報</h4>
+            <ul className="space-y-2.5 text-sm text-white/40">
+              <li>
+                <a href="/ecocute-subsidy" className="hover:text-white/60 transition-colors hover-underline">
+                  エコキュート補助金ガイド2026
+                </a>
+              </li>
             </ul>
           </div>
 
