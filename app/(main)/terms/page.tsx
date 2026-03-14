@@ -25,12 +25,12 @@ export default function TermsPage() {
           {/* 斜線装飾 */}
           <div
             data-reveal-diag
-            className="absolute top-[10%] -left-[10%] w-[110%] h-[120px] bg-gradient-to-r from-[rgba(0,85,184,0.07)] via-[rgba(0,85,184,0.03)] to-transparent pointer-events-none"
+            className="absolute top-[10%] -left-[10%] w-[110%] h-[120px] bg-gradient-to-r from-[rgba(0,133,74,0.07)] via-[rgba(0,133,74,0.03)] to-transparent pointer-events-none"
             style={{ "--diag-angle": "-12deg" } as React.CSSProperties}
             aria-hidden="true"
           />
           {/* オーブ */}
-          <div className="orb orb-blue absolute -top-16 right-[8%] w-[280px] h-[280px] md:w-[360px] md:h-[360px]" aria-hidden="true" />
+          <div className="orb orb-green absolute -top-16 right-[8%] w-[280px] h-[280px] md:w-[360px] md:h-[360px]" aria-hidden="true" />
           <div className="orb orb-accent absolute bottom-[-40px] left-[-60px] w-[200px] h-[200px]" aria-hidden="true" />
           {/* ドットグリッド */}
           <div className="absolute top-0 right-0 w-[200px] h-[200px] md:w-[280px] md:h-[280px] dot-grid opacity-40" aria-hidden="true" />
@@ -51,13 +51,13 @@ export default function TermsPage() {
           {/* 斜線装飾（右から） */}
           <div
             data-reveal-diag-r
-            className="absolute bottom-[15%] -right-[10%] w-[80%] h-[80px] bg-gradient-to-l from-[rgba(0,85,184,0.06)] to-transparent pointer-events-none"
+            className="absolute bottom-[15%] -right-[10%] w-[80%] h-[80px] bg-gradient-to-l from-[rgba(0,133,74,0.06)] to-transparent pointer-events-none"
             style={{ "--diag-angle": "10deg" } as React.CSSProperties}
             aria-hidden="true"
           />
           {/* オーブ */}
           <div className="orb orb-accent absolute top-[-40px] left-[5%] w-[260px] h-[260px]" aria-hidden="true" />
-          <div className="orb orb-blue absolute bottom-[-80px] right-[-40px] w-[320px] h-[320px]" aria-hidden="true" />
+          <div className="orb orb-green absolute bottom-[-80px] right-[-40px] w-[320px] h-[320px]" aria-hidden="true" />
           {/* ドットグリッド */}
           <div className="absolute bottom-0 left-0 w-[180px] h-[180px] md:w-[260px] md:h-[260px] dot-grid opacity-40" aria-hidden="true" />
           {/* ウォーターマーク */}
@@ -109,7 +109,7 @@ export default function TermsPage() {
             aria-hidden="true"
           />
           {/* オーブ */}
-          <div className="orb orb-blue absolute top-[-30px] left-[15%] w-[220px] h-[220px]" aria-hidden="true" />
+          <div className="orb orb-green absolute top-[-30px] left-[15%] w-[220px] h-[220px]" aria-hidden="true" />
           <div className="orb orb-accent absolute bottom-[-50px] right-[10%] w-[240px] h-[240px]" aria-hidden="true" />
           {/* ドットグリッド */}
           <div className="absolute top-0 right-0 w-[200px] h-[200px] md:w-[280px] md:h-[280px] dot-grid opacity-40" aria-hidden="true" />
@@ -140,12 +140,12 @@ export default function TermsPage() {
           {/* 斜線装飾（右から） */}
           <div
             data-reveal-diag-r
-            className="absolute top-[12%] -right-[10%] w-[70%] h-[90px] bg-gradient-to-l from-[rgba(0,85,184,0.05)] to-transparent pointer-events-none"
+            className="absolute top-[12%] -right-[10%] w-[70%] h-[90px] bg-gradient-to-l from-[rgba(0,133,74,0.05)] to-transparent pointer-events-none"
             style={{ "--diag-angle": "8deg" } as React.CSSProperties}
             aria-hidden="true"
           />
           {/* オーブ */}
-          <div className="orb orb-blue absolute -top-16 right-[8%] w-[280px] h-[280px]" aria-hidden="true" />
+          <div className="orb orb-green absolute -top-16 right-[8%] w-[280px] h-[280px]" aria-hidden="true" />
           <div className="orb orb-accent absolute bottom-[-60px] left-[-40px] w-[220px] h-[220px]" aria-hidden="true" />
           {/* ドットグリッド */}
           <div className="absolute bottom-0 right-0 w-[180px] h-[180px] md:w-[240px] md:h-[240px] dot-grid opacity-40" aria-hidden="true" />

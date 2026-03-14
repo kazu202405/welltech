@@ -107,12 +107,12 @@ export default function KyushuAreaPage() {
           {/* 斜線装飾 */}
           <div
             data-reveal-diag
-            className="absolute top-[12%] -left-[10%] w-[110%] h-[120px] bg-gradient-to-r from-[rgba(0,85,184,0.07)] via-[rgba(0,85,184,0.03)] to-transparent pointer-events-none"
+            className="absolute top-[12%] -left-[10%] w-[110%] h-[120px] bg-gradient-to-r from-[rgba(0,133,74,0.07)] via-[rgba(0,133,74,0.03)] to-transparent pointer-events-none"
             style={{ "--diag-angle": "-12deg" } as React.CSSProperties}
             aria-hidden="true"
           />
           {/* オーブ */}
-          <div className="orb orb-blue absolute -top-16 right-[8%] w-[280px] h-[280px] md:w-[360px] md:h-[360px]" aria-hidden="true" />
+          <div className="orb orb-green absolute -top-16 right-[8%] w-[280px] h-[280px] md:w-[360px] md:h-[360px]" aria-hidden="true" />
           <div className="orb orb-accent absolute bottom-[-40px] left-[-60px] w-[200px] h-[200px]" aria-hidden="true" />
           {/* ドットグリッド */}
           <div className="absolute top-0 right-0 w-[200px] h-[200px] md:w-[280px] md:h-[280px] dot-grid opacity-40" aria-hidden="true" />
@@ -155,13 +155,13 @@ export default function KyushuAreaPage() {
           {/* 斜線装飾（右から） */}
           <div
             data-reveal-diag-r
-            className="absolute bottom-[15%] -right-[10%] w-[80%] h-[80px] bg-gradient-to-l from-[rgba(0,85,184,0.06)] to-transparent pointer-events-none"
+            className="absolute bottom-[15%] -right-[10%] w-[80%] h-[80px] bg-gradient-to-l from-[rgba(0,133,74,0.06)] to-transparent pointer-events-none"
             style={{ "--diag-angle": "10deg" } as React.CSSProperties}
             aria-hidden="true"
           />
           {/* オーブ */}
           <div className="orb orb-accent absolute top-[-40px] left-[5%] w-[260px] h-[260px]" aria-hidden="true" />
-          <div className="orb orb-blue absolute bottom-[-80px] right-[-40px] w-[320px] h-[320px]" aria-hidden="true" />
+          <div className="orb orb-green absolute bottom-[-80px] right-[-40px] w-[320px] h-[320px]" aria-hidden="true" />
           {/* ドットグリッド */}
           <div className="absolute bottom-0 left-0 w-[180px] h-[180px] md:w-[260px] md:h-[260px] dot-grid opacity-40" aria-hidden="true" />
           {/* ウォーターマーク */}
@@ -207,7 +207,7 @@ export default function KyushuAreaPage() {
             aria-hidden="true"
           />
           {/* オーブ */}
-          <div className="orb orb-blue absolute top-[-30px] left-[15%] w-[220px] h-[220px]" aria-hidden="true" />
+          <div className="orb orb-green absolute top-[-30px] left-[15%] w-[220px] h-[220px]" aria-hidden="true" />
           {/* ウォーターマーク */}
           <div className="watermark-bold absolute top-6 -left-4 lg:left-0 font-mono z-0" aria-hidden="true">03</div>
 
@@ -242,11 +242,11 @@ export default function KyushuAreaPage() {
 
         {/* セクション04: CTA */}
         <section className="relative py-24 md:py-32 bg-[var(--wt-bg)] overflow-hidden">
-          <div className="orb orb-blue absolute top-[-60px] right-[10%] w-[300px] h-[300px]" aria-hidden="true" />
+          <div className="orb orb-green absolute top-[-60px] right-[10%] w-[300px] h-[300px]" aria-hidden="true" />
           <div className="orb orb-accent absolute bottom-[-40px] left-[5%] w-[200px] h-[200px]" aria-hidden="true" />
 
           <div className="max-w-5xl mx-auto px-5 sm:px-8 lg:px-10 relative z-10">
-            <div data-reveal className="bg-gradient-to-br from-[var(--wt-primary)] to-[#003d85] rounded-2xl p-8 sm:p-14 text-center relative overflow-hidden">
+            <div data-reveal className="bg-gradient-to-br from-[var(--wt-primary)] to-[#005C33] rounded-2xl p-8 sm:p-14 text-center relative overflow-hidden">
               {/* CTA内のドットグリッド装飾 */}
               <div className="absolute top-0 right-0 w-[200px] h-[200px] dot-grid opacity-20" aria-hidden="true" />
               <div className="relative z-10">

@@ -36,7 +36,7 @@ export function EligibilityCheck() {
         ))}
       </div>
       {allChecked && (
-        <div className="mt-6 p-4 rounded-xl bg-gradient-to-r from-[rgba(6,199,85,0.08)] to-[rgba(0,85,184,0.08)] text-center">
+        <div className="mt-6 p-4 rounded-xl bg-gradient-to-r from-[rgba(6,199,85,0.08)] to-[rgba(0,133,74,0.08)] text-center">
           <p className="text-base font-bold text-[var(--wt-dark)] mb-3">
             3つともクリア ― 補助金の対象になる可能性が高いです
           </p>

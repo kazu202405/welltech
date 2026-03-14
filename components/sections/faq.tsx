@@ -115,7 +115,7 @@ export function Faq() {
   return (
     <section ref={setRefs} id="faq" className="py-24 md:py-32 bg-[var(--wt-bg)] relative overflow-hidden">
       {/* グラデーションオーブ */}
-      <div data-orb-1 className="orb orb-blue absolute top-[-40px] left-[50%] w-[300px] h-[300px]" aria-hidden="true" />
+      <div data-orb-1 className="orb orb-green absolute top-[-40px] left-[50%] w-[300px] h-[300px]" aria-hidden="true" />
 
       {/* ドットグリッド */}
       <div className="absolute top-0 left-0 w-[200px] h-[200px] dot-grid opacity-25" aria-hidden="true" />
@@ -123,8 +123,8 @@ export function Faq() {
       {/* クロスシェイプ */}
       <div className="absolute bottom-24 right-[12%] pointer-events-none" aria-hidden="true">
         <svg data-shape-cross width="36" height="36" viewBox="0 0 36 36" fill="none">
-          <line x1="0" y1="18" x2="36" y2="18" stroke="rgba(0,85,184,0.1)" strokeWidth="1.5" />
-          <line x1="18" y1="0" x2="18" y2="36" stroke="rgba(0,85,184,0.1)" strokeWidth="1.5" />
+          <line x1="0" y1="18" x2="36" y2="18" stroke="rgba(0,133,74,0.1)" strokeWidth="1.5" />
+          <line x1="18" y1="0" x2="18" y2="36" stroke="rgba(0,133,74,0.1)" strokeWidth="1.5" />
         </svg>
       </div>
 

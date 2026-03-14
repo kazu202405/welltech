@@ -23,8 +23,8 @@
 
   <!-- 矢印 -->
   <g transform="translate(185, 90)">
-    <polygon points="0,15 25,0 25,10 50,10 50,20 25,20 25,30" fill="#0055B8" opacity="0.7"/>
-    <text x="25" y="50" text-anchor="middle" fill="#0055B8" font-size="10" font-weight="bold" font-family="sans-serif">乗り換え</text>
+    <polygon points="0,15 25,0 25,10 50,10 50,20 25,20 25,30" fill="#00854A" opacity="0.7"/>
+    <text x="25" y="50" text-anchor="middle" fill="#00854A" font-size="10" font-weight="bold" font-family="sans-serif">乗り換え</text>
   </g>
 
   <!-- 右: エコキュート (After) -->
@@ -35,10 +35,10 @@
     <!-- エコキュートイラスト -->
     <rect x="30" y="38" width="35" height="52" rx="5" fill="#c8d8e8" stroke="#8ba8c8" stroke-width="1"/>
     <rect x="70" y="50" width="30" height="30" rx="4" fill="#d4dfe8" stroke="#8ba8c8" stroke-width="1"/>
-    <circle cx="85" cy="65" r="10" fill="none" stroke="#0055B8" stroke-width="1.5"/>
-    <text x="48" y="60" text-anchor="middle" fill="#0055B8" font-size="7" font-weight="bold" font-family="sans-serif">ECO</text>
-    <path d="M42 38 Q47 28 42 22" stroke="#0055B8" stroke-width="1.5" opacity="0.3" stroke-linecap="round"/>
-    <path d="M52 38 Q57 28 52 22" stroke="#0055B8" stroke-width="1.5" opacity="0.25" stroke-linecap="round"/>
+    <circle cx="85" cy="65" r="10" fill="none" stroke="#00854A" stroke-width="1.5"/>
+    <text x="48" y="60" text-anchor="middle" fill="#00854A" font-size="7" font-weight="bold" font-family="sans-serif">ECO</text>
+    <path d="M42 38 Q47 28 42 22" stroke="#00854A" stroke-width="1.5" opacity="0.3" stroke-linecap="round"/>
+    <path d="M52 38 Q57 28 52 22" stroke="#00854A" stroke-width="1.5" opacity="0.25" stroke-linecap="round"/>
 
     <!-- コスト -->
     <text x="65" y="110" text-anchor="middle" fill="#666" font-size="9" font-family="sans-serif">年間光熱費</text>
@@ -47,6 +47,6 @@
   </g>
 
   <!-- 節約額ハイライト -->
-  <rect x="100" y="200" width="200" height="30" rx="15" fill="#0055B8" opacity="0.1"/>
-  <text x="200" y="220" text-anchor="middle" fill="#0055B8" font-size="12" font-weight="bold" font-family="sans-serif">年間 約3〜5万円 おトク!</text>
+  <rect x="100" y="200" width="200" height="30" rx="15" fill="#00854A" opacity="0.1"/>
+  <text x="200" y="220" text-anchor="middle" fill="#00854A" font-size="12" font-weight="bold" font-family="sans-serif">年間 約3〜5万円 おトク!</text>
 </svg>

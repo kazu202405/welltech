@@ -68,7 +68,7 @@ export function PartnerTasks() {
       {/* 斜線スライドイン（下部配置） */}
       <div
         data-reveal-diag-r
-        className="absolute bottom-[8%] -right-[10%] w-[110%] h-[160px] bg-gradient-to-l from-[rgba(0,85,184,0.08)] via-[rgba(0,85,184,0.04)] to-transparent pointer-events-none"
+        className="absolute bottom-[8%] -right-[10%] w-[110%] h-[160px] bg-gradient-to-l from-[rgba(0,133,74,0.08)] via-[rgba(0,133,74,0.04)] to-transparent pointer-events-none"
         style={{ "--diag-angle": "12deg" } as React.CSSProperties}
         aria-hidden="true"
       />
@@ -80,7 +80,7 @@ export function PartnerTasks() {
       />
 
       {/* グラデーションオーブ */}
-      <div data-orb-1 className="orb orb-blue absolute top-[-40px] left-[60%] w-[350px] h-[350px]" aria-hidden="true" />
+      <div data-orb-1 className="orb orb-green absolute top-[-40px] left-[60%] w-[350px] h-[350px]" aria-hidden="true" />
       <div data-orb-2 className="orb orb-accent absolute bottom-[-40px] right-[-60px] w-[200px] h-[200px]" aria-hidden="true" />
 
       {/* ドットグリッド */}

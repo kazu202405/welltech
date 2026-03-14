@@ -8,7 +8,7 @@ export default function NotFound() {
       <Header />
       <main className="min-h-screen bg-[var(--wt-bg-dark)] flex items-center justify-center relative overflow-hidden">
         {/* 装飾 */}
-        <div className="orb orb-blue absolute top-[10%] right-[10%] w-[300px] h-[300px]" aria-hidden="true" />
+        <div className="orb orb-green absolute top-[10%] right-[10%] w-[300px] h-[300px]" aria-hidden="true" />
         <div className="orb orb-accent absolute bottom-[15%] left-[5%] w-[200px] h-[200px]" aria-hidden="true" />
         <div className="absolute top-0 left-0 w-[200px] h-[160px] dot-grid opacity-20" aria-hidden="true" />
 

@@ -47,6 +47,8 @@ export function PageLoader() {
         className="flex flex-col items-center"
         style={{ animation: "loader-logo 1.5s ease-in-out forwards" }}
       >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/welltech-logo.svg" alt="" width={40} height={52} className="h-10 w-auto mb-3" />
         <span className="text-white text-2xl font-bold tracking-widest">WELLTECH</span>
         <span className="text-white/30 text-xs tracking-[0.3em] mt-2">PARTNER RECRUITMENT</span>
       </div>

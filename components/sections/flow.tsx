@@ -52,7 +52,7 @@ export function Flow() {
       {/* 斜線スライドイン */}
       <div
         data-reveal-diag
-        className="absolute top-[12%] -left-[10%] w-[100%] h-[120px] bg-gradient-to-r from-[rgba(0,85,184,0.07)] via-[rgba(0,85,184,0.03)] to-transparent pointer-events-none"
+        className="absolute top-[12%] -left-[10%] w-[100%] h-[120px] bg-gradient-to-r from-[rgba(0,133,74,0.07)] via-[rgba(0,133,74,0.03)] to-transparent pointer-events-none"
         style={{ "--diag-angle": "-14deg" } as React.CSSProperties}
         aria-hidden="true"
       />
@@ -64,7 +64,7 @@ export function Flow() {
       />
 
       {/* グラデーションオーブ */}
-      <div data-orb-1 className="orb orb-blue absolute top-[-30px] right-[-50px] w-[300px] h-[300px]" aria-hidden="true" />
+      <div data-orb-1 className="orb orb-green absolute top-[-30px] right-[-50px] w-[300px] h-[300px]" aria-hidden="true" />
       <div data-orb-2 className="orb orb-accent absolute bottom-[-50px] left-[5%] w-[250px] h-[250px]" aria-hidden="true" />
 
       {/* ドットグリッド */}
@@ -103,7 +103,7 @@ export function Flow() {
               <div key={step.title} data-reveal-item className="flex gap-6 py-5 relative">
                 <div className="relative shrink-0 w-[30px] flex justify-center pt-1.5">
                   <div
-                    className="w-3 h-3 rounded-full bg-[var(--wt-primary)] shadow-[0_0_0_4px_rgba(0,85,184,0.1)]"
+                    className="w-3 h-3 rounded-full bg-[var(--wt-primary)] shadow-[0_0_0_4px_rgba(0,133,74,0.1)]"
                   />
                 </div>
                 <div className="flex-1 pb-2 border-b border-black/[0.06]">

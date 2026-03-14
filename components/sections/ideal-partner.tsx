@@ -58,13 +58,13 @@ export function IdealPartner() {
   return (
     <section ref={setRefs} id="ideal-partner" className="py-24 md:py-32 bg-[var(--wt-bg)] relative overflow-hidden">
       {/* グラデーションオーブ */}
-      <div data-orb-1 className="orb orb-blue absolute top-[-30px] right-[5%] w-[280px] h-[280px]" aria-hidden="true" />
+      <div data-orb-1 className="orb orb-green absolute top-[-30px] right-[5%] w-[280px] h-[280px]" aria-hidden="true" />
 
       {/* 装飾シェイプ */}
       <div className="absolute bottom-20 right-[10%] pointer-events-none" aria-hidden="true">
         <svg data-shape-ring width="100" height="100" viewBox="0 0 100 100" fill="none">
-          <circle cx="50" cy="50" r="42" stroke="rgba(0,85,184,0.06)" strokeWidth="1" fill="none" />
-          <circle cx="50" cy="50" r="28" stroke="rgba(0,85,184,0.04)" strokeWidth="1" fill="none" />
+          <circle cx="50" cy="50" r="42" stroke="rgba(0,133,74,0.06)" strokeWidth="1" fill="none" />
+          <circle cx="50" cy="50" r="28" stroke="rgba(0,133,74,0.04)" strokeWidth="1" fill="none" />
         </svg>
       </div>
 

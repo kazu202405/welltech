@@ -31,7 +31,7 @@ export function LineAccent({ variant = "light" }: LineAccentProps) {
     : variant === "gray"
     ? "bg-[var(--wt-bg)]"
     : "bg-white";
-  const color = variant === "dark" ? "rgba(255,255,255,0.12)" : "rgba(0,85,184,0.15)";
+  const color = variant === "dark" ? "rgba(255,255,255,0.12)" : "rgba(0,133,74,0.15)";
 
   return (
     <div ref={ref} className={`section-line flex justify-center ${bgClass}`}>

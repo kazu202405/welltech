@@ -20,8 +20,8 @@ export function SubPageHero({
       <Breadcrumb items={breadcrumbItems} />
       <section className="relative bg-[var(--wt-bg-dark)] py-20 sm:py-28 overflow-hidden">
         {/* 装飾要素 */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[var(--wt-bg-dark)] via-[var(--wt-bg-dark)] to-[#0a2a4a] opacity-90" />
-        <div className="orb orb-blue absolute top-[-40px] right-[-60px] w-[280px] h-[280px]" aria-hidden="true" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[var(--wt-bg-dark)] via-[var(--wt-bg-dark)] to-[#0a4a2a] opacity-90" />
+        <div className="orb orb-green absolute top-[-40px] right-[-60px] w-[280px] h-[280px]" aria-hidden="true" />
         <div className="orb orb-accent absolute bottom-[-30px] left-[5%] w-[200px] h-[200px]" aria-hidden="true" />
         <div className="absolute top-0 right-0 w-[200px] h-[160px] dot-grid opacity-20" aria-hidden="true" />
 

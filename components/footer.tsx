@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 export function Footer() {
   return (
     <footer className="bg-[var(--wt-bg-dark)] text-white pt-16 pb-6">
@@ -5,7 +6,10 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 mb-12">
           {/* 会社情報 */}
           <div>
-            <span className="text-xl font-bold tracking-tight block mb-5">WELLTECH</span>
+            <div className="flex items-center gap-2.5 mb-5">
+              <img src="/welltech-logo.svg" alt="" width={28} height={36} className="h-7 w-auto" />
+              <span className="text-xl font-bold tracking-tight">WELLTECH</span>
+            </div>
             <div className="text-sm text-white/40 leading-relaxed space-y-1">
               <p>株式会社ウェルテック</p>
               <p>代表取締役 藤野隆史</p>

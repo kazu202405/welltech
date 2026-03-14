@@ -40,7 +40,7 @@
   --card-foreground: #1a1a1a;
   --popover: #ffffff;
   --popover-foreground: #1a1a1a;
-  --primary: #0055B8;
+  --primary: #00854A;
   --primary-foreground: #ffffff;
   --secondary: #f5f5f5;
   --secondary-foreground: #1a1a1a;
@@ -51,17 +51,17 @@
   --destructive: #ef4444;
   --border: #e5e5e5;
   --input: #e5e5e5;
-  --ring: #0055B8;
+  --ring: #00854A;
 
   /* ブランドカラー */
-  --wt-primary: #0055B8;
-  --wt-primary-dark: #003d85;
-  --wt-primary-light: #0070E0;
+  --wt-primary: #00854A;
+  --wt-primary-dark: #005C33;
+  --wt-primary-light: #00A85A;
   --wt-dark: #1a1a1a;
   --wt-gray: #666666;
   --wt-gray-light: #999999;
   --wt-bg: #f7f7f7;
-  --wt-bg-dark: #0d1b2e;
+  --wt-bg-dark: #0d2e1b;
   --wt-accent: #e8a817;
   --wt-green: #06C755;
 }
@@ -81,7 +81,7 @@ html {
 
 /* セレクション */
 ::selection {
-  background: rgba(0, 85, 184, 0.12);
+  background: rgba(0, 133, 74, 0.12);
   color: inherit;
 }
 
@@ -147,7 +147,7 @@ html {
 }
 .btn-bounce:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(0, 85, 184, 0.3);
+  box-shadow: 0 8px 30px rgba(0, 133, 74, 0.3);
 }
 
 /* カードホバー */
@@ -242,7 +242,7 @@ html {
   font-weight: 900;
   line-height: 0.8;
   color: transparent;
-  -webkit-text-stroke: 1.5px rgba(0, 85, 184, 0.12);
+  -webkit-text-stroke: 1.5px rgba(0, 133, 74, 0.12);
   letter-spacing: -0.04em;
   user-select: none;
   pointer-events: none;
@@ -253,8 +253,8 @@ html {
   font-size: clamp(10rem, 25vw, 22rem);
   font-weight: 900;
   line-height: 0.8;
-  color: rgba(0, 85, 184, 0.04);
-  -webkit-text-stroke: 1px rgba(0, 85, 184, 0.08);
+  color: rgba(0, 133, 74, 0.04);
+  -webkit-text-stroke: 1px rgba(0, 133, 74, 0.08);
   letter-spacing: -0.04em;
   user-select: none;
   pointer-events: none;
@@ -284,7 +284,7 @@ html {
 }
 .list-item-accent:hover {
   padding-left: 24px;
-  background: rgba(0, 85, 184, 0.03);
+  background: rgba(0, 133, 74, 0.03);
 }
 
 /* SVG装飾円の描画 */
@@ -384,8 +384,8 @@ html {
   pointer-events: none;
   will-change: transform;
 }
-.orb-blue {
-  background: radial-gradient(circle, rgba(0,85,184,0.12) 0%, rgba(0,85,184,0) 70%);
+.orb-green {
+  background: radial-gradient(circle, rgba(0,133,74,0.12) 0%, rgba(0,133,74,0) 70%);
 }
 .orb-accent {
   background: radial-gradient(circle, rgba(232,168,23,0.08) 0%, rgba(232,168,23,0) 70%);
@@ -395,7 +395,7 @@ html {
 .dot-grid {
   --dot-size: 1px;
   --dot-gap: 24px;
-  background-image: radial-gradient(circle, rgba(0,85,184,0.1) var(--dot-size), transparent var(--dot-size));
+  background-image: radial-gradient(circle, rgba(0,133,74,0.1) var(--dot-size), transparent var(--dot-size));
   background-size: var(--dot-gap) var(--dot-gap);
 }
 

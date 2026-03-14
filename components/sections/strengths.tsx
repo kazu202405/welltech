@@ -65,19 +65,19 @@ export function Strengths() {
       {/* 斜線スライドイン */}
       <div
         data-reveal-diag
-        className="absolute top-[15%] -left-[10%] w-[110%] h-[140px] bg-gradient-to-r from-[rgba(0,85,184,0.08)] via-[rgba(0,85,184,0.04)] to-transparent pointer-events-none"
+        className="absolute top-[15%] -left-[10%] w-[110%] h-[140px] bg-gradient-to-r from-[rgba(0,133,74,0.08)] via-[rgba(0,133,74,0.04)] to-transparent pointer-events-none"
         style={{ "--diag-angle": "-15deg" } as React.CSSProperties}
         aria-hidden="true"
       />
       <div
         data-reveal-diag-r
-        className="absolute bottom-[10%] -right-[10%] w-[80%] h-[60px] bg-gradient-to-l from-[rgba(0,85,184,0.06)] to-transparent pointer-events-none"
+        className="absolute bottom-[10%] -right-[10%] w-[80%] h-[60px] bg-gradient-to-l from-[rgba(0,133,74,0.06)] to-transparent pointer-events-none"
         style={{ "--diag-angle": "-12deg" } as React.CSSProperties}
         aria-hidden="true"
       />
 
       {/* グラデーションオーブ */}
-      <div data-orb-1 className="orb orb-blue absolute -top-20 right-[10%] w-[300px] h-[300px] md:w-[400px] md:h-[400px]" aria-hidden="true" />
+      <div data-orb-1 className="orb orb-green absolute -top-20 right-[10%] w-[300px] h-[300px] md:w-[400px] md:h-[400px]" aria-hidden="true" />
       <div data-orb-2 className="orb orb-accent absolute bottom-[-60px] left-[-80px] w-[250px] h-[250px]" aria-hidden="true" />
 
       {/* ドットグリッド */}

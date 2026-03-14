@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
@@ -80,8 +81,17 @@ export function Header() {
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }
             }}
-            className="flex items-center gap-2"
+            className="flex items-center gap-2.5"
           >
+            <Image
+              src={solid ? "/welltech-logo.png" : "/welltech-logo.svg"}
+              alt="WELLTECH"
+              width={32}
+              height={40}
+              className={`h-8 w-auto transition-all duration-300 ${
+                solid ? "" : "brightness-0 invert"
+              }`}
+            />
             <span
               className={`text-xl font-bold tracking-tight transition-colors duration-300 ${
                 solid ? "text-[var(--wt-dark)]" : "text-white"

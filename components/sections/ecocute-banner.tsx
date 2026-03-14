@@ -22,9 +22,9 @@ export function EcocuteBanner() {
   }, []);
 
   return (
-    <section className="relative py-16 md:py-20 bg-gradient-to-br from-[#f0f7ff] via-white to-[#fff9eb] overflow-hidden">
+    <section className="relative py-16 md:py-20 bg-gradient-to-br from-[#f0f9f4] via-white to-[#fff9eb] overflow-hidden">
       {/* 装飾 */}
-      <div className="orb orb-blue absolute -top-20 -right-20 w-[240px] h-[240px] opacity-60" aria-hidden="true" />
+      <div className="orb orb-green absolute -top-20 -right-20 w-[240px] h-[240px] opacity-60" aria-hidden="true" />
       <div className="orb orb-accent absolute -bottom-16 -left-16 w-[180px] h-[180px] opacity-50" aria-hidden="true" />
 
       <div
@@ -33,18 +33,18 @@ export function EcocuteBanner() {
       >
         <a
           href="/ecocute-subsidy"
-          className="group block rounded-2xl bg-white border border-[rgba(0,85,184,0.08)] hover:border-[rgba(0,85,184,0.18)] shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden"
+          className="group block rounded-2xl bg-white border border-[rgba(0,133,74,0.08)] hover:border-[rgba(0,133,74,0.18)] shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden"
         >
           <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10 p-6 sm:p-8 md:p-10">
             {/* アイコン部 */}
-            <div className="shrink-0 w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-gradient-to-br from-[var(--wt-primary)] to-[#003d85] flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
+            <div className="shrink-0 w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-gradient-to-br from-[var(--wt-primary)] to-[#005C33] flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
               <svg width="48" height="48" viewBox="0 0 48 48" fill="none" className="text-white">
                 {/* お湯・エコのアイコン */}
                 <path d="M24 6c-1.5 3-4 5-4 8a4 4 0 008 0c0-3-2.5-5-4-8z" fill="currentColor" opacity="0.6" />
                 <path d="M16 10c-1 2-2.5 3.5-2.5 5.5a2.5 2.5 0 005 0c0-2-1.5-3.5-2.5-5.5z" fill="currentColor" opacity="0.4" />
                 <path d="M32 10c-1 2-2.5 3.5-2.5 5.5a2.5 2.5 0 005 0c0-2-1.5-3.5-2.5-5.5z" fill="currentColor" opacity="0.4" />
                 <rect x="10" y="22" width="28" height="20" rx="4" fill="currentColor" opacity="0.8" />
-                <path d="M18 30h12M24 28v4" stroke="#003d85" strokeWidth="2" strokeLinecap="round" />
+                <path d="M18 30h12M24 28v4" stroke="#005C33" strokeWidth="2" strokeLinecap="round" />
                 <circle cx="38" cy="36" r="8" fill="#06C755" />
                 <path d="M35 36l2 2 4-4" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>

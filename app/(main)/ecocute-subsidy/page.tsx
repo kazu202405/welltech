@@ -72,11 +72,11 @@ export default function EcocuteSubsidyPage() {
         <section className="relative py-24 md:py-32 bg-white overflow-hidden">
           <div
             data-reveal-diag
-            className="absolute top-[10%] -left-[10%] w-[110%] h-[120px] bg-gradient-to-r from-[rgba(0,85,184,0.07)] via-[rgba(0,85,184,0.03)] to-transparent pointer-events-none"
+            className="absolute top-[10%] -left-[10%] w-[110%] h-[120px] bg-gradient-to-r from-[rgba(0,133,74,0.07)] via-[rgba(0,133,74,0.03)] to-transparent pointer-events-none"
             style={{ "--diag-angle": "-12deg" } as React.CSSProperties}
             aria-hidden="true"
           />
-          <div className="orb orb-blue absolute -top-16 right-[8%] w-[280px] h-[280px] md:w-[360px] md:h-[360px]" aria-hidden="true" />
+          <div className="orb orb-green absolute -top-16 right-[8%] w-[280px] h-[280px] md:w-[360px] md:h-[360px]" aria-hidden="true" />
           <div className="orb orb-accent absolute bottom-[-40px] left-[-60px] w-[200px] h-[200px]" aria-hidden="true" />
           <div className="absolute top-0 right-0 w-[200px] h-[200px] md:w-[280px] md:h-[280px] dot-grid opacity-40" aria-hidden="true" />
           <div className="watermark-bold absolute top-6 -left-4 lg:left-0 font-mono z-0" aria-hidden="true">01</div>
@@ -136,7 +136,7 @@ export default function EcocuteSubsidyPage() {
             aria-hidden="true"
           />
           <div className="orb orb-accent absolute top-[-40px] left-[5%] w-[260px] h-[260px]" aria-hidden="true" />
-          <div className="orb orb-blue absolute bottom-[-80px] right-[-40px] w-[320px] h-[320px]" aria-hidden="true" />
+          <div className="orb orb-green absolute bottom-[-80px] right-[-40px] w-[320px] h-[320px]" aria-hidden="true" />
           <div className="absolute bottom-0 left-0 w-[180px] h-[180px] md:w-[260px] md:h-[260px] dot-grid opacity-40" aria-hidden="true" />
           <div className="watermark-bold absolute top-6 -left-4 lg:left-0 font-mono z-0" aria-hidden="true">02</div>
 
@@ -158,7 +158,7 @@ export default function EcocuteSubsidyPage() {
                 { icon: "M20 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4V6h16v12zM4 0h16v2H4zm0 22h16v2H4zm8-10c1.38 0 2.5-1.12 2.5-2.5S13.38 7 12 7s-2.5 1.12-2.5 2.5S10.62 12 12 12z", title: "修理部品がない", desc: "メーカーの部品保有期間が終了" },
                 { icon: "M11 17h2v-1h1c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1h-3v-1h4V8h-2V7h-2v1h-1c-.55 0-1 .45-1 1v3c0 .55.45 1 1 1h3v1H9v2h2v1zm9-13H4c-1.11 0-2 .89-2 2v12c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.11-.9-2-2-2z", title: "光熱費が高い", desc: "古い機種で効率が下がり電気代が増加" },
               ].map((item) => (
-                <div key={item.title} className="rounded-2xl bg-white p-5 border border-[rgba(0,85,184,0.06)] hover:border-[rgba(0,85,184,0.12)] transition-colors">
+                <div key={item.title} className="rounded-2xl bg-white p-5 border border-[rgba(0,133,74,0.06)] hover:border-[rgba(0,133,74,0.12)] transition-colors">
                   <div className="w-10 h-10 rounded-xl bg-[var(--wt-primary)]/8 flex items-center justify-center mb-3">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--wt-primary)"><path d={item.icon} /></svg>
                   </div>
@@ -167,7 +167,7 @@ export default function EcocuteSubsidyPage() {
                 </div>
               ))}
             </div>
-            <div data-reveal className="mt-8 p-6 rounded-2xl bg-white border border-[rgba(0,85,184,0.08)]">
+            <div data-reveal className="mt-8 p-6 rounded-2xl bg-white border border-[rgba(0,133,74,0.08)]">
               <p className="text-base text-[var(--wt-dark)] leading-relaxed mb-3">
                 「まだ使えるし...」と思っていても、給湯器は<strong>ある日突然壊れる</strong>ケースが少なくありません。
               </p>
@@ -189,11 +189,11 @@ export default function EcocuteSubsidyPage() {
         <section className="relative py-24 md:py-32 bg-white overflow-hidden">
           <div
             data-reveal-diag
-            className="absolute top-[10%] -left-[10%] w-[100%] h-[100px] bg-gradient-to-r from-[rgba(0,85,184,0.06)] via-[rgba(0,85,184,0.02)] to-transparent pointer-events-none"
+            className="absolute top-[10%] -left-[10%] w-[100%] h-[100px] bg-gradient-to-r from-[rgba(0,133,74,0.06)] via-[rgba(0,133,74,0.02)] to-transparent pointer-events-none"
             style={{ "--diag-angle": "-10deg" } as React.CSSProperties}
             aria-hidden="true"
           />
-          <div className="orb orb-blue absolute top-[-30px] left-[15%] w-[220px] h-[220px]" aria-hidden="true" />
+          <div className="orb orb-green absolute top-[-30px] left-[15%] w-[220px] h-[220px]" aria-hidden="true" />
           <div className="orb orb-accent absolute bottom-[-50px] right-[10%] w-[240px] h-[240px]" aria-hidden="true" />
           <div className="absolute top-0 right-0 w-[200px] h-[200px] md:w-[280px] md:h-[280px] dot-grid opacity-40" aria-hidden="true" />
           <div className="watermark-bold absolute top-6 -left-4 lg:left-0 font-mono z-0" aria-hidden="true">03</div>
@@ -213,7 +213,7 @@ export default function EcocuteSubsidyPage() {
                 そこで経済産業省・国土交通省・環境省の<strong>3省庁が連携</strong>して「住宅省エネ2026キャンペーン」を実施。
                 その中のひとつが<strong>「給湯省エネ2026事業」</strong>で、エコキュートなど高効率給湯器の導入費用の一部を国が負担してくれる制度です。
               </p>
-              <div data-reveal className="mt-8 p-6 rounded-2xl bg-[var(--wt-bg)] border border-[rgba(0,85,184,0.1)]">
+              <div data-reveal className="mt-8 p-6 rounded-2xl bg-[var(--wt-bg)] border border-[rgba(0,133,74,0.1)]">
                 <p className="text-sm font-bold text-[var(--wt-primary)] mb-3">住宅省エネ2026キャンペーン全体像</p>
                 <ul className="list-none space-y-3 text-base">
                   <li className="flex items-start gap-3">
@@ -240,11 +240,11 @@ export default function EcocuteSubsidyPage() {
         <section className="relative py-24 md:py-32 bg-[var(--wt-bg)] overflow-hidden">
           <div
             data-reveal-diag-r
-            className="absolute top-[12%] -right-[10%] w-[70%] h-[90px] bg-gradient-to-l from-[rgba(0,85,184,0.05)] to-transparent pointer-events-none"
+            className="absolute top-[12%] -right-[10%] w-[70%] h-[90px] bg-gradient-to-l from-[rgba(0,133,74,0.05)] to-transparent pointer-events-none"
             style={{ "--diag-angle": "8deg" } as React.CSSProperties}
             aria-hidden="true"
           />
-          <div className="orb orb-blue absolute -top-16 right-[8%] w-[280px] h-[280px]" aria-hidden="true" />
+          <div className="orb orb-green absolute -top-16 right-[8%] w-[280px] h-[280px]" aria-hidden="true" />
           <div className="orb orb-accent absolute bottom-[-60px] left-[-40px] w-[220px] h-[220px]" aria-hidden="true" />
           <div className="absolute bottom-0 right-0 w-[180px] h-[180px] md:w-[240px] md:h-[240px] dot-grid opacity-40" aria-hidden="true" />
           <div className="watermark-bold absolute top-6 -left-4 lg:left-0 font-mono z-0" aria-hidden="true">04</div>
@@ -292,7 +292,7 @@ export default function EcocuteSubsidyPage() {
                   </tbody>
                 </table>
               </div>
-              <div className="mt-4 p-4 rounded-xl bg-gradient-to-r from-[rgba(0,85,184,0.08)] to-[rgba(232,168,23,0.08)]">
+              <div className="mt-4 p-4 rounded-xl bg-gradient-to-r from-[rgba(0,133,74,0.08)] to-[rgba(232,168,23,0.08)]">
                 <p className="text-center text-lg font-bold text-[var(--wt-dark)]">
                   合計で最大 <span className="text-2xl text-[var(--wt-primary)]">約12〜14万円</span> の補助が受けられます
                 </p>
@@ -327,7 +327,7 @@ export default function EcocuteSubsidyPage() {
             aria-hidden="true"
           />
           <div className="orb orb-accent absolute top-[-30px] right-[10%] w-[240px] h-[240px]" aria-hidden="true" />
-          <div className="orb orb-blue absolute bottom-[-50px] left-[-40px] w-[260px] h-[260px]" aria-hidden="true" />
+          <div className="orb orb-green absolute bottom-[-50px] left-[-40px] w-[260px] h-[260px]" aria-hidden="true" />
           <div className="absolute top-0 left-0 w-[200px] h-[200px] md:w-[280px] md:h-[280px] dot-grid opacity-40" aria-hidden="true" />
           <div className="watermark-bold absolute top-6 -left-4 lg:left-0 font-mono z-0" aria-hidden="true">05</div>
 
@@ -354,7 +354,7 @@ export default function EcocuteSubsidyPage() {
               </div>
             </div>
 
-            <div data-reveal className="rounded-2xl bg-[var(--wt-bg)] border border-[rgba(0,85,184,0.08)] p-6 sm:p-8">
+            <div data-reveal className="rounded-2xl bg-[var(--wt-bg)] border border-[rgba(0,133,74,0.08)] p-6 sm:p-8">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
                 {/* 通常価格 */}
                 <div className="text-center p-5 rounded-xl bg-white">
@@ -383,7 +383,7 @@ export default function EcocuteSubsidyPage() {
               </div>
 
               {/* 投資回収メッセージ */}
-              <div className="mt-6 p-4 rounded-xl bg-gradient-to-r from-[rgba(0,85,184,0.06)] to-[rgba(6,199,85,0.06)] text-center">
+              <div className="mt-6 p-4 rounded-xl bg-gradient-to-r from-[rgba(0,133,74,0.06)] to-[rgba(6,199,85,0.06)] text-center">
                 <p className="text-sm text-[var(--wt-dark)] font-semibold">
                   光熱費の節約分を考えると、<strong className="text-[var(--wt-primary)]">約5〜8年で導入コストを回収</strong>できる計算です
                 </p>
@@ -391,7 +391,7 @@ export default function EcocuteSubsidyPage() {
             </div>
 
             {/* 10年間トータル試算（アンカリング + エンダウメント効果） */}
-            <div data-reveal className="mt-10 rounded-2xl bg-gradient-to-br from-[rgba(0,85,184,0.06)] to-[rgba(6,199,85,0.06)] p-6 sm:p-8">
+            <div data-reveal className="mt-10 rounded-2xl bg-gradient-to-br from-[rgba(0,133,74,0.06)] to-[rgba(6,199,85,0.06)] p-6 sm:p-8">
               <h4 className="text-lg font-bold text-[var(--wt-dark)] mb-6 text-center">
                 10年間のトータルで見ると...
               </h4>
@@ -425,11 +425,11 @@ export default function EcocuteSubsidyPage() {
         <section className="relative py-24 md:py-32 bg-[var(--wt-bg)] overflow-hidden">
           <div
             data-reveal-diag-r
-            className="absolute bottom-[15%] -right-[10%] w-[80%] h-[80px] bg-gradient-to-l from-[rgba(0,85,184,0.06)] to-transparent pointer-events-none"
+            className="absolute bottom-[15%] -right-[10%] w-[80%] h-[80px] bg-gradient-to-l from-[rgba(0,133,74,0.06)] to-transparent pointer-events-none"
             style={{ "--diag-angle": "10deg" } as React.CSSProperties}
             aria-hidden="true"
           />
-          <div className="orb orb-blue absolute top-[-40px] left-[8%] w-[260px] h-[260px]" aria-hidden="true" />
+          <div className="orb orb-green absolute top-[-40px] left-[8%] w-[260px] h-[260px]" aria-hidden="true" />
           <div className="orb orb-accent absolute bottom-[-60px] right-[-40px] w-[220px] h-[220px]" aria-hidden="true" />
           <div className="absolute bottom-0 left-0 w-[180px] h-[180px] md:w-[260px] md:h-[260px] dot-grid opacity-40" aria-hidden="true" />
           <div className="watermark-bold absolute top-6 -left-4 lg:left-0 font-mono z-0" aria-hidden="true">06</div>
@@ -443,7 +443,7 @@ export default function EcocuteSubsidyPage() {
             <div className="prose prose-lg max-w-none text-[var(--wt-gray)] leading-relaxed">
               <div data-reveal className="space-y-6">
                 {/* 条件1: 対象機種 */}
-                <div className="rounded-2xl bg-white p-6 border border-[rgba(0,85,184,0.08)]">
+                <div className="rounded-2xl bg-white p-6 border border-[rgba(0,133,74,0.08)]">
                   <div className="flex items-start gap-4">
                     <span className="shrink-0 w-10 h-10 rounded-full bg-[var(--wt-primary)] text-white flex items-center justify-center font-bold text-sm">1</span>
                     <div>
@@ -462,7 +462,7 @@ export default function EcocuteSubsidyPage() {
                 </div>
 
                 {/* 条件2: 工事時期 */}
-                <div className="rounded-2xl bg-white p-6 border border-[rgba(0,85,184,0.08)]">
+                <div className="rounded-2xl bg-white p-6 border border-[rgba(0,133,74,0.08)]">
                   <div className="flex items-start gap-4">
                     <span className="shrink-0 w-10 h-10 rounded-full bg-[var(--wt-primary)] text-white flex items-center justify-center font-bold text-sm">2</span>
                     <div>
@@ -476,7 +476,7 @@ export default function EcocuteSubsidyPage() {
                 </div>
 
                 {/* 条件3: 登録事業者 */}
-                <div className="rounded-2xl bg-white p-6 border border-[rgba(0,85,184,0.08)]">
+                <div className="rounded-2xl bg-white p-6 border border-[rgba(0,133,74,0.08)]">
                   <div className="flex items-start gap-4">
                     <span className="shrink-0 w-10 h-10 rounded-full bg-[var(--wt-primary)] text-white flex items-center justify-center font-bold text-sm">3</span>
                     <div>
@@ -487,7 +487,7 @@ export default function EcocuteSubsidyPage() {
                         工事を依頼する際に「補助金対応していますか？」と確認しましょう。
                       </p>
                       {/* ウェルテックの橋渡し */}
-                      <div className="mt-4 p-4 rounded-xl bg-[var(--wt-bg)] border border-[rgba(0,85,184,0.08)]">
+                      <div className="mt-4 p-4 rounded-xl bg-[var(--wt-bg)] border border-[rgba(0,133,74,0.08)]">
                         <p className="text-sm text-[var(--wt-dark)]">
                           <strong>株式会社ウェルテック</strong>は給湯器設置・交換工事を手がけており、
                           エコキュート工事の<a href="/#registration" className="text-[var(--wt-primary)] font-semibold hover:underline">協力会社も募集</a>しています。
@@ -511,12 +511,12 @@ export default function EcocuteSubsidyPage() {
         <section className="relative py-24 md:py-32 bg-white overflow-hidden">
           <div
             data-reveal-diag
-            className="absolute top-[15%] -left-[10%] w-[100%] h-[100px] bg-gradient-to-r from-[rgba(0,85,184,0.06)] via-[rgba(0,85,184,0.02)] to-transparent pointer-events-none"
+            className="absolute top-[15%] -left-[10%] w-[100%] h-[100px] bg-gradient-to-r from-[rgba(0,133,74,0.06)] via-[rgba(0,133,74,0.02)] to-transparent pointer-events-none"
             style={{ "--diag-angle": "-10deg" } as React.CSSProperties}
             aria-hidden="true"
           />
           <div className="orb orb-accent absolute top-[-30px] right-[10%] w-[240px] h-[240px]" aria-hidden="true" />
-          <div className="orb orb-blue absolute bottom-[-50px] left-[-40px] w-[260px] h-[260px]" aria-hidden="true" />
+          <div className="orb orb-green absolute bottom-[-50px] left-[-40px] w-[260px] h-[260px]" aria-hidden="true" />
           <div className="absolute top-0 left-0 w-[200px] h-[200px] md:w-[280px] md:h-[280px] dot-grid opacity-40" aria-hidden="true" />
           <div className="watermark-bold absolute top-6 -left-4 lg:left-0 font-mono z-0" aria-hidden="true">07</div>
 
@@ -543,7 +543,7 @@ export default function EcocuteSubsidyPage() {
               ].map((step) => (
                 <div key={step.num} className="flex gap-6 py-5 relative">
                   <div className="relative shrink-0 w-[30px] flex justify-center pt-1.5">
-                    <div className="w-3 h-3 rounded-full bg-[var(--wt-primary)] shadow-[0_0_0_4px_rgba(0,85,184,0.1)]" />
+                    <div className="w-3 h-3 rounded-full bg-[var(--wt-primary)] shadow-[0_0_0_4px_rgba(0,133,74,0.1)]" />
                   </div>
                   <div className="flex-1 pb-2 border-b border-black/[0.06]">
                     <div className="flex items-baseline gap-3 mb-1">
@@ -568,7 +568,7 @@ export default function EcocuteSubsidyPage() {
             style={{ "--diag-angle": "8deg" } as React.CSSProperties}
             aria-hidden="true"
           />
-          <div className="orb orb-blue absolute -top-16 right-[8%] w-[280px] h-[280px]" aria-hidden="true" />
+          <div className="orb orb-green absolute -top-16 right-[8%] w-[280px] h-[280px]" aria-hidden="true" />
           <div className="orb orb-accent absolute bottom-[-60px] left-[-40px] w-[220px] h-[220px]" aria-hidden="true" />
           <div className="absolute bottom-0 right-0 w-[180px] h-[180px] md:w-[240px] md:h-[240px] dot-grid opacity-40" aria-hidden="true" />
           <div className="watermark-bold absolute top-6 -left-4 lg:left-0 font-mono z-0" aria-hidden="true">08</div>
@@ -643,7 +643,7 @@ export default function EcocuteSubsidyPage() {
             style={{ "--diag-angle": "-10deg" } as React.CSSProperties}
             aria-hidden="true"
           />
-          <div className="orb orb-blue absolute top-[-40px] left-[8%] w-[260px] h-[260px]" aria-hidden="true" />
+          <div className="orb orb-green absolute top-[-40px] left-[8%] w-[260px] h-[260px]" aria-hidden="true" />
           <div className="orb orb-accent absolute bottom-[-40px] right-[-30px] w-[200px] h-[200px]" aria-hidden="true" />
           <div className="absolute bottom-0 left-0 w-[180px] h-[180px] md:w-[260px] md:h-[260px] dot-grid opacity-40" aria-hidden="true" />
           <div className="watermark-bold absolute top-6 -left-4 lg:left-0 font-mono z-0" aria-hidden="true">09</div>
@@ -688,11 +688,11 @@ export default function EcocuteSubsidyPage() {
         <section className="relative py-24 md:py-32 bg-[var(--wt-bg)] overflow-hidden">
           <div
             data-reveal-diag-r
-            className="absolute bottom-[15%] -right-[10%] w-[80%] h-[80px] bg-gradient-to-l from-[rgba(0,85,184,0.06)] to-transparent pointer-events-none"
+            className="absolute bottom-[15%] -right-[10%] w-[80%] h-[80px] bg-gradient-to-l from-[rgba(0,133,74,0.06)] to-transparent pointer-events-none"
             style={{ "--diag-angle": "10deg" } as React.CSSProperties}
             aria-hidden="true"
           />
-          <div className="orb orb-blue absolute top-[-40px] left-[50%] w-[300px] h-[300px]" aria-hidden="true" />
+          <div className="orb orb-green absolute top-[-40px] left-[50%] w-[300px] h-[300px]" aria-hidden="true" />
           <div className="absolute top-0 left-0 w-[200px] h-[200px] dot-grid opacity-25" aria-hidden="true" />
           <div className="watermark-bold absolute top-6 -left-4 lg:left-0 font-mono z-0" aria-hidden="true">10</div>
 
@@ -764,8 +764,8 @@ export default function EcocuteSubsidyPage() {
         {/* 11: デュアルCTA（一般ユーザー + 施工業者） */}
         {/* ============================================ */}
         <section className="relative py-24 md:py-32 bg-[var(--wt-bg-dark)] overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-[var(--wt-bg-dark)] via-[var(--wt-bg-dark)] to-[#0a2a4a] opacity-90" />
-          <div className="orb orb-blue absolute top-[-40px] right-[-60px] w-[280px] h-[280px] opacity-40" aria-hidden="true" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[var(--wt-bg-dark)] via-[var(--wt-bg-dark)] to-[#0a4a2a] opacity-90" />
+          <div className="orb orb-green absolute top-[-40px] right-[-60px] w-[280px] h-[280px] opacity-40" aria-hidden="true" />
           <div className="orb orb-accent absolute bottom-[-30px] left-[5%] w-[200px] h-[200px] opacity-30" aria-hidden="true" />
 
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -836,11 +836,11 @@ export default function EcocuteSubsidyPage() {
         <section className="relative py-24 md:py-32 bg-white overflow-hidden">
           <div
             data-reveal-diag
-            className="absolute top-[10%] -left-[10%] w-[90%] h-[100px] bg-gradient-to-r from-[rgba(0,85,184,0.05)] via-[rgba(0,85,184,0.02)] to-transparent pointer-events-none"
+            className="absolute top-[10%] -left-[10%] w-[90%] h-[100px] bg-gradient-to-r from-[rgba(0,133,74,0.05)] via-[rgba(0,133,74,0.02)] to-transparent pointer-events-none"
             style={{ "--diag-angle": "-10deg" } as React.CSSProperties}
             aria-hidden="true"
           />
-          <div className="orb orb-blue absolute -top-16 right-[5%] w-[280px] h-[280px]" aria-hidden="true" />
+          <div className="orb orb-green absolute -top-16 right-[5%] w-[280px] h-[280px]" aria-hidden="true" />
           <div className="orb orb-accent absolute bottom-[-50px] left-[-50px] w-[220px] h-[220px]" aria-hidden="true" />
           <div className="absolute top-0 right-0 w-[200px] h-[200px] dot-grid opacity-40" aria-hidden="true" />
           <div className="watermark-bold absolute top-6 -left-4 lg:left-0 font-mono z-0" aria-hidden="true">12</div>
@@ -855,19 +855,19 @@ export default function EcocuteSubsidyPage() {
               </p>
             </div>
             <div data-reveal className="space-y-4">
-              <a href="https://kyutou-shoene2026.meti.go.jp/" target="_blank" rel="noopener noreferrer" className="group block p-5 rounded-2xl bg-[var(--wt-bg)] hover:bg-[rgba(0,85,184,0.06)] border border-transparent hover:border-[rgba(0,85,184,0.12)] transition-all duration-300">
+              <a href="https://kyutou-shoene2026.meti.go.jp/" target="_blank" rel="noopener noreferrer" className="group block p-5 rounded-2xl bg-[var(--wt-bg)] hover:bg-[rgba(0,133,74,0.06)] border border-transparent hover:border-[rgba(0,133,74,0.12)] transition-all duration-300">
                 <p className="font-bold text-[var(--wt-dark)] group-hover:text-[var(--wt-primary)] transition-colors mb-1">給湯省エネ2026事業【公式】</p>
                 <p className="text-sm text-[var(--wt-gray)]">経済産業省 ― 補助金額・対象機器・申請方法の詳細</p>
               </a>
-              <a href="https://kyutou-shoene2026.meti.go.jp/materials/ecocute.html" target="_blank" rel="noopener noreferrer" className="group block p-5 rounded-2xl bg-[var(--wt-bg)] hover:bg-[rgba(0,85,184,0.06)] border border-transparent hover:border-[rgba(0,85,184,0.12)] transition-all duration-300">
+              <a href="https://kyutou-shoene2026.meti.go.jp/materials/ecocute.html" target="_blank" rel="noopener noreferrer" className="group block p-5 rounded-2xl bg-[var(--wt-bg)] hover:bg-[rgba(0,133,74,0.06)] border border-transparent hover:border-[rgba(0,133,74,0.12)] transition-all duration-300">
                 <p className="font-bold text-[var(--wt-dark)] group-hover:text-[var(--wt-primary)] transition-colors mb-1">対象機器の詳細【エコキュート】</p>
                 <p className="text-sm text-[var(--wt-gray)]">経済産業省 ― 対象となるエコキュートの性能要件・機種リスト</p>
               </a>
-              <a href="https://jutaku-shoene2026.mlit.go.jp/" target="_blank" rel="noopener noreferrer" className="group block p-5 rounded-2xl bg-[var(--wt-bg)] hover:bg-[rgba(0,85,184,0.06)] border border-transparent hover:border-[rgba(0,85,184,0.12)] transition-all duration-300">
+              <a href="https://jutaku-shoene2026.mlit.go.jp/" target="_blank" rel="noopener noreferrer" className="group block p-5 rounded-2xl bg-[var(--wt-bg)] hover:bg-[rgba(0,133,74,0.06)] border border-transparent hover:border-[rgba(0,133,74,0.12)] transition-all duration-300">
                 <p className="font-bold text-[var(--wt-dark)] group-hover:text-[var(--wt-primary)] transition-colors mb-1">住宅省エネ2026キャンペーン【公式】</p>
                 <p className="text-sm text-[var(--wt-gray)]">国土交通省 ― 窓リノベ・エコ住宅を含むキャンペーン全体</p>
               </a>
-              <a href="https://www.enecho.meti.go.jp/category/saving_and_new/saving/general/housing/kyutokidonyu/kyutodonyuhojo2025.html" target="_blank" rel="noopener noreferrer" className="group block p-5 rounded-2xl bg-[var(--wt-bg)] hover:bg-[rgba(0,85,184,0.06)] border border-transparent hover:border-[rgba(0,85,184,0.12)] transition-all duration-300">
+              <a href="https://www.enecho.meti.go.jp/category/saving_and_new/saving/general/housing/kyutokidonyu/kyutodonyuhojo2025.html" target="_blank" rel="noopener noreferrer" className="group block p-5 rounded-2xl bg-[var(--wt-bg)] hover:bg-[rgba(0,133,74,0.06)] border border-transparent hover:border-[rgba(0,133,74,0.12)] transition-all duration-300">
                 <p className="font-bold text-[var(--wt-dark)] group-hover:text-[var(--wt-primary)] transition-colors mb-1">資源エネルギー庁 ― 制度解説ページ</p>
                 <p className="text-sm text-[var(--wt-gray)]">経済産業省 資源エネルギー庁 ― 事業の背景・目的の解説</p>
               </a>
