@@ -6,7 +6,7 @@ import Image from "next/image";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
-  { label: "会社概要", href: "#about" },
+  { label: "会社概要", href: "/company" },
   { label: "施工実績", href: "#works" },
   { label: "業務内容", href: "#partner-tasks" },
   { label: "ご登録の流れ", href: "#flow" },
