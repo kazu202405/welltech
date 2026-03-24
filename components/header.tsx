@@ -7,11 +7,9 @@ import { Menu, X } from "lucide-react";
 
 const navItems = [
   { label: "会社概要", href: "/company" },
-  { label: "施工実績", href: "#works" },
-  { label: "業務内容", href: "#partner-tasks" },
-  { label: "ご登録の流れ", href: "#flow" },
+  { label: "パートナー・対応エリア", href: "/area" },
+  { label: "エアコン販売", href: "/aircon" },
   { label: "エコキュート補助金", href: "/ecocute-subsidy" },
-  { label: "対応エリア", href: "/area" },
 ];
 
 export function Header() {
@@ -127,12 +125,12 @@ export function Header() {
                 </a>
               );
             })}
-            <button
-              onClick={() => scrollToSection("#registration")}
+            <a
+              href="/area#registration"
               className="ml-4 bg-[var(--wt-primary)] hover:bg-[var(--wt-primary-dark)] text-white text-[13px] font-semibold px-5 py-2.5 rounded-md transition-all duration-300"
             >
               パートナー登録
-            </button>
+            </a>
           </nav>
 
           {/* モバイルメニューボタン */}
@@ -177,12 +175,12 @@ export function Header() {
               </a>
             );
           })}
-          <button
-            onClick={() => scrollToSection("#registration")}
+          <a
+            href="/area#registration"
             className="block w-full text-center bg-[var(--wt-primary)] text-white text-sm font-semibold px-5 py-3 rounded-md mt-3"
           >
             パートナー登録
-          </button>
+          </a>
         </div>
       </div>
     </header>

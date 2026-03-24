@@ -126,12 +126,12 @@ html {
   transform: scaleX(1);
 }
 
-/* ヒーロースライドショー（4枚 x 5秒 = 20秒サイクル） */
+/* ヒーロースライドショー（6枚 x 5秒 = 30秒サイクル） */
 @keyframes hero-slide {
   0% { opacity: 1; }
-  22% { opacity: 1; }
-  27% { opacity: 0; }
-  95% { opacity: 0; }
+  14% { opacity: 1; }
+  18% { opacity: 0; }
+  96% { opacity: 0; }
   100% { opacity: 1; }
 }
 
@@ -414,6 +414,13 @@ html {
 @keyframes loading-circle {
   0% { stroke-dashoffset: 163; }
   100% { stroke-dashoffset: 0; }
+}
+
+/* コーポレートヒーロー スクロールインジケーター */
+@keyframes scrollLine {
+  0% { transform: translateY(-100%); }
+  50% { transform: translateY(100%); }
+  100% { transform: translateY(100%); }
 }
 
 /* モーション軽減 */
