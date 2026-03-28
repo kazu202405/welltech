@@ -1,7 +1,12 @@
 "use client";
 
-import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { SectionHeading } from "@/components/ui/section-heading";
+import { useRef } from "react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useInView,
+} from "framer-motion";
 import Image from "next/image";
 
 const services = [
@@ -11,7 +16,6 @@ const services = [
     description:
       "公共施設の新設・改修、インフラ整備まで。入札から完工まで一貫した施工管理体制で対応します。",
     image: "/photo/S__49889490_0.jpg",
-    tags: ["建築一式", "電気工事", "管工事", "耐震改修"],
   },
   {
     title: "民間工事",
@@ -19,7 +23,6 @@ const services = [
     description:
       "商業施設、オフィスビル、工場・倉庫の施工。お客様のニーズに合わせた最適なソリューションを提供します。",
     image: "/photo/S__49889493_0.jpg",
-    tags: ["商業施設", "オフィス", "工場", "内装"],
   },
   {
     title: "設備工事",
@@ -27,93 +30,124 @@ const services = [
     description:
       "電気・空調・給排水設備の設計から施工まで。快適な環境づくりを技術力で支えます。",
     image: "/photo/S__49889504_0.jpg",
-    tags: ["電気設備", "空調設備", "給排水", "LED"],
-  },
-  {
-    title: "遮熱・省エネ",
-    subtitle: "Energy Saving",
-    description:
-      "工場・倉庫の遮熱塗装、断熱改修工事。大手自動車メーカー工場での施工実績があります。",
-    image: "/photo/S__49889510_0.jpg",
-    tags: ["遮熱塗装", "断熱工事", "省エネ", "太陽光"],
   },
 ];
 
 export function Services() {
-  const revealRef = useScrollReveal();
+  const sectionRef = useRef<HTMLElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
+  const textInView = useInView(textRef, { once: true, margin: "-10%" });
+
+  /* 画像のパララックス用 */
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const img0Y = useTransform(scrollYProgress, [0, 1], [40, -40]);
+  const img1Y = useTransform(scrollYProgress, [0, 1], [80, -30]);
+  const img2Y = useTransform(scrollYProgress, [0, 1], [50, -50]);
+
+  const imgYValues = [img0Y, img1Y, img2Y];
 
   return (
     <section
-      ref={revealRef}
+      ref={sectionRef}
       id="services"
-      className="relative py-24 md:py-32 bg-[var(--wt-bg)] overflow-hidden"
+      className="relative py-28 md:py-40 bg-[#f0f9f4] overflow-hidden"
     >
-      {/* 装飾 */}
-      <div
-        data-reveal-diag
-        className="absolute top-[15%] -left-[10%] w-[110%] h-[100px] bg-gradient-to-r from-[rgba(0,133,74,0.06)] via-[rgba(0,133,74,0.02)] to-transparent pointer-events-none"
-        style={{ "--diag-angle": "-10deg" } as React.CSSProperties}
-        aria-hidden="true"
-      />
-      <div className="orb orb-accent absolute bottom-[-60px] right-[-40px] w-[240px] h-[240px]" aria-hidden="true" />
-      <div className="absolute bottom-0 right-0 w-[220px] h-[220px] dot-grid opacity-30" aria-hidden="true" />
-      <div className="watermark-bold absolute top-6 -left-4 lg:left-0 font-mono z-0" aria-hidden="true">02</div>
-
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 relative z-10">
-        <div data-reveal className="mb-16 md:mb-20">
-          <SectionHeading
-            number="02"
-            label="Services"
-            title="事業内容"
-            description="公共から民間まで、幅広い建設ニーズに対応"
-          />
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {services.map((service, i) => (
-            <div
-              key={service.title}
-              data-reveal-item
-              className="group relative bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-500"
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-20 items-center">
+          {/* 左: テキスト */}
+          <div ref={textRef}>
+            <motion.p
+              className="text-[var(--wt-primary)] text-[10px] font-semibold tracking-[0.3em] uppercase mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={textInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             >
-              {/* 画像 */}
-              <div className="relative h-48 sm:h-56 overflow-hidden">
-                <Image
-                  src={service.image}
-                  alt={service.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                <div className="absolute bottom-4 left-5">
-                  <p className="text-white/60 text-[10px] font-semibold tracking-[0.15em] uppercase">
-                    {service.subtitle}
-                  </p>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white">
-                    {service.title}
-                  </h3>
-                </div>
-              </div>
+              Service
+            </motion.p>
+            <motion.h2
+              className="font-display text-3xl sm:text-4xl md:text-[2.75rem] lg:text-5xl font-bold text-[var(--wt-dark)] leading-[1.2] mb-8"
+              initial={{ opacity: 0, y: 30 }}
+              animate={textInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            >
+              公共から民間まで、
+              <br />
+              幅広い建設ニーズに
+              <br />
+              ワンストップで対応
+            </motion.h2>
+            <motion.div
+              className="w-12 h-[2px] bg-[var(--wt-primary)] mb-8"
+              initial={{ scaleX: 0 }}
+              animate={textInView ? { scaleX: 1 } : {}}
+              transition={{ duration: 0.6, delay: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
+              style={{ transformOrigin: "left" }}
+            />
+            <motion.p
+              className="text-[var(--wt-gray)] text-sm leading-[2] max-w-md"
+              initial={{ opacity: 0, y: 20 }}
+              animate={textInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            >
+              公共建築入札から民間工事、設備工事まで。
+              2018年の創業以来培った施工管理ノウハウと全国ネットワークで、
+              あらゆる建設プロジェクトをワンストップでサポートします。
+            </motion.p>
+          </div>
 
-              {/* テキスト */}
-              <div className="p-6 sm:p-8">
-                <p className="text-sm text-[var(--wt-gray)] leading-relaxed mb-5">
-                  {service.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {service.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-[11px] font-medium text-[var(--wt-primary)] bg-[var(--wt-primary)]/8 px-3 py-1 rounded-full"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          ))}
+          {/* 右: 写真3枚（斜めカット・隙間なし・大きく） */}
+          <div className="relative h-[350px] sm:h-[420px] md:h-[520px] lg:h-[580px] flex">
+            {services.map((service, i) => {
+              /* 斜めclip-pathで隣同士をピッタリ合わせる */
+              const clips = [
+                "polygon(0 0, 92% 0, 78% 100%, 0 100%)",
+                "polygon(14% 0, 92% 0, 78% 100%, 0 100%)",
+                "polygon(14% 0, 100% 0, 100% 100%, 0 100%)",
+              ];
+              /* 均等な重なりで隙間を揃える */
+              const margins = ["ml-0", "-ml-[6%]", "-ml-[6%]"];
+              const delays = [0.15, 0.3, 0.45];
+
+              return (
+                <motion.div
+                  key={service.title}
+                  className={`group relative flex-1 h-full overflow-hidden ${margins[i]}`}
+                  style={{
+                    clipPath: clips[i],
+                    y: imgYValues[i],
+                  }}
+                  initial={{ opacity: 0, x: 40 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-10%" }}
+                  transition={{
+                    duration: 0.9,
+                    delay: delays[i],
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                >
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                    sizes="(max-width: 768px) 40vw, 25vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent transition-opacity duration-500 group-hover:from-black/70" />
+                  <div className="absolute bottom-4 left-5 transition-transform duration-500 group-hover:translate-y-[-4px]">
+                    <p className="text-white/50 text-[9px] tracking-[0.15em] uppercase">
+                      {service.subtitle}
+                    </p>
+                    <p className="text-white text-sm font-bold">
+                      {service.title}
+                    </p>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

@@ -61,12 +61,11 @@ function PhilosophyItem({
         aria-hidden="true"
         style={{ height: "clamp(7rem, 10vw, 10rem)" }}
       >
-        <span className="-ml-2 md:-ml-4 text-[7rem] md:text-[10rem] font-black leading-none text-white/[0.04] font-mono">
+        <span className="-ml-2 text-[5rem] md:text-[6rem] font-black leading-none text-white/[0.04] font-mono">
           {item.num}
         </span>
         <span
-          className="-mr-0 md:-mr-4 text-[7rem] md:text-[10rem] font-black leading-none text-white/[0.04]"
-          style={{ writingMode: "vertical-rl" }}
+          className="text-[5rem] md:text-[6rem] font-black leading-none text-white/[0.04]"
         >
           {item.letter}
         </span>
@@ -91,7 +90,7 @@ function PhilosophyItem({
 
         {/* タイトル */}
         <motion.h3
-          className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 leading-tight"
+          className="font-display text-2xl sm:text-3xl md:text-2xl lg:text-3xl font-bold text-white mb-4 leading-tight"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
@@ -112,7 +111,7 @@ function PhilosophyItem({
 
         {/* 説明文 */}
         <motion.p
-          className="text-white/50 text-sm leading-[2] max-w-lg pl-0 md:pl-14"
+          className="text-white/50 text-sm leading-[2] max-w-lg"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
@@ -135,7 +134,7 @@ export function MVV() {
 
   /* 背景画像: ぼかし → ピント合う → フェードアウト */
   const bgBlur = useTransform(scrollYProgress, [0, 0.45, 0.6], [20, 0, 0]);
-  const bgOpacity = useTransform(scrollYProgress, [0, 0.15, 0.7, 0.9], [0, 0.5, 0.5, 0]);
+  const bgOpacity = useTransform(scrollYProgress, [0, 0.25, 0.35, 0.7, 0.9], [0, 0, 0.5, 0.5, 0]);
 
   /* ヘッダーのinView */
   const headerRef = useRef<HTMLDivElement>(null);
@@ -145,7 +144,7 @@ export function MVV() {
     <section
       ref={sectionRef}
       id="mvv"
-      className="relative pt-16 md:pt-24 pb-28 md:pb-40 bg-[#1a1a1a] overflow-hidden"
+      className="relative min-h-screen flex flex-col py-24 md:py-36 bg-[#1a1a1a] overflow-hidden"
     >
       {/* 背景画像 — 固定 + ぼかし→鮮明→フェードアウト */}
       <motion.div
@@ -166,9 +165,9 @@ export function MVV() {
       {/* 暗いオーバーレイ */}
       <div className="absolute inset-0 bg-black/30 pointer-events-none" aria-hidden="true" />
 
-      <div className="max-w-5xl mx-auto px-8 sm:px-12 lg:px-16 relative z-10">
+      <div className="max-w-7xl mx-auto px-8 sm:px-12 lg:px-16 relative z-10 flex-1 flex flex-col">
         {/* ヘッダー */}
-        <div ref={headerRef} className="mb-10 md:mb-14">
+        <div ref={headerRef} className="pb-10 md:pb-14">
           <motion.p
             className="text-[var(--wt-primary-light)] text-[10px] font-semibold tracking-[0.3em] uppercase mb-6"
             initial={{ opacity: 0, y: 20 }}
@@ -194,8 +193,8 @@ export function MVV() {
           />
         </div>
 
-        {/* 理念項目 */}
-        <div className="space-y-10 md:space-y-14">
+        {/* 理念項目 — 横3カラム */}
+        <div className="mt-auto mb-[15vh] grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 lg:gap-24">
           {items.map((item, i) => (
             <PhilosophyItem key={item.label} item={item} index={i} />
           ))}
