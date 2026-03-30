@@ -1,10 +1,10 @@
 import { CorporateHero } from "@/components/sections/corporate-hero";
 import { MVV } from "@/components/sections/mvv";
+import { Values } from "@/components/sections/values";
 import { Services } from "@/components/sections/services";
 import { Works } from "@/components/sections/works";
 import { EcocuteBanner } from "@/components/sections/ecocute-banner";
 import { CorporateCta } from "@/components/sections/corporate-cta";
-import { LineAccent } from "@/components/ui/line-accent";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -99,13 +99,11 @@ export default function Home() {
       />
       <CorporateHero />
       <MVV />
-      <LineAccent />
+      <Values />
       <Services />
-      <LineAccent variant="gray" />
       <Works />
-      <EcocuteBanner />
-      <LineAccent />
       <CorporateCta />
+      <EcocuteBanner />
     </>
   );
 }
