@@ -98,27 +98,22 @@ export function Services() {
             </motion.p>
           </div>
 
-          {/* 右: 写真3枚（斜めカット・隙間なし・大きく） */}
-          <div className="relative h-[350px] sm:h-[420px] md:h-[520px] lg:h-[580px] flex">
+          {/* 右: 写真3枚 */}
+          {/* モバイル: 横スクロール / デスクトップ: 斜めカット */}
+          <div className="flex gap-3 overflow-x-auto md:overflow-visible md:h-[520px] lg:h-[580px] scrollbar-hide">
             {services.map((service, i) => {
-              /* 斜めclip-pathで隣同士をピッタリ合わせる */
-              const clips = [
-                "polygon(0 0, 92% 0, 78% 100%, 0 100%)",
-                "polygon(14% 0, 92% 0, 78% 100%, 0 100%)",
-                "polygon(14% 0, 100% 0, 100% 100%, 0 100%)",
+              const clipClasses = [
+                "md:[clip-path:polygon(0_0,92%_0,78%_100%,0_100%)]",
+                "md:[clip-path:polygon(14%_0,92%_0,78%_100%,0_100%)] md:-ml-[6%]",
+                "md:[clip-path:polygon(14%_0,100%_0,100%_100%,0_100%)] md:-ml-[6%]",
               ];
-              /* 均等な重なりで隙間を揃える */
-              const margins = ["ml-0", "-ml-[6%]", "-ml-[6%]"];
               const delays = [0.15, 0.3, 0.45];
 
               return (
                 <motion.div
                   key={service.title}
-                  className={`group relative flex-1 h-full overflow-hidden ${margins[i]}`}
-                  style={{
-                    clipPath: clips[i],
-                    y: imgYValues[i],
-                  }}
+                  className={`group relative shrink-0 w-[70vw] sm:w-[45vw] md:w-auto md:flex-1 h-[280px] sm:h-[320px] md:h-full overflow-hidden rounded-lg md:rounded-none ${clipClasses[i]}`}
+                  style={{ y: imgYValues[i] }}
                   initial={{ opacity: 0, x: 40 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: "-10%" }}
@@ -133,9 +128,9 @@ export function Services() {
                     alt={service.title}
                     fill
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                    sizes="(max-width: 768px) 40vw, 25vw"
+                    sizes="(max-width: 768px) 70vw, 25vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent transition-opacity duration-500 group-hover:from-black/70" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   <div className="absolute bottom-4 left-5 transition-transform duration-500 group-hover:translate-y-[-4px]">
                     <p className="text-white/50 text-[9px] tracking-[0.15em] uppercase">
                       {service.subtitle}
