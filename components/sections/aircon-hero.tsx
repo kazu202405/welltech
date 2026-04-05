@@ -11,10 +11,24 @@ import { ChevronRight, Clock, Wrench, BadgePercent } from "lucide-react";
 export function AirconHero() {
   return (
     <>
-    <section className="relative overflow-hidden bg-[#0d2e1b] text-white pt-24 sm:pt-28 lg:pt-32 pb-8 sm:pb-10 lg:pb-12">
+    {/* パンくず（ヘッダー直下・ヒーロー上） */}
+    <nav className="bg-[#0d2e1b] pt-20 sm:pt-24 lg:pt-28 pb-2">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <ol className="flex items-center gap-2 text-xs text-white/60">
+          <li>
+            <Link href="/" className="hover:text-[var(--wt-accent)] transition-colors">
+              ホーム
+            </Link>
+          </li>
+          <li aria-hidden="true">/</li>
+          <li className="text-white font-semibold">エアコン販売・設置</li>
+        </ol>
+      </div>
+    </nav>
+    <section className="relative overflow-hidden bg-[#0d2e1b] text-white pt-4 sm:pt-6 lg:pt-8 pb-8 sm:pb-10 lg:pb-12">
       {/* エアコン画像カード（上下余白あり・右角丸） */}
       <div
-        className="absolute top-16 sm:top-20 lg:top-24 h-[575px] sm:h-[625px] lg:h-[680px] left-0 w-full sm:w-[82%] lg:w-[80%] bg-cover bg-center rounded-r-[40px] sm:rounded-r-[60px] lg:rounded-r-[80px] overflow-hidden shadow-2xl"
+        className="absolute top-0 h-[575px] sm:h-[625px] lg:h-[680px] left-0 w-full sm:w-[82%] lg:w-[80%] bg-cover bg-center rounded-r-[40px] sm:rounded-r-[60px] lg:rounded-r-[80px] overflow-hidden shadow-2xl"
         aria-hidden="true"
         style={{ backgroundImage: `url('/aircon-hero.png')` }}
       />
@@ -118,20 +132,6 @@ export function AirconHero() {
       </div>
 
     </section>
-    {/* パンくず（ヒーロー外・白背景） */}
-    <nav className="bg-white border-b border-gray-100 py-3">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <ol className="flex items-center gap-2 text-xs text-[var(--wt-gray)]">
-          <li>
-            <Link href="/" className="hover:text-[var(--wt-primary)] transition-colors">
-              ホーム
-            </Link>
-          </li>
-          <li aria-hidden="true">/</li>
-          <li className="text-[var(--wt-dark)] font-semibold">エアコン販売・設置</li>
-        </ol>
-      </div>
-    </nav>
     </>
   );
 }

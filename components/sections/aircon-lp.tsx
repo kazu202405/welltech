@@ -329,8 +329,8 @@ const faqs = [
 export function AirconLp({ lineUrl }: { lineUrl: string }) {
   return (
     <>
-      {/* ── 緊急性バナー ── */}
-      <UrgencyBanner />
+      {/* ── 選ばれる理由（4カードグリッド） ── */}
+      <ReasonsSection />
 
       {/* ── 実績数字 ── */}
       <StatsSection />
@@ -350,14 +350,14 @@ export function AirconLp({ lineUrl }: { lineUrl: string }) {
       {/* ── CTA中間 ── */}
       <CtaBand lineUrl={lineUrl} />
 
+      {/* ── 緊急性バナー ── */}
+      <UrgencyBanner />
+
       {/* ── メーカーラインナップ ── */}
       <ManufacturersSection />
 
       {/* ── サービス2本柱（販売/修理） ── */}
       <ServicePillarsSection />
-
-      {/* ── 選ばれる理由 ── */}
-      <ReasonsSection />
 
       {/* ── ご利用の流れ ── */}
       <FlowSection />
@@ -650,45 +650,132 @@ function ManufacturersSection() {
 /* ── 選ばれる理由 ── */
 function ReasonsSection() {
   return (
-    <section className="py-20 sm:py-28 bg-[var(--wt-bg)]">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14" data-reveal>
-          <p className="text-sm font-medium tracking-widest text-[var(--wt-primary)] uppercase mb-3">
-            Why WELLTECH
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-[var(--wt-dark)]">
-            選ばれる4つの理由
+    <section className="relative py-20 sm:py-24 lg:py-28 bg-[var(--wt-bg)] overflow-hidden">
+      {/* セクション上部: ダークからライトへの斜めカット区切り */}
+      <div
+        className="absolute top-0 left-0 right-0 h-20 sm:h-24 bg-[#0d2e1b] pointer-events-none"
+        style={{ clipPath: "polygon(0 0, 100% 0, 100% 0%, 0 100%)" }}
+        aria-hidden="true"
+      />
+
+      {/* 背景装飾: 右側にグリーングロー（ヒーローの右非対称を継承） */}
+      <div
+        className="absolute top-1/4 -right-40 w-[500px] h-[500px] rounded-full pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(0,133,74,0.08) 0%, transparent 70%)",
+        }}
+        aria-hidden="true"
+      />
+      {/* 左下: 黄色ソフトグロー */}
+      <div
+        className="absolute -bottom-32 -left-32 w-[400px] h-[400px] rounded-full pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(232,168,23,0.1) 0%, transparent 70%)",
+        }}
+        aria-hidden="true"
+      />
+      {/* ドットグリッド */}
+      <div className="absolute inset-0 dot-grid opacity-[0.05] pointer-events-none" aria-hidden="true" />
+
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* 上部タグ */}
+        <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 mb-6" data-reveal>
+          <span className="inline-flex items-center gap-1.5 bg-[var(--wt-primary)] text-white text-xs sm:text-sm font-black px-3.5 py-1.5 rounded-full shadow-md">
+            <span className="w-1.5 h-1.5 rounded-full bg-white" />
+            満足度の高さ
+          </span>
+          <span className="inline-flex items-center gap-1.5 bg-[var(--wt-primary)] text-white text-xs sm:text-sm font-black px-3.5 py-1.5 rounded-full shadow-md">
+            <span className="w-1.5 h-1.5 rounded-full bg-white" />
+            高いリピート率
+          </span>
+          <span className="text-xs sm:text-sm font-bold text-[var(--wt-gray)]">
+            選ばれる
+            <span className="text-[var(--wt-primary)]">「ウェルテック」</span>
+            の特徴です。
+          </span>
+        </div>
+
+        {/* 大見出し */}
+        <div className="text-center mb-14 sm:mb-16" data-reveal>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[var(--wt-dark)] leading-tight tracking-tight">
+            ウェルテックが
+            <span className="relative inline-block text-[var(--wt-primary)]">
+              選ばれている理由
+              <span
+                className="absolute -bottom-1 left-0 right-0 h-[6px] bg-[var(--wt-accent)]/60 -z-0 rounded-full"
+                aria-hidden="true"
+              />
+            </span>
           </h2>
         </div>
 
-        <div className="space-y-8">
+        {/* 4カードグリッド（右非対称の微調整: 偶数カードをわずかに下げる） */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
           {reasons.map((reason, i) => {
             const Icon = reason.icon;
-            const isEven = i % 2 === 1;
             return (
-              <div
+              <article
                 key={reason.num}
                 data-reveal
-                style={{ transitionDelay: `${i * 100}ms` }}
-                className={`flex flex-col md:flex-row items-center gap-8 bg-white rounded-2xl p-8 md:p-10 border border-gray-100 card-hover ${
-                  isEven ? "md:flex-row-reverse" : ""
+                style={{ transitionDelay: `${i * 80}ms` }}
+                className={`group relative bg-white overflow-hidden shadow-xl shadow-[var(--wt-primary)]/5 card-hover border border-gray-100 ${
+                  /* 右角丸大（ヒーロー継承）: 偶数カードは左角丸大 */
+                  i % 2 === 0
+                    ? "rounded-l-2xl rounded-tr-2xl rounded-br-[48px]"
+                    : "rounded-r-2xl rounded-tl-2xl rounded-bl-[48px]"
                 }`}
               >
-                <div className="flex-shrink-0 w-20 h-20 rounded-2xl bg-[var(--wt-primary)]/5 flex items-center justify-center">
-                  <Icon className="w-10 h-10 text-[var(--wt-primary)]" />
-                </div>
-                <div className="flex-1 text-center md:text-left">
-                  <span className="text-5xl font-black text-[var(--wt-primary)]/10 leading-none">
+                {/* カード上部: 黄色アクセントライン */}
+                <div
+                  className="h-1 bg-gradient-to-r from-[var(--wt-accent)] via-[var(--wt-accent)] to-[var(--wt-accent)]/70"
+                  aria-hidden="true"
+                />
+
+                {/* カード上部: 画像プレースホルダー + タイトルオーバーレイ */}
+                <div className="relative h-44 sm:h-52 bg-gradient-to-br from-[var(--wt-primary)] via-[#006B3C] to-[#004A29] overflow-hidden">
+                  {/* 斜めシャドウ装飾 */}
+                  <div
+                    className="absolute inset-0 opacity-[0.12]"
+                    style={{
+                      backgroundImage:
+                        "repeating-linear-gradient(45deg, #fff 0, #fff 2px, transparent 2px, transparent 16px)",
+                    }}
+                    aria-hidden="true"
+                  />
+                  {/* 下部グラデ（タイトル可読性用） */}
+                  <div
+                    className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"
+                    aria-hidden="true"
+                  />
+
+                  {/* 巨大番号（左上） */}
+                  <span
+                    className="absolute -top-2 -left-1 text-[120px] sm:text-[140px] font-black text-white/10 leading-none pointer-events-none select-none tracking-tighter"
+                    aria-hidden="true"
+                  >
                     {reason.num}
                   </span>
-                  <h3 className="text-xl font-bold text-[var(--wt-dark)] mt-2 mb-3 whitespace-pre-line">
+
+                  {/* アイコン（右上バッジ） */}
+                  <div className="absolute top-4 right-4 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 flex items-center justify-center shadow-lg">
+                    <Icon className="w-6 h-6 sm:w-7 sm:h-7 text-white" strokeWidth={2} />
+                  </div>
+
+                  {/* タイトル（下部） */}
+                  <h3 className="absolute bottom-4 sm:bottom-5 left-5 sm:left-6 right-5 sm:right-6 text-lg sm:text-xl lg:text-2xl font-black text-white whitespace-pre-line leading-[1.25] drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
                     {reason.title}
                   </h3>
-                  <p className="text-sm text-[var(--wt-gray)] leading-relaxed">
+                </div>
+
+                {/* カード本文 */}
+                <div className="relative p-5 sm:p-6">
+                  <p className="text-sm sm:text-[15px] text-[var(--wt-dark)]/75 leading-relaxed">
                     {reason.description}
                   </p>
                 </div>
-              </div>
+              </article>
             );
           })}
         </div>
