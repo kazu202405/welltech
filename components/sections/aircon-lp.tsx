@@ -121,29 +121,49 @@ const reasons = [
   {
     num: "01",
     title: "購入から修理まで\nワンストップ対応",
-    description:
-      "販売・設置・メンテナンス・修理まで自社で一貫対応。中間マージンがないから、価格もスピードも違います。",
+    highlight: "一貫",
+    highlightSub: "自社対応",
+    bullets: [
+      "販売・設置・メンテ・修理を自社完結",
+      "中間マージンなしで価格もスピードも有利",
+      "窓口一つで迷わず依頼可能",
+    ],
     icon: Wrench,
   },
   {
     num: "02",
     title: "最短2日で\n設置完了",
-    description:
-      "お問い合わせから最短2日で設置完了。急な故障やオフィスの移転にも即対応できる体制を整えています。",
+    highlight: "2日",
+    highlightSub: "最短設置",
+    bullets: [
+      "急な故障・移転にも即対応",
+      "在庫・施工スタッフを自社確保",
+      "段取りから完了まで一直線",
+    ],
     icon: Timer,
   },
   {
     num: "03",
     title: "業界最安値級の\n価格を実現",
-    description:
-      "メーカーとの直接取引と自社施工で中間コストを徹底カット。下取り・補助金も活用して最安値を目指します。",
+    highlight: "最安",
+    highlightSub: "業界水準",
+    bullets: [
+      "メーカー直取引で中間コスト削減",
+      "下取り・補助金活用で更に値引き",
+      "自社施工で工賃もスリム化",
+    ],
     icon: TrendingDown,
   },
   {
     num: "04",
     title: "現地調査から\nお見積りまで完全無料",
-    description:
-      "現地調査・お見積りはもちろん無料。しつこい営業は一切なし。納得いただけた場合のみ施工に進みます。",
+    highlight: "0円",
+    highlightSub: "見積り無料",
+    bullets: [
+      "現地調査・お見積りは完全無料",
+      "しつこい営業は一切なし",
+      "納得いただけた場合のみ施工",
+    ],
     icon: CheckCircle2,
   },
 ];
@@ -711,33 +731,32 @@ function ReasonsSection() {
           </h2>
         </div>
 
-        {/* 4カードグリッド（右非対称の微調整: 偶数カードをわずかに下げる） */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+        {/* 4カードグリッド（偶数カードを下げて非対称レイアウト） */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 md:gap-x-6 md:gap-y-8">
           {reasons.map((reason, i) => {
             const Icon = reason.icon;
+            const isEven = i % 2 === 1; // インデックス1,3 が2番目・4番目
             return (
               <article
                 key={reason.num}
                 data-reveal
                 style={{ transitionDelay: `${i * 80}ms` }}
-                className={`group relative bg-white overflow-hidden shadow-xl shadow-[var(--wt-primary)]/5 card-hover border border-gray-100 ${
-                  /* 右角丸大（ヒーロー継承）: 偶数カードは左角丸大 */
-                  i % 2 === 0
-                    ? "rounded-l-2xl rounded-tr-2xl rounded-br-[48px]"
-                    : "rounded-r-2xl rounded-tl-2xl rounded-bl-[48px]"
+                className={`group relative bg-white overflow-hidden shadow-xl shadow-[var(--wt-primary)]/5 card-hover border border-gray-100 transition-all duration-500 ${
+                  isEven
+                    ? "rounded-r-2xl rounded-tl-2xl rounded-bl-[48px] md:translate-y-10"
+                    : "rounded-l-2xl rounded-tr-2xl rounded-br-[48px]"
                 }`}
               >
-                {/* カード上部: 黄色アクセントライン */}
-                <div
-                  className="h-1 bg-gradient-to-r from-[var(--wt-accent)] via-[var(--wt-accent)] to-[var(--wt-accent)]/70"
-                  aria-hidden="true"
-                />
+                {/* カード上部: 黄色アクセントライン（ホバーで右に伸びる） */}
+                <div className="relative h-1 bg-gray-100 overflow-hidden" aria-hidden="true">
+                  <div className="absolute inset-y-0 left-0 w-full origin-left scale-x-[0.3] group-hover:scale-x-100 transition-transform duration-500 ease-out bg-gradient-to-r from-[var(--wt-accent)] via-[var(--wt-accent)] to-[var(--wt-accent)]/70" />
+                </div>
 
-                {/* カード上部: 画像プレースホルダー + タイトルオーバーレイ */}
+                {/* カード上部: ビジュアルヘッダー */}
                 <div className="relative h-44 sm:h-52 bg-gradient-to-br from-[var(--wt-primary)] via-[#006B3C] to-[#004A29] overflow-hidden">
-                  {/* 斜めシャドウ装飾 */}
+                  {/* 斜めシャドウ装飾（ホバーでスケールアップ） */}
                   <div
-                    className="absolute inset-0 opacity-[0.12]"
+                    className="absolute inset-0 opacity-[0.12] transition-transform duration-700 ease-out group-hover:scale-110"
                     style={{
                       backgroundImage:
                         "repeating-linear-gradient(45deg, #fff 0, #fff 2px, transparent 2px, transparent 16px)",
@@ -752,15 +771,18 @@ function ReasonsSection() {
 
                   {/* 巨大番号（左上） */}
                   <span
-                    className="absolute -top-2 -left-1 text-[120px] sm:text-[140px] font-black text-white/10 leading-none pointer-events-none select-none tracking-tighter"
+                    className="absolute -top-2 -left-1 text-[120px] sm:text-[140px] font-black text-white/10 leading-none pointer-events-none select-none tracking-tighter transition-all duration-500 group-hover:text-white/15 group-hover:-translate-y-1"
                     aria-hidden="true"
                   >
                     {reason.num}
                   </span>
 
                   {/* アイコン（右上バッジ） */}
-                  <div className="absolute top-4 right-4 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 flex items-center justify-center shadow-lg">
-                    <Icon className="w-6 h-6 sm:w-7 sm:h-7 text-white" strokeWidth={2} />
+                  <div className="absolute top-4 right-4 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 flex items-center justify-center shadow-lg transition-transform duration-500 group-hover:rotate-6 group-hover:scale-110">
+                    <Icon
+                      className="w-6 h-6 sm:w-7 sm:h-7 text-white"
+                      strokeWidth={2}
+                    />
                   </div>
 
                   {/* タイトル（下部） */}
@@ -771,13 +793,52 @@ function ReasonsSection() {
 
                 {/* カード本文 */}
                 <div className="relative p-5 sm:p-6">
-                  <p className="text-sm sm:text-[15px] text-[var(--wt-dark)]/75 leading-relaxed">
-                    {reason.description}
-                  </p>
+                  {/* ハイライト数字バッジ（左上フロート） */}
+                  <div
+                    className="absolute -top-7 right-5 sm:right-6 flex items-end gap-1.5 bg-[var(--wt-accent)] text-[#0d2e1b] px-3.5 py-2 rounded-xl shadow-lg border-2 border-white transition-transform duration-500 group-hover:-translate-y-1 group-hover:rotate-[-2deg]"
+                  >
+                    <span className="text-2xl sm:text-[28px] font-black leading-none tracking-tight">
+                      {reason.highlight}
+                    </span>
+                    <span className="text-[10px] font-bold leading-tight pb-0.5 whitespace-nowrap">
+                      {reason.highlightSub}
+                    </span>
+                  </div>
+
+                  {/* 箇条書き（チェックマーク付き） */}
+                  <ul className="space-y-2.5">
+                    {reason.bullets.map((bullet) => (
+                      <li key={bullet} className="flex items-start gap-2.5">
+                        <span className="flex-shrink-0 mt-0.5 w-5 h-5 rounded-full bg-[var(--wt-primary)]/10 flex items-center justify-center">
+                          <CheckCircle2
+                            className="w-3.5 h-3.5 text-[var(--wt-primary)]"
+                            strokeWidth={2.5}
+                          />
+                        </span>
+                        <span className="text-sm sm:text-[15px] text-[var(--wt-dark)]/80 leading-relaxed">
+                          {bullet}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </article>
             );
           })}
+        </div>
+
+        {/* セクション末尾サブCTA */}
+        <div className="mt-16 sm:mt-20 md:mt-24 text-center" data-reveal>
+          <p className="text-sm sm:text-base text-[var(--wt-dark)]/70 mb-4 font-medium">
+            まずは無料見積りでご確認ください
+          </p>
+          <a
+            href="#contact"
+            className="group inline-flex items-center gap-3 bg-[var(--wt-primary)] text-white font-black text-base sm:text-lg px-7 py-4 rounded-full hover:bg-[var(--wt-primary-dark)] transition-all btn-bounce shadow-xl shadow-[var(--wt-primary)]/25"
+          >
+            <span>60秒で完了・無料お見積り</span>
+            <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </a>
         </div>
       </div>
     </section>
