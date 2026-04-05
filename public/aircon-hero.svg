@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f5f7f9"/>
+      <stop offset="50%" stop-color="#e8eef2"/>
+      <stop offset="100%" stop-color="#c8d0d6"/>
+    </linearGradient>
+    <linearGradient id="panelGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e8eef2"/>
+      <stop offset="100%" stop-color="#b8c4cc"/>
+    </linearGradient>
+    <radialGradient id="centerGlow" cx="0.5" cy="0.5" r="0.7">
+      <stop offset="0%" stop-color="#f0f5f8"/>
+      <stop offset="100%" stop-color="#8a96a0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- エアコン本体が画面全体を覆う構図 -->
+  <!-- 外枠（画面端まで引き伸ばし） -->
+  <rect x="-50" y="-50" width="1700" height="1000" fill="url(#bodyGrad)"/>
+
+  <!-- 内側パネル -->
+  <rect x="80" y="80" width="1440" height="740" rx="16" fill="url(#panelGrad)" stroke="#a8b4bd" stroke-width="4"/>
+
+  <!-- 4方向グリル（大きく画面に広げる） -->
+  <!-- 上のグリル -->
+  <rect x="300" y="120" width="1000" height="110" rx="6" fill="#2a3540"/>
+  <g stroke="#6b7680" stroke-width="3">
+    <line x1="320" y1="145" x2="1280" y2="145"/>
+    <line x1="320" y1="165" x2="1280" y2="165"/>
+    <line x1="320" y1="185" x2="1280" y2="185"/>
+    <line x1="320" y1="205" x2="1280" y2="205"/>
+  </g>
+
+  <!-- 下のグリル -->
+  <rect x="300" y="670" width="1000" height="110" rx="6" fill="#2a3540"/>
+  <g stroke="#6b7680" stroke-width="3">
+    <line x1="320" y1="695" x2="1280" y2="695"/>
+    <line x1="320" y1="715" x2="1280" y2="715"/>
+    <line x1="320" y1="735" x2="1280" y2="735"/>
+    <line x1="320" y1="755" x2="1280" y2="755"/>
+  </g>
+
+  <!-- 左のグリル -->
+  <rect x="120" y="270" width="110" height="360" rx="6" fill="#2a3540"/>
+  <g stroke="#6b7680" stroke-width="3">
+    <line x1="145" y1="290" x2="145" y2="610"/>
+    <line x1="165" y1="290" x2="165" y2="610"/>
+    <line x1="185" y1="290" x2="185" y2="610"/>
+    <line x1="205" y1="290" x2="205" y2="610"/>
+  </g>
+
+  <!-- 右のグリル -->
+  <rect x="1370" y="270" width="110" height="360" rx="6" fill="#2a3540"/>
+  <g stroke="#6b7680" stroke-width="3">
+    <line x1="1395" y1="290" x2="1395" y2="610"/>
+    <line x1="1415" y1="290" x2="1415" y2="610"/>
+    <line x1="1435" y1="290" x2="1435" y2="610"/>
+    <line x1="1455" y1="290" x2="1455" y2="610"/>
+  </g>
+
+  <!-- 中央の吸気グリル（大きく） -->
+  <rect x="330" y="270" width="940" height="360" rx="8" fill="url(#centerGlow)" stroke="#8a96a0" stroke-width="3"/>
+  <g stroke="#6b7680" stroke-width="2" opacity="0.5">
+    <line x1="340" y1="300" x2="1260" y2="300"/>
+    <line x1="340" y1="330" x2="1260" y2="330"/>
+    <line x1="340" y1="360" x2="1260" y2="360"/>
+    <line x1="340" y1="390" x2="1260" y2="390"/>
+    <line x1="340" y1="420" x2="1260" y2="420"/>
+    <line x1="340" y1="450" x2="1260" y2="450"/>
+    <line x1="340" y1="480" x2="1260" y2="480"/>
+    <line x1="340" y1="510" x2="1260" y2="510"/>
+    <line x1="340" y1="540" x2="1260" y2="540"/>
+    <line x1="340" y1="570" x2="1260" y2="570"/>
+    <line x1="340" y1="600" x2="1260" y2="600"/>
+  </g>
+
+  <!-- センサー -->
+  <circle cx="800" cy="100" r="10" fill="#1a1a1a"/>
+  <circle cx="800" cy="100" r="4" fill="#00ff88" opacity="0.7"/>
+</svg>

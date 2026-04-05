@@ -22,6 +22,8 @@ import {
   Star,
   Timer,
   TrendingDown,
+  MapPin,
+  Sparkles,
 } from "lucide-react";
 
 /* ============================================================
@@ -212,6 +214,71 @@ const reviews = [
   },
 ];
 
+/* 実績数字 */
+const stats = [
+  { num: "15", suffix: "年", label: "創業から", icon: Award },
+  { num: "3,200", suffix: "件+", label: "施工実績", icon: Wrench },
+  { num: "98", suffix: "%", label: "顧客満足度", icon: Sparkles },
+  { num: "10", suffix: "年", label: "最長保証", icon: Shield },
+];
+
+/* 3点特徴（スピード・無料・対応範囲） */
+const features3 = [
+  {
+    icon: Timer,
+    title: "最短即日見積り",
+    description: "お問い合わせ当日〜翌日には訪問・見積りが可能。急ぎの案件もご相談ください。",
+  },
+  {
+    icon: BadgePercent,
+    title: "現地調査・見積り完全無料",
+    description: "出張費も、断っても費用ゼロ。しつこい営業も一切ありません。",
+  },
+  {
+    icon: Wrench,
+    title: "全メーカー・他社製品対応",
+    description: "国内8メーカーすべてに対応。他社で買ったエアコンの修理・移設もOK。",
+  },
+];
+
+/* サービス2本柱 */
+const servicePillars = [
+  {
+    icon: Snowflake,
+    label: "Sales & Install",
+    title: "エアコン販売・設置",
+    description:
+      "業務用・家庭用のあらゆるタイプに対応。下取り・分割・補助金を活用した最適プランをご提案します。",
+    features: [
+      "業務用：天カセ・壁掛け・床置き・ダクト型",
+      "家庭用：6〜20畳以上の全クラス",
+      "下取り・撤去処分込み",
+      "最短2日で設置完了",
+    ],
+  },
+  {
+    icon: Wrench,
+    label: "Repair & Maintenance",
+    title: "修理・メンテナンス",
+    description:
+      "既設エアコンの修理・クリーニング・部品交換まで。他社で購入された機種もお任せください。",
+    features: [
+      "全メーカー・全機種対応",
+      "他社購入品の修理もOK",
+      "部品交換・ガス補充",
+      "定期メンテナンス契約も可",
+    ],
+  },
+];
+
+/* 対応エリア */
+const serviceAreas = [
+  { region: "関東", prefs: "東京・神奈川・埼玉・千葉・茨城・栃木・群馬", primary: true },
+  { region: "東海", prefs: "愛知・静岡・岐阜・三重" },
+  { region: "関西", prefs: "大阪・京都・兵庫・奈良・滋賀" },
+  { region: "その他", prefs: "全国主要エリア対応（要相談）" },
+];
+
 /* FAQ */
 const faqs = [
   {
@@ -265,6 +332,12 @@ export function AirconLp({ lineUrl }: { lineUrl: string }) {
       {/* ── 緊急性バナー ── */}
       <UrgencyBanner />
 
+      {/* ── 実績数字 ── */}
+      <StatsSection />
+
+      {/* ── メインメッセージ & 3点特徴 ── */}
+      <ValuePropositionSection />
+
       {/* ── 月額表示セクション（ジャパネット式） ── */}
       <MonthlySection />
 
@@ -280,6 +353,9 @@ export function AirconLp({ lineUrl }: { lineUrl: string }) {
       {/* ── メーカーラインナップ ── */}
       <ManufacturersSection />
 
+      {/* ── サービス2本柱（販売/修理） ── */}
+      <ServicePillarsSection />
+
       {/* ── 選ばれる理由 ── */}
       <ReasonsSection />
 
@@ -291,6 +367,9 @@ export function AirconLp({ lineUrl }: { lineUrl: string }) {
 
       {/* ── お客様の声 ── */}
       <ReviewsSection />
+
+      {/* ── 対応エリア ── */}
+      <ServiceAreaSection />
 
       {/* ── FAQ ── */}
       <FaqSection />
@@ -855,6 +934,228 @@ function FinalCta({ lineUrl }: { lineUrl: string }) {
             しつこい営業なし
           </span>
         </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── 実績数字セクション ── */
+function StatsSection() {
+  return (
+    <section className="py-14 sm:py-16 bg-white border-b border-gray-100">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-4">
+          {stats.map((stat, i) => {
+            const Icon = stat.icon;
+            return (
+              <div
+                key={stat.label}
+                data-reveal
+                style={{ transitionDelay: `${i * 80}ms` }}
+                className="text-center relative"
+              >
+                <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[var(--wt-primary)]/10 mb-3">
+                  <Icon className="w-5 h-5 text-[var(--wt-primary)]" />
+                </div>
+                <div className="flex items-baseline justify-center gap-0.5">
+                  <span className="text-4xl sm:text-5xl font-black text-[var(--wt-dark)] tracking-tight">
+                    {stat.num}
+                  </span>
+                  <span className="text-lg sm:text-xl font-bold text-[var(--wt-primary)]">
+                    {stat.suffix}
+                  </span>
+                </div>
+                <p className="text-xs sm:text-sm text-[var(--wt-gray)] mt-1 font-medium">
+                  {stat.label}
+                </p>
+                {/* 区切り線（モバイルは右下、デスクトップは右のみ） */}
+                {i < stats.length - 1 && (
+                  <span
+                    className="hidden lg:block absolute top-1/2 right-0 -translate-y-1/2 w-px h-16 bg-gray-100"
+                    aria-hidden="true"
+                  />
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── メインメッセージ + 3点特徴 ── */
+function ValuePropositionSection() {
+  return (
+    <section className="py-20 sm:py-24 bg-[var(--wt-bg)] relative overflow-hidden">
+      <div className="absolute inset-0 dot-grid opacity-[0.04]" aria-hidden="true" />
+      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* メインメッセージ */}
+        <div className="text-center mb-14" data-reveal>
+          <p className="text-sm font-medium tracking-widest text-[var(--wt-primary)] uppercase mb-4">
+            Speed & Free Consulting
+          </p>
+          <h2 className="text-3xl sm:text-5xl font-bold text-[var(--wt-dark)] leading-tight mb-5">
+            お問い合わせから<br className="sm:hidden" />
+            <span className="text-[var(--wt-primary)]">最短2日</span>で設置完了。
+          </h2>
+          <p className="text-base sm:text-lg text-[var(--wt-gray)] max-w-2xl mx-auto leading-relaxed">
+            現地調査から見積りまで、<span className="font-bold text-[var(--wt-dark)]">完全無料</span>。
+            急な故障・オフィス移転にも即対応できる体制を整えています。
+          </p>
+        </div>
+
+        {/* 3点特徴 */}
+        <div className="grid md:grid-cols-3 gap-5">
+          {features3.map((f, i) => {
+            const Icon = f.icon;
+            return (
+              <div
+                key={f.title}
+                data-reveal
+                style={{ transitionDelay: `${i * 100}ms` }}
+                className="bg-white rounded-2xl p-7 border border-gray-100 card-hover text-center"
+              >
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[var(--wt-primary)]/8 mb-4">
+                  <Icon className="w-7 h-7 text-[var(--wt-primary)]" />
+                </div>
+                <h3 className="text-lg font-bold text-[var(--wt-dark)] mb-2">
+                  {f.title}
+                </h3>
+                <p className="text-sm text-[var(--wt-gray)] leading-relaxed">
+                  {f.description}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── サービス2本柱セクション ── */
+function ServicePillarsSection() {
+  return (
+    <section className="py-20 sm:py-28 bg-[var(--wt-bg)]">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-14" data-reveal>
+          <p className="text-sm font-medium tracking-widest text-[var(--wt-primary)] uppercase mb-3">
+            Our Services
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-[var(--wt-dark)] mb-4">
+            販売から修理まで、<br className="sm:hidden" />
+            ワンストップで対応。
+          </h2>
+          <p className="text-[var(--wt-gray)] max-w-2xl mx-auto">
+            新規購入・入れ替えはもちろん、既設エアコンの修理・メンテナンスもお任せください。
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          {servicePillars.map((svc, i) => {
+            const Icon = svc.icon;
+            return (
+              <div
+                key={svc.title}
+                data-reveal
+                style={{ transitionDelay: `${i * 120}ms` }}
+                className="bg-white rounded-2xl p-8 md:p-10 border border-gray-100 card-hover relative overflow-hidden"
+              >
+                <div
+                  className="absolute top-0 left-0 w-full h-1 bg-[var(--wt-primary)]"
+                  aria-hidden="true"
+                />
+                <div className="flex items-center gap-4 mb-5">
+                  <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-[var(--wt-primary)]/10 flex items-center justify-center">
+                    <Icon className="w-7 h-7 text-[var(--wt-primary)]" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-medium tracking-widest text-[var(--wt-primary)] uppercase mb-1">
+                      {svc.label}
+                    </p>
+                    <h3 className="text-xl font-bold text-[var(--wt-dark)]">
+                      {svc.title}
+                    </h3>
+                  </div>
+                </div>
+                <p className="text-sm text-[var(--wt-gray)] leading-relaxed mb-5">
+                  {svc.description}
+                </p>
+                <ul className="space-y-2.5 pt-5 border-t border-gray-100">
+                  {svc.features.map((feat) => (
+                    <li
+                      key={feat}
+                      className="flex items-start gap-2.5 text-sm text-[var(--wt-dark)]"
+                    >
+                      <CheckCircle2 className="w-4 h-4 text-[var(--wt-primary)] flex-shrink-0 mt-0.5" />
+                      <span>{feat}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── 対応エリアセクション ── */
+function ServiceAreaSection() {
+  return (
+    <section className="py-20 sm:py-24 bg-white">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12" data-reveal>
+          <p className="text-sm font-medium tracking-widest text-[var(--wt-primary)] uppercase mb-3">
+            Service Area
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-[var(--wt-dark)] mb-4">
+            対応エリア
+          </h2>
+          <p className="text-[var(--wt-gray)]">
+            関東を中心に、全国主要エリアで対応可能です。
+          </p>
+        </div>
+
+        <div className="grid sm:grid-cols-2 gap-4">
+          {serviceAreas.map((area, i) => (
+            <div
+              key={area.region}
+              data-reveal
+              style={{ transitionDelay: `${i * 80}ms` }}
+              className={`rounded-xl p-6 border-2 card-hover ${
+                area.primary
+                  ? "bg-[var(--wt-primary)]/5 border-[var(--wt-primary)]"
+                  : "bg-[var(--wt-bg)] border-gray-100"
+              }`}
+            >
+              <div className="flex items-center gap-3 mb-3">
+                <MapPin
+                  className={`w-5 h-5 ${
+                    area.primary ? "text-[var(--wt-primary)]" : "text-[var(--wt-gray)]"
+                  }`}
+                />
+                <h3 className="text-lg font-bold text-[var(--wt-dark)]">
+                  {area.region}
+                </h3>
+                {area.primary && (
+                  <span className="ml-auto text-[10px] font-bold bg-[var(--wt-primary)] text-white px-2 py-0.5 rounded-full">
+                    主要対応
+                  </span>
+                )}
+              </div>
+              <p className="text-sm text-[var(--wt-gray)] leading-relaxed">
+                {area.prefs}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <p className="text-center text-xs text-[var(--wt-gray-light)] mt-8">
+          ※ 北海道・沖縄・離島など一部エリアは対応不可の場合があります。詳しくはお問い合わせ時にご確認ください。
+        </p>
       </div>
     </section>
   );
