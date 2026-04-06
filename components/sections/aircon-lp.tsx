@@ -24,6 +24,10 @@ import {
   TrendingDown,
   MapPin,
   Sparkles,
+  Search,
+  FileText,
+  HardHat,
+  PartyPopper,
 } from "lucide-react";
 
 /* ============================================================
@@ -352,6 +356,9 @@ export function AirconLp({ lineUrl }: { lineUrl: string }) {
       {/* ── 選ばれる理由（4カードグリッド） ── */}
       <ReasonsSection />
 
+      {/* ── ご利用の流れ（ビジュアル版） ── */}
+      <VisualFlowSection />
+
       {/* ── 実績数字 ── */}
       <StatsSection />
 
@@ -378,9 +385,6 @@ export function AirconLp({ lineUrl }: { lineUrl: string }) {
 
       {/* ── サービス2本柱（販売/修理） ── */}
       <ServicePillarsSection />
-
-      {/* ── ご利用の流れ ── */}
-      <FlowSection />
 
       {/* ── CTA中間2 ── */}
       <CtaBand lineUrl={lineUrl} />
@@ -845,7 +849,169 @@ function ReasonsSection() {
   );
 }
 
-/* ── ご利用の流れ ── */
+/* ── ご利用の流れ（横型カード版） ── */
+const visualFlowSteps = [
+  {
+    num: "01",
+    icon: Phone,
+    title: "お問い合わせ",
+    description: "お電話・LINE・Webフォームからお気軽にご連絡ください。ご希望の日程やご要望をお伺いします。",
+    accent: true,
+    contact: true,
+  },
+  {
+    num: "02",
+    icon: Search,
+    title: "無料現地調査",
+    description: "専門スタッフがご自宅・現場に訪問。設置環境や配管経路を確認し、最適な機種をご提案します。",
+    accent: false,
+    contact: false,
+  },
+  {
+    num: "03",
+    icon: FileText,
+    title: "お見積り",
+    description: "調査結果をもとに詳細なお見積りをご提示。下取り・補助金・分割プランもご案内します。",
+    accent: false,
+    contact: false,
+  },
+  {
+    num: "04",
+    icon: HardHat,
+    title: "工事・施工",
+    description: "経験豊富な自社スタッフが丁寧に施工。標準工事なら最短2日で設置完了いたします。",
+    accent: false,
+    contact: false,
+  },
+  {
+    num: "05",
+    icon: PartyPopper,
+    title: "工事完了",
+    description: "試運転・動作確認後にお引き渡し。最長10年の長期保証で安心のアフターサポートをお約束します。",
+    accent: true,
+    contact: false,
+  },
+];
+
+function VisualFlowSection() {
+  return (
+    <section className="py-20 sm:py-28 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* ヘッダー */}
+        <div className="relative text-center mb-14 sm:mb-18" data-reveal>
+          {/* 右上バッジ */}
+          <div className="sm:absolute sm:right-0 sm:top-0 flex justify-center sm:justify-end mb-4 sm:mb-0">
+            <span className="inline-flex items-center gap-1.5 bg-[var(--wt-accent)] text-[#0d2e1b] text-sm font-black px-4 py-2 rounded-xl shadow-lg">
+              <Clock className="w-4 h-4" />
+              最短<span className="text-xl leading-none">2</span>日
+            </span>
+          </div>
+          <p className="text-xs sm:text-sm font-bold text-[var(--wt-primary)] tracking-widest mb-2">
+            手軽にご購入・導入サポート。どんなご相談もOK！
+          </p>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[var(--wt-dark)] tracking-tight">
+            ご利用の流れ
+          </h2>
+        </div>
+
+        {/* ステップカード群 */}
+        <div className="space-y-4 sm:space-y-6">
+          {visualFlowSteps.map((step, i) => {
+            const Icon = step.icon;
+            const isLast = i === visualFlowSteps.length - 1;
+
+            return (
+              <div key={step.num}>
+                <div
+                  data-reveal
+                  style={{ transitionDelay: `${i * 100}ms` }}
+                  className="group relative flex flex-col sm:flex-row items-stretch bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300"
+                >
+                  {/* 左: 番号 + アイコン + タイトル */}
+                  <div
+                    className={`relative flex-shrink-0 w-full sm:w-[240px] lg:w-[280px] min-h-[140px] sm:min-h-[180px] overflow-hidden flex flex-col items-center justify-center gap-2 p-5 ${
+                      step.accent
+                        ? "bg-gradient-to-br from-[var(--wt-accent)] via-[#d4981a] to-[var(--wt-accent)]"
+                        : "bg-gradient-to-br from-[var(--wt-primary)] via-[#006B3C] to-[#004A29]"
+                    }`}
+                  >
+                    {/* 大番号（左上バッジ） */}
+                    <span className="absolute top-0 left-0 text-[11px] font-black leading-none px-3.5 py-2.5 rounded-br-2xl bg-white/20 text-white backdrop-blur-sm">
+                      STEP {step.num}
+                    </span>
+
+                    {/* 背景装飾: 巨大番号ゴースト */}
+                    <span
+                      className="absolute -bottom-4 -right-2 text-[100px] sm:text-[120px] font-black leading-none text-white/10 pointer-events-none select-none tracking-tighter"
+                      aria-hidden="true"
+                    >
+                      {step.num}
+                    </span>
+
+                    {/* アイコン */}
+                    <div className="relative z-10 transition-transform duration-500 group-hover:scale-110">
+                      <Icon className="w-10 h-10 sm:w-12 sm:h-12 text-white" strokeWidth={1.5} />
+                    </div>
+
+                    {/* タイトル */}
+                    <h3 className="relative z-10 text-base sm:text-lg font-black text-white text-center leading-tight">
+                      {step.title}
+                    </h3>
+                  </div>
+
+                  {/* 右: テキストコンテンツ */}
+                  <div className="flex-1 p-5 sm:p-7 flex flex-col justify-center">
+                    <p className="text-sm sm:text-[15px] text-[var(--wt-gray)] leading-relaxed">
+                      {step.description}
+                    </p>
+
+                    {/* お問い合わせ方法（Step 01のみ） */}
+                    {step.contact && (
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        <span className="inline-flex items-center gap-1.5 bg-[var(--wt-primary)]/10 text-[var(--wt-primary)] text-xs font-bold px-3 py-1.5 rounded-full">
+                          <Phone className="w-3.5 h-3.5" />
+                          電話
+                        </span>
+                        <span className="inline-flex items-center gap-1.5 bg-[var(--wt-green)]/10 text-[var(--wt-green)] text-xs font-bold px-3 py-1.5 rounded-full">
+                          <MessageCircle className="w-3.5 h-3.5" />
+                          LINE
+                        </span>
+                        <span className="inline-flex items-center gap-1.5 bg-blue-50 text-blue-600 text-xs font-bold px-3 py-1.5 rounded-full">
+                          <FileText className="w-3.5 h-3.5" />
+                          Webフォーム
+                        </span>
+                      </div>
+                    )}
+
+                    {/* 最終ステップ: 保証バッジ */}
+                    {isLast && (
+                      <div className="mt-4 inline-flex items-center gap-2 bg-[var(--wt-accent)]/10 text-[#0d2e1b] text-xs font-bold px-3.5 py-2 rounded-lg border border-[var(--wt-accent)]/25">
+                        <Shield className="w-4 h-4 text-[var(--wt-accent)]" />
+                        最長10年の長期保証付き
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* 矢印コネクター */}
+                {!isLast && (
+                  <div className="flex justify-center py-2 sm:py-3" aria-hidden="true">
+                    <div className="flex flex-col items-center text-[var(--wt-primary)]/30">
+                      <div className="w-0.5 h-4 bg-current rounded-full" />
+                      <ChevronDown className="w-5 h-5 -mt-1" />
+                    </div>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── ご利用の流れ（シンプル版・未使用） ── */
 function FlowSection() {
   return (
     <section className="py-20 sm:py-28 bg-white">
