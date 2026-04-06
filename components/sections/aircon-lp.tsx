@@ -359,23 +359,11 @@ export function AirconLp({ lineUrl }: { lineUrl: string }) {
       {/* ── ご利用の流れ（ビジュアル版） ── */}
       <VisualFlowSection />
 
-      {/* ── 実績数字 ── */}
-      <StatsSection />
-
-      {/* ── メインメッセージ & 3点特徴 ── */}
-      <ValuePropositionSection />
+      {/* ── お客様の声 ── */}
+      <ReviewsSection />
 
       {/* ── 月額表示セクション（ジャパネット式） ── */}
       <MonthlySection />
-
-      {/* ── 3大独自強み ── */}
-      <UniquePointsSection />
-
-      {/* ── パッケージ販売（全部コミコミ） ── */}
-      <PackageSection />
-
-      {/* ── CTA中間 ── */}
-      <CtaBand lineUrl={lineUrl} />
 
       {/* ── 緊急性バナー ── */}
       <UrgencyBanner />
@@ -383,14 +371,8 @@ export function AirconLp({ lineUrl }: { lineUrl: string }) {
       {/* ── メーカーラインナップ ── */}
       <ManufacturersSection />
 
-      {/* ── サービス2本柱（販売/修理） ── */}
-      <ServicePillarsSection />
-
       {/* ── CTA中間2 ── */}
       <CtaBand lineUrl={lineUrl} />
-
-      {/* ── お客様の声 ── */}
-      <ReviewsSection />
 
       {/* ── 対応エリア ── */}
       <ServiceAreaSection />
