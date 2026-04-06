@@ -855,41 +855,51 @@ const visualFlowSteps = [
     num: "01",
     icon: Phone,
     title: "お問い合わせ",
-    description: "お電話・LINE・Webフォームからお気軽にご連絡ください。ご希望の日程やご要望をお伺いします。",
+    description:
+      "ご注文は「無料お見積り」「お電話」「LINEでお見積り」にて承っております。お急ぎのお客様は在庫状況をお調べいたしますので、お電話にてご連絡ください。",
     accent: true,
     contact: true,
+    badge: null,
   },
   {
     num: "02",
     icon: Search,
-    title: "無料現地調査",
-    description: "専門スタッフがご自宅・現場に訪問。設置環境や配管経路を確認し、最適な機種をご提案します。",
+    title: "現地調査",
+    description:
+      "技術担当者が訪問し、適切な業務用・家庭用エアコンの商品・工事内容をご提案します。修理の場合は故障箇所を確認いたします。取り付け工事費用は設置場所・現場状況により異なりますので、現地調査が必要です。",
     accent: false,
     contact: false,
+    badge: "最短即日",
   },
   {
     num: "03",
     icon: FileText,
     title: "お見積り",
-    description: "調査結果をもとに詳細なお見積りをご提示。下取り・補助金・分割プランもご案内します。",
+    description:
+      "現地調査をもとに、お見積書をメールもしくはLINEにてお送りいたします（即日〜2日以内）。現場状況により提出日が前後する場合がございます。",
     accent: false,
     contact: false,
+    badge: null,
   },
   {
     num: "04",
-    icon: HardHat,
-    title: "工事・施工",
-    description: "経験豊富な自社スタッフが丁寧に施工。標準工事なら最短2日で設置完了いたします。",
+    icon: CheckCircle2,
+    title: "ご契約",
+    description:
+      "お見積りをご確認いただき、ご了承いただけましたらご契約となります。下取り・補助金・分割プランもこの段階でご案内いたします。",
     accent: false,
     contact: false,
+    badge: null,
   },
   {
     num: "05",
-    icon: PartyPopper,
-    title: "工事完了",
-    description: "試運転・動作確認後にお引き渡し。最長10年の長期保証で安心のアフターサポートをお約束します。",
+    icon: HardHat,
+    title: "工事・修理",
+    description:
+      "経験豊富な自社スタッフがエアコンの設置工事・修理を行います。標準工事なら最短2日で設置完了。試運転・動作確認後にお引き渡しいたします。",
     accent: true,
     contact: false,
+    badge: null,
   },
 ];
 
@@ -914,97 +924,99 @@ function VisualFlowSection() {
           </h2>
         </div>
 
-        {/* ステップカード群 */}
-        <div className="space-y-4 sm:space-y-6">
-          {visualFlowSteps.map((step, i) => {
-            const Icon = step.icon;
-            const isLast = i === visualFlowSteps.length - 1;
+        {/* ステップカード群（左にタイムラインライン） */}
+        <div className="relative">
+          {/* 縦の接続ライン（01〜05の丸同士を繋ぐ） */}
+          <div
+            className="absolute left-[24.5px] sm:left-[27.5px] top-0 bottom-0 w-[3px] bg-[var(--wt-primary)] pointer-events-none"
+            aria-hidden="true"
+            style={{
+              clipPath: "inset(50px 0 50px 0)",
+            }}
+          />
 
-            return (
-              <div key={step.num}>
+          <div className="space-y-0">
+            {visualFlowSteps.map((step, i) => {
+              const Icon = step.icon;
+
+              return (
                 <div
+                  key={step.num}
                   data-reveal
-                  style={{ transitionDelay: `${i * 100}ms` }}
-                  className="group relative flex flex-col sm:flex-row items-stretch bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300"
+                  style={{ transitionDelay: `${i * 80}ms` }}
+                  className="relative flex gap-4 sm:gap-5 py-2.5 sm:py-3"
                 >
-                  {/* 左: 番号 + アイコン + タイトル */}
-                  <div
-                    className={`relative flex-shrink-0 w-full sm:w-[240px] lg:w-[280px] min-h-[140px] sm:min-h-[180px] overflow-hidden flex flex-col items-center justify-center gap-2 p-5 ${
-                      step.accent
-                        ? "bg-gradient-to-br from-[var(--wt-accent)] via-[#d4981a] to-[var(--wt-accent)]"
-                        : "bg-gradient-to-br from-[var(--wt-primary)] via-[#006B3C] to-[#004A29]"
-                    }`}
-                  >
-                    {/* 大番号（左上バッジ） */}
-                    <span className="absolute top-0 left-0 text-[11px] font-black leading-none px-3.5 py-2.5 rounded-br-2xl bg-white/20 text-white backdrop-blur-sm">
-                      STEP {step.num}
-                    </span>
-
-                    {/* 背景装飾: 巨大番号ゴースト */}
-                    <span
-                      className="absolute -bottom-4 -right-2 text-[100px] sm:text-[120px] font-black leading-none text-white/10 pointer-events-none select-none tracking-tighter"
-                      aria-hidden="true"
-                    >
+                  {/* タイムラインノード（丸・カード中央に揃える） */}
+                  <div className="relative z-10 flex-shrink-0 self-center">
+                    <div className="w-[52px] h-[52px] sm:w-[58px] sm:h-[58px] rounded-full flex items-center justify-center text-base sm:text-lg font-black border-[3px] border-white shadow-lg bg-[var(--wt-primary)] text-white">
                       {step.num}
-                    </span>
-
-                    {/* アイコン */}
-                    <div className="relative z-10 transition-transform duration-500 group-hover:scale-110">
-                      <Icon className="w-10 h-10 sm:w-12 sm:h-12 text-white" strokeWidth={1.5} />
                     </div>
-
-                    {/* タイトル */}
-                    <h3 className="relative z-10 text-base sm:text-lg font-black text-white text-center leading-tight">
-                      {step.title}
-                    </h3>
                   </div>
 
-                  {/* 右: テキストコンテンツ */}
-                  <div className="flex-1 p-5 sm:p-7 flex flex-col justify-center">
-                    <p className="text-sm sm:text-[15px] text-[var(--wt-gray)] leading-relaxed">
-                      {step.description}
-                    </p>
+                  {/* カード本体 */}
+                  <div className="group flex-1 flex flex-col sm:flex-row items-stretch bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300">
+                    {/* 左: アイコン + タイトル */}
+                    <div
+                      className={`relative flex-shrink-0 w-full sm:w-[200px] lg:w-[220px] overflow-hidden flex flex-col items-center justify-center gap-1.5 py-5 sm:py-6 px-4 ${
+                        "bg-gradient-to-br from-[var(--wt-primary)] via-[#006B3C] to-[#004A29]"
+                      }`}
+                    >
+                      {/* 背景装飾: 巨大番号ゴースト */}
+                      <span
+                        className="absolute -bottom-3 -right-1 text-[80px] sm:text-[90px] font-black leading-none text-white/10 pointer-events-none select-none tracking-tighter"
+                        aria-hidden="true"
+                      >
+                        {step.num}
+                      </span>
 
-                    {/* お問い合わせ方法（Step 01のみ） */}
-                    {step.contact && (
-                      <div className="mt-4 flex flex-wrap gap-2">
-                        <span className="inline-flex items-center gap-1.5 bg-[var(--wt-primary)]/10 text-[var(--wt-primary)] text-xs font-bold px-3 py-1.5 rounded-full">
-                          <Phone className="w-3.5 h-3.5" />
-                          電話
-                        </span>
-                        <span className="inline-flex items-center gap-1.5 bg-[var(--wt-green)]/10 text-[var(--wt-green)] text-xs font-bold px-3 py-1.5 rounded-full">
-                          <MessageCircle className="w-3.5 h-3.5" />
-                          LINE
-                        </span>
-                        <span className="inline-flex items-center gap-1.5 bg-blue-50 text-blue-600 text-xs font-bold px-3 py-1.5 rounded-full">
-                          <FileText className="w-3.5 h-3.5" />
-                          Webフォーム
-                        </span>
+                      {/* アイコン */}
+                      <div className="relative z-10 transition-transform duration-500 group-hover:scale-110">
+                        <Icon className="w-8 h-8 sm:w-9 sm:h-9 text-white" strokeWidth={1.5} />
                       </div>
-                    )}
 
-                    {/* 最終ステップ: 保証バッジ */}
-                    {isLast && (
-                      <div className="mt-4 inline-flex items-center gap-2 bg-[var(--wt-accent)]/10 text-[#0d2e1b] text-xs font-bold px-3.5 py-2 rounded-lg border border-[var(--wt-accent)]/25">
-                        <Shield className="w-4 h-4 text-[var(--wt-accent)]" />
-                        最長10年の長期保証付き
-                      </div>
-                    )}
+                      {/* タイトル */}
+                      <h3 className="relative z-10 text-sm sm:text-base font-black text-white text-center leading-tight">
+                        {step.title}
+                      </h3>
+
+                      {/* バッジ（最短即日など） */}
+                      {step.badge && (
+                        <span className="relative z-10 inline-flex items-center gap-1 bg-white text-[var(--wt-primary)] text-[10px] sm:text-[11px] font-black px-2 py-0.5 rounded-full shadow-md">
+                          <Zap className="w-2.5 h-2.5" />
+                          {step.badge}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* 右: テキストコンテンツ */}
+                    <div className="flex-1 px-4 py-3 sm:px-5 sm:py-4 flex flex-col justify-center">
+                      <p className="text-xs sm:text-sm text-[var(--wt-gray)] leading-relaxed">
+                        {step.description}
+                      </p>
+
+                      {/* お問い合わせ方法（Step 01のみ） */}
+                      {step.contact && (
+                        <div className="mt-2.5 flex flex-wrap gap-1.5">
+                          <span className="inline-flex items-center gap-1 bg-[var(--wt-primary)]/10 text-[var(--wt-primary)] text-[11px] font-bold px-2.5 py-1 rounded-full">
+                            <Phone className="w-3 h-3" />
+                            電話
+                          </span>
+                          <span className="inline-flex items-center gap-1 bg-[var(--wt-green)]/10 text-[var(--wt-green)] text-[11px] font-bold px-2.5 py-1 rounded-full">
+                            <MessageCircle className="w-3 h-3" />
+                            LINE
+                          </span>
+                          <span className="inline-flex items-center gap-1 bg-blue-50 text-blue-600 text-[11px] font-bold px-2.5 py-1 rounded-full">
+                            <FileText className="w-3 h-3" />
+                            Webフォーム
+                          </span>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
-
-                {/* 矢印コネクター */}
-                {!isLast && (
-                  <div className="flex justify-center py-2 sm:py-3" aria-hidden="true">
-                    <div className="flex flex-col items-center text-[var(--wt-primary)]/30">
-                      <div className="w-0.5 h-4 bg-current rounded-full" />
-                      <ChevronDown className="w-5 h-5 -mt-1" />
-                    </div>
-                  </div>
-                )}
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
