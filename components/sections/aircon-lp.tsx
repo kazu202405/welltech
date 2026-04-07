@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import {
   Phone,
   MessageCircle,
@@ -133,6 +134,7 @@ const reasons = [
       "窓口一つで迷わず依頼可能",
     ],
     icon: Wrench,
+    image: "/aircon-reason-onestop.png",
   },
   {
     num: "02",
@@ -145,6 +147,7 @@ const reasons = [
       "段取りから完了まで一直線",
     ],
     icon: Timer,
+    image: "/aircon-reason-install.png",
   },
   {
     num: "03",
@@ -157,6 +160,7 @@ const reasons = [
       "自社施工で工賃もスリム化",
     ],
     icon: TrendingDown,
+    image: "/aircon-reason-price.png",
   },
   {
     num: "04",
@@ -169,6 +173,7 @@ const reasons = [
       "納得いただけた場合のみ施工",
     ],
     icon: CheckCircle2,
+    image: "/aircon-reason-free-estimate.png",
   },
 ];
 
@@ -740,15 +745,27 @@ function ReasonsSection() {
 
                 {/* カード上部: ビジュアルヘッダー */}
                 <div className="relative h-44 sm:h-52 bg-gradient-to-br from-[var(--wt-primary)] via-[#006B3C] to-[#004A29] overflow-hidden">
-                  {/* 斜めシャドウ装飾（ホバーでスケールアップ） */}
-                  <div
-                    className="absolute inset-0 opacity-[0.12] transition-transform duration-700 ease-out group-hover:scale-110"
-                    style={{
-                      backgroundImage:
-                        "repeating-linear-gradient(45deg, #fff 0, #fff 2px, transparent 2px, transparent 16px)",
-                    }}
-                    aria-hidden="true"
-                  />
+                  {/* 理由画像（ある場合） */}
+                  {reason.image && (
+                    <Image
+                      src={reason.image}
+                      alt={reason.title.replace("\n", "")}
+                      fill
+                      className="object-cover object-top"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                  )}
+                  {/* 斜めシャドウ装飾（画像がない場合のみ表示） */}
+                  {!reason.image && (
+                    <div
+                      className="absolute inset-0 opacity-[0.12] transition-transform duration-700 ease-out group-hover:scale-110"
+                      style={{
+                        backgroundImage:
+                          "repeating-linear-gradient(45deg, #fff 0, #fff 2px, transparent 2px, transparent 16px)",
+                      }}
+                      aria-hidden="true"
+                    />
+                  )}
                   {/* 下部グラデ（タイトル可読性用） */}
                   <div
                     className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"
@@ -842,6 +859,7 @@ const visualFlowSteps = [
     accent: true,
     contact: true,
     badge: null,
+    image: "/aircon-flow-contact.png",
   },
   {
     num: "02",
@@ -852,6 +870,7 @@ const visualFlowSteps = [
     accent: false,
     contact: false,
     badge: "最短即日",
+    image: "/aircon-flow-inspection.png",
   },
   {
     num: "03",
@@ -862,6 +881,7 @@ const visualFlowSteps = [
     accent: false,
     contact: false,
     badge: null,
+    image: "/aircon-flow-estimate.png",
   },
   {
     num: "04",
@@ -872,6 +892,7 @@ const visualFlowSteps = [
     accent: false,
     contact: false,
     badge: null,
+    image: "/aircon-flow-contract.png",
   },
   {
     num: "05",
@@ -882,6 +903,7 @@ const visualFlowSteps = [
     accent: true,
     contact: false,
     badge: null,
+    image: "/aircon-flow-construction.png",
   },
 ];
 
@@ -943,6 +965,19 @@ function VisualFlowSection() {
                         "bg-gradient-to-br from-[var(--wt-primary)] via-[#006B3C] to-[#004A29]"
                       }`}
                     >
+                      {/* ステップ画像（ある場合） */}
+                      {step.image && (
+                        <>
+                          <Image
+                            src={step.image}
+                            alt={step.title}
+                            fill
+                            className="object-cover"
+                            sizes="220px"
+                          />
+                          <div className="absolute inset-0 bg-black/40" aria-hidden="true" />
+                        </>
+                      )}
                       {/* 背景装飾: 巨大番号ゴースト */}
                       <span
                         className="absolute -bottom-3 -right-1 text-[80px] sm:text-[90px] font-black leading-none text-white/10 pointer-events-none select-none tracking-tighter"
