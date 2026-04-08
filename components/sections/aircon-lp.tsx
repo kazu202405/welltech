@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Image from "next/image";
 import {
-  Phone,
   MessageCircle,
   ChevronDown,
   ChevronRight,
@@ -15,10 +14,8 @@ import {
   ArrowDownUp,
   CreditCard,
   Award,
-  ThermometerSun,
   Snowflake,
   Building2,
-  Home,
   CheckCircle2,
   Star,
   Timer,
@@ -47,10 +44,10 @@ const uniquePoints = [
   },
   {
     icon: CreditCard,
-    tag: "業界初",
-    title: "分割手数料 当社負担",
+    tag: "安心",
+    title: "明朗会計・追加費用なし",
     description:
-      "最大36回の分割払いで、手数料はすべて当社が負担。月々の支払いだけに集中できます。",
+      "LINEで写真を送るだけで正式なお見積りをご提示。追加費用は一切なく、提示価格がお支払い総額です。",
     color: "var(--wt-accent)",
   },
   {
@@ -63,41 +60,8 @@ const uniquePoints = [
   },
 ];
 
-/* 月額シミュレーション */
-const monthlyPlans = [
-  {
-    type: "家庭用 6〜10畳",
-    icon: Home,
-    totalPrice: "98,000",
-    monthly: "2,700",
-    installments: 36,
-    popular: false,
-  },
-  {
-    type: "家庭用 14〜20畳",
-    icon: Home,
-    totalPrice: "198,000",
-    monthly: "5,500",
-    installments: 36,
-    popular: true,
-  },
-  {
-    type: "業務用 天カセ 3馬力",
-    icon: Building2,
-    totalPrice: "398,000",
-    monthly: "11,000",
-    installments: 36,
-    popular: false,
-  },
-  {
-    type: "業務用 天カセ 5馬力",
-    icon: Building2,
-    totalPrice: "598,000",
-    monthly: "16,600",
-    installments: 36,
-    popular: false,
-  },
-];
+/* 月額シミュレーション（信販審査通過後に復活予定） */
+// const monthlyPlans: never[] = [];
 
 /* パッケージ内容 */
 const packageItems = [
@@ -164,13 +128,13 @@ const reasons = [
   },
   {
     num: "04",
-    title: "現地調査から\nお見積りまで完全無料",
+    title: "LINEで写真を送るだけ\nお見積り完全無料",
     highlight: "0円",
     highlightSub: "見積り無料",
     bullets: [
-      "現地調査・お見積りは完全無料",
+      "煩わしい日程調整は不要",
+      "LINEで写真を送るだけで見積り完了",
       "しつこい営業は一切なし",
-      "納得いただけた場合のみ施工",
     ],
     icon: CheckCircle2,
     image: "/aircon-reason-free-estimate.png",
@@ -182,19 +146,19 @@ const flowSteps = [
   {
     num: "01",
     title: "お問い合わせ",
-    description: "お電話・LINE・Webフォームからお気軽にご連絡ください。",
+    description: "LINEからお気軽にご連絡ください。",
   },
   {
     num: "02",
-    title: "無料現地調査",
+    title: "LINEで写真送付",
     description:
-      "専門スタッフが現地を調査。最適な機種・設置方法をご提案します。",
+      "現場の写真をLINEで送るだけ。日程調整不要で、最適な機種・設置方法をご提案します。",
   },
   {
     num: "03",
     title: "お見積り・ご契約",
     description:
-      "詳細なお見積りをご提示。下取り・補助金・分割プランもご案内します。",
+      "詳細なお見積りをご提示。下取り・補助金の活用もご案内します。",
   },
   {
     num: "04",
@@ -224,9 +188,9 @@ const reviews = [
     rating: 5,
   },
   {
-    name: "埼玉県 個人 C様",
-    type: "家庭用",
-    text: "月々2,700円の分割で最新エアコンに交換できました。手数料が0円なのは他にないサービスだと思います。",
+    name: "岡山県 オフィス C社様",
+    type: "業務用",
+    text: "オフィスのエアコン5台を一括交換。見積りから工事完了まで1週間で対応してもらえました。下取りで費用も抑えられて助かりました。",
     rating: 5,
   },
   {
@@ -256,12 +220,12 @@ const features3 = [
   {
     icon: Timer,
     title: "最短即日見積り",
-    description: "お問い合わせ当日〜翌日には訪問・見積りが可能。急ぎの案件もご相談ください。",
+    description: "LINEで写真を送るだけ。面倒な日程調整は不要で、最短即日お見積りが可能です。",
   },
   {
     icon: BadgePercent,
-    title: "現地調査・見積り完全無料",
-    description: "出張費も、断っても費用ゼロ。しつこい営業も一切ありません。",
+    title: "見積り完全無料",
+    description: "写真を送るだけで見積りOK。断っても費用ゼロ。しつこい営業も一切ありません。",
   },
   {
     icon: Wrench,
@@ -277,10 +241,10 @@ const servicePillars = [
     label: "Sales & Install",
     title: "エアコン販売・設置",
     description:
-      "業務用・家庭用のあらゆるタイプに対応。下取り・分割・補助金を活用した最適プランをご提案します。",
+      "業務用エアコンのあらゆるタイプに対応。下取り・補助金を活用した最適プランをご提案します。",
     features: [
-      "業務用：天カセ・壁掛け・床置き・ダクト型",
-      "家庭用：6〜20畳以上の全クラス",
+      "天井カセット・壁掛け・床置き・ダクト型",
+      "飲食店・オフィス・店舗・工場など幅広く対応",
       "下取り・撤去処分込み",
       "最短2日で設置完了",
     ],
@@ -302,17 +266,16 @@ const servicePillars = [
 
 /* 対応エリア */
 const serviceAreas = [
-  { region: "関東", prefs: "東京・神奈川・埼玉・千葉・茨城・栃木・群馬", primary: true },
-  { region: "東海", prefs: "愛知・静岡・岐阜・三重" },
-  { region: "関西", prefs: "大阪・京都・兵庫・奈良・滋賀" },
-  { region: "その他", prefs: "全国主要エリア対応（要相談）" },
+  { region: "岡山", prefs: "岡山全域", primary: true },
+  { region: "阪神", prefs: "大阪・兵庫" },
+  { region: "その他", prefs: "上記以外のエリアもご相談ください" },
 ];
 
 /* FAQ */
 const faqs = [
   {
     q: "見積りは本当に無料ですか？",
-    a: "はい、現地調査・お見積りは完全無料です。出張費もかかりません。お見積り後にお断りいただいても費用は一切発生しません。",
+    a: "はい、お見積りは完全無料です。LINEで現場の写真を送っていただくだけで完了します。お見積り後にお断りいただいても費用は一切発生しません。",
   },
   {
     q: "どのメーカーのエアコンも取り扱っていますか？",
@@ -323,20 +286,16 @@ const faqs = [
     a: "基本的にどんなエアコンでも下取り可能です。動かないエアコンでもOK。撤去・処分費用はすべて当社が負担します。",
   },
   {
-    q: "分割払いの審査はありますか？",
-    a: "簡単な審査がございますが、多くのお客様にご利用いただいています。最大36回まで、手数料はすべて当社負担です。",
-  },
-  {
     q: "補助金は使えますか？",
     a: "対象機種であれば各種補助金の申請サポートも行っています。補助金を活用することでさらにおトクに導入いただけます。",
   },
   {
     q: "工事にはどれくらいの時間がかかりますか？",
-    a: "家庭用の標準取付であれば2〜3時間程度。業務用は規模によりますが、1日〜2日で完了するケースがほとんどです。",
+    a: "目安として、一般的な飲食店であれば半日程度、広めのオフィス（小規模）であれば1日程度です。規模や現場状況により異なりますので、詳しくはお見積り時にご案内いたします。",
   },
   {
-    q: "業務用と家庭用、どちらも対応していますか？",
-    a: "はい、家庭用ルームエアコンから業務用の天井カセット・ダクト型まで、あらゆるタイプに対応しています。",
+    q: "どのようなタイプの業務用エアコンに対応していますか？",
+    a: "天井カセット型・壁掛け型・床置き型・ダクト型など、業務用エアコンのあらゆるタイプに対応しています。飲食店・オフィス・店舗・工場など幅広い業種の実績がございます。",
   },
   {
     q: "保証はどのくらいですか？",
@@ -348,7 +307,7 @@ const faqs = [
   },
   {
     q: "対応エリアはどこですか？",
-    a: "関東を中心に、全国主要エリアで対応しています。詳しくはお問い合わせ時にご確認ください。",
+    a: "岡山全域および阪神エリア（大阪・兵庫）を中心に対応しています。その他のエリアもお気軽にご相談ください。",
   },
 ];
 
@@ -359,19 +318,13 @@ export function AirconLp({ lineUrl }: { lineUrl: string }) {
   return (
     <>
       {/* ── 選ばれる理由（4カードグリッド） ── */}
-      <ReasonsSection />
+      <ReasonsSection lineUrl={lineUrl} />
 
       {/* ── ご利用の流れ（ビジュアル版） ── */}
       <VisualFlowSection />
 
       {/* ── お客様の声 ── */}
       <ReviewsSection />
-
-      {/* ── 月額表示セクション（ジャパネット式） ── */}
-      <MonthlySection />
-
-      {/* ── 緊急性バナー ── */}
-      <UrgencyBanner />
 
       {/* ── メーカーラインナップ ── */}
       <ManufacturersSection />
@@ -395,94 +348,7 @@ export function AirconLp({ lineUrl }: { lineUrl: string }) {
    各セクションコンポーネント
    ============================================================ */
 
-/* ── 緊急性バナー（心理トリガー） ── */
-function UrgencyBanner() {
-  return (
-    <div className="bg-gradient-to-r from-red-600 to-red-500 text-white py-4">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-center gap-3 text-center">
-        <span className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-bold">
-          <ThermometerSun className="w-4 h-4" />
-          期間限定キャンペーン実施中
-        </span>
-        <p className="text-sm sm:text-base font-semibold">
-          今なら下取り+補助金で<span className="text-yellow-300 text-lg font-bold mx-1">最大50%OFF</span>
-          のチャンス！
-        </p>
-      </div>
-    </div>
-  );
-}
-
-/* ── 月額表示セクション ── */
-function MonthlySection() {
-  return (
-    <section className="py-20 sm:py-28 bg-white">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14" data-reveal>
-          <p className="text-sm font-medium tracking-widest text-[var(--wt-primary)] uppercase mb-3">
-            Monthly Plan
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-[var(--wt-dark)] mb-4">
-            月々のお支払いで、<br className="sm:hidden" />
-            快適な暮らしを。
-          </h2>
-          <p className="text-[var(--wt-gray)] max-w-2xl mx-auto leading-relaxed">
-            高額なエアコンも分割払いなら無理なく導入できます。
-            <span className="font-bold text-[var(--wt-primary)]">分割手数料はすべて当社負担。</span>
-            表示価格がお支払い総額です。
-          </p>
-        </div>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {monthlyPlans.map((plan, i) => {
-            const Icon = plan.icon;
-            return (
-              <div
-                key={plan.type}
-                data-reveal
-                style={{ transitionDelay: `${i * 100}ms` }}
-                className={`relative bg-white rounded-2xl border-2 p-6 text-center card-hover ${
-                  plan.popular
-                    ? "border-[var(--wt-primary)] shadow-lg shadow-[var(--wt-primary)]/10"
-                    : "border-gray-100"
-                }`}
-              >
-                {plan.popular && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[var(--wt-primary)] text-white text-xs font-bold px-4 py-1 rounded-full">
-                    人気No.1
-                  </span>
-                )}
-                <Icon className="w-8 h-8 mx-auto mb-3 text-[var(--wt-gray-light)]" />
-                <p className="text-sm font-semibold text-[var(--wt-dark)] mb-4">
-                  {plan.type}
-                </p>
-                <p className="text-xs text-[var(--wt-gray)] line-through mb-1">
-                  一括 {plan.totalPrice}円(税込)
-                </p>
-                <div className="mb-3">
-                  <span className="text-xs text-[var(--wt-gray)]">月々</span>
-                  <span className="text-4xl font-black text-[var(--wt-primary)] mx-1 tracking-tight">
-                    {plan.monthly}
-                  </span>
-                  <span className="text-sm text-[var(--wt-gray)]">
-                    円〜<span className="text-xs">(税込)</span>
-                  </span>
-                </div>
-                <p className="text-xs text-[var(--wt-gray)]">
-                  {plan.installments}回払い / 手数料0円
-                </p>
-              </div>
-            );
-          })}
-        </div>
-
-        <p className="text-center text-xs text-[var(--wt-gray-light)] mt-6">
-          ※ 表示価格は標準工事費込みの参考価格です。現地調査後に正式なお見積りをご提示します。
-        </p>
-      </div>
-    </section>
-  );
-}
+/* ── 月額表示セクション・緊急性バナー（信販審査通過後に復活予定） ── */
 
 /* ── 3大独自強み ── */
 function UniquePointsSection() {
@@ -604,24 +470,15 @@ function CtaBand({ lineUrl }: { lineUrl: string }) {
         <p className="text-white font-bold text-lg text-center">
           まずは無料お見積りから
         </p>
-        <div className="flex items-center gap-3">
-          <a
-            href="tel:0120000000"
-            className="inline-flex items-center gap-2 bg-white text-[var(--wt-primary)] font-bold text-sm px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors"
-          >
-            <Phone className="w-4 h-4" />
-            0120-000-000
-          </a>
-          <a
-            href={lineUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-[#06C755] text-white font-bold text-sm px-6 py-3 rounded-lg hover:bg-[#05b34c] transition-colors btn-glow-green"
-          >
-            <MessageCircle className="w-4 h-4" />
-            LINEで相談
-          </a>
-        </div>
+        <a
+          href={lineUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 bg-[#06C755] text-white font-bold text-sm px-6 py-3 rounded-lg hover:bg-[#05b34c] transition-colors btn-glow-green"
+        >
+          <MessageCircle className="w-4 h-4" />
+          LINEで無料相談
+        </a>
       </div>
     </section>
   );
@@ -659,7 +516,7 @@ function ManufacturersSection() {
 }
 
 /* ── 選ばれる理由 ── */
-function ReasonsSection() {
+function ReasonsSection({ lineUrl }: { lineUrl: string }) {
   return (
     <section className="relative py-20 sm:py-24 lg:py-28 bg-[var(--wt-bg)] overflow-hidden">
       {/* セクション上部: ダークからライトへの斜めカット区切り */}
@@ -836,10 +693,13 @@ function ReasonsSection() {
             まずは無料見積りでご確認ください
           </p>
           <a
-            href="#contact"
-            className="group inline-flex items-center gap-3 bg-[var(--wt-primary)] text-white font-black text-base sm:text-lg px-7 py-4 rounded-full hover:bg-[var(--wt-primary-dark)] transition-all btn-bounce shadow-xl shadow-[var(--wt-primary)]/25"
+            href={lineUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-3 bg-[#06C755] text-white font-black text-base sm:text-lg px-7 py-4 rounded-full hover:bg-[#05b34c] transition-all btn-bounce shadow-xl shadow-[#06C755]/25"
           >
-            <span>60秒で完了・無料お見積り</span>
+            <MessageCircle className="w-5 h-5" />
+            <span>LINEで無料お見積り</span>
             <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </a>
         </div>
@@ -852,50 +712,39 @@ function ReasonsSection() {
 const visualFlowSteps = [
   {
     num: "01",
-    icon: Phone,
-    title: "お問い合わせ",
+    icon: MessageCircle,
+    title: "LINEでお問い合わせ",
     description:
-      "ご注文は「無料お見積り」「お電話」「LINEでお見積り」にて承っております。お急ぎのお客様は在庫状況をお調べいたしますので、お電話にてご連絡ください。",
+      "LINEで現場の写真を送るだけ。煩わしい日程調整は不要です。写真をもとに最適な業務用エアコンの機種・工事内容をご提案します。修理の場合は故障箇所も確認いたします。",
     accent: true,
     contact: true,
-    badge: null,
+    badge: "日程調整不要",
     image: "/aircon-flow-contact.png",
   },
   {
     num: "02",
-    icon: Search,
-    title: "現地調査",
-    description:
-      "技術担当者が訪問し、適切な業務用・家庭用エアコンの商品・工事内容をご提案します。修理の場合は故障箇所を確認いたします。取り付け工事費用は設置場所・現場状況により異なりますので、現地調査が必要です。",
-    accent: false,
-    contact: false,
-    badge: "最短即日",
-    image: "/aircon-flow-inspection.png",
-  },
-  {
-    num: "03",
     icon: FileText,
     title: "お見積り",
     description:
-      "現地調査をもとに、お見積書をメールもしくはLINEにてお送りいたします（即日〜2日以内）。現場状況により提出日が前後する場合がございます。",
+      "お送りいただいた写真をもとに、お見積書をLINEにてお送りいたします（即日〜2日以内）。現場状況により提出日が前後する場合がございます。",
     accent: false,
     contact: false,
     badge: null,
     image: "/aircon-flow-estimate.png",
   },
   {
-    num: "04",
+    num: "03",
     icon: CheckCircle2,
     title: "ご契約",
     description:
-      "お見積りをご確認いただき、ご了承いただけましたらご契約となります。下取り・補助金・分割プランもこの段階でご案内いたします。",
+      "お見積りをご確認いただき、ご了承いただけましたらご契約となります。下取り・補助金の活用もこの段階でご案内いたします。",
     accent: false,
     contact: false,
     badge: null,
     image: "/aircon-flow-contract.png",
   },
   {
-    num: "05",
+    num: "04",
     icon: HardHat,
     title: "工事・修理",
     description:
@@ -935,7 +784,7 @@ function VisualFlowSection() {
             className="absolute left-[24.5px] sm:left-[27.5px] top-0 bottom-0 w-[3px] bg-[var(--wt-primary)] pointer-events-none"
             aria-hidden="true"
             style={{
-              clipPath: "inset(50px 0 50px 0)",
+              clipPath: "inset(80px 0 50px 0)",
             }}
           />
 
@@ -1014,17 +863,9 @@ function VisualFlowSection() {
                       {/* お問い合わせ方法（Step 01のみ） */}
                       {step.contact && (
                         <div className="mt-2.5 flex flex-wrap gap-1.5">
-                          <span className="inline-flex items-center gap-1 bg-[var(--wt-primary)]/10 text-[var(--wt-primary)] text-[11px] font-bold px-2.5 py-1 rounded-full">
-                            <Phone className="w-3 h-3" />
-                            電話
-                          </span>
                           <span className="inline-flex items-center gap-1 bg-[var(--wt-green)]/10 text-[var(--wt-green)] text-[11px] font-bold px-2.5 py-1 rounded-full">
                             <MessageCircle className="w-3 h-3" />
                             LINE
-                          </span>
-                          <span className="inline-flex items-center gap-1 bg-blue-50 text-blue-600 text-[11px] font-bold px-2.5 py-1 rounded-full">
-                            <FileText className="w-3 h-3" />
-                            Webフォーム
                           </span>
                         </div>
                       )}
@@ -1217,32 +1058,16 @@ function FinalCta({ lineUrl }: { lineUrl: string }) {
 
       <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
         <div data-reveal>
-          <p className="text-sm font-medium tracking-widest text-white/40 uppercase mb-4">
-            Contact
-          </p>
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            快適な空間づくり、<br />
             まずはご相談から。
           </h2>
           <p className="text-white/60 mb-10 max-w-xl mx-auto leading-relaxed">
-            無料の現地調査・お見積りは、お電話・LINE・Webフォームから。
+            無料お見積りはLINEで写真を送るだけ。
             しつこい営業は一切ありません。お気軽にどうぞ。
           </p>
         </div>
 
         <div data-reveal className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-          <a
-            href="tel:0120000000"
-            className="inline-flex items-center gap-3 bg-white text-[var(--wt-primary)] font-bold text-lg px-8 py-4 rounded-xl hover:bg-gray-50 transition-colors btn-bounce w-full sm:w-auto justify-center"
-          >
-            <Phone className="w-5 h-5" />
-            <div className="text-left">
-              <span className="block text-xs font-normal text-[var(--wt-gray)]">
-                通話無料・平日9:00〜19:00
-              </span>
-              <span className="block">0120-000-000</span>
-            </div>
-          </a>
           <a
             href={lineUrl}
             target="_blank"
@@ -1266,7 +1091,7 @@ function FinalCta({ lineUrl }: { lineUrl: string }) {
           </span>
           <span className="flex items-center gap-1.5">
             <CheckCircle2 className="w-3.5 h-3.5" />
-            現地調査無料
+            写真で見積りOK
           </span>
           <span className="flex items-center gap-1.5">
             <CheckCircle2 className="w-3.5 h-3.5" />
@@ -1343,7 +1168,7 @@ function ValuePropositionSection() {
             <span className="text-[var(--wt-primary)]">最短2日</span>で設置完了。
           </h2>
           <p className="text-base sm:text-lg text-[var(--wt-gray)] max-w-2xl mx-auto leading-relaxed">
-            現地調査から見積りまで、<span className="font-bold text-[var(--wt-dark)]">完全無料</span>。
+            LINEで写真を送るだけ。お見積りは<span className="font-bold text-[var(--wt-dark)]">完全無料</span>。
             急な故障・オフィス移転にも即対応できる体制を整えています。
           </p>
         </div>
@@ -1448,57 +1273,99 @@ function ServicePillarsSection() {
 /* ── 対応エリアセクション ── */
 function ServiceAreaSection() {
   return (
-    <section className="py-20 sm:py-24 bg-white">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12" data-reveal>
-          <p className="text-sm font-medium tracking-widest text-[var(--wt-primary)] uppercase mb-3">
+    <section className="relative py-20 sm:py-28 bg-[var(--wt-bg-dark)] text-white overflow-hidden">
+      {/* 背景装飾 */}
+      <div
+        className="absolute inset-0 opacity-[0.04] pointer-events-none"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 1px 1px, white 1px, transparent 0)",
+          backgroundSize: "32px 32px",
+        }}
+        aria-hidden="true"
+      />
+      <div
+        className="absolute top-1/3 -right-32 w-[400px] h-[400px] rounded-full pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(0,133,74,0.15) 0%, transparent 70%)",
+        }}
+        aria-hidden="true"
+      />
+
+      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+        {/* ヘッダー */}
+        <div className="text-center mb-14" data-reveal>
+          <p className="text-xs sm:text-sm font-bold tracking-widest text-white/40 uppercase mb-3">
             Service Area
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-[var(--wt-dark)] mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-4">
             対応エリア
           </h2>
-          <p className="text-[var(--wt-gray)]">
-            関東を中心に、全国主要エリアで対応可能です。
+          <p className="text-white/50 max-w-lg mx-auto">
+            岡山・阪神エリアを中心にサービスを提供しています。
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-4">
+        {/* エリアカード: 横並び */}
+        <div className="flex flex-col sm:flex-row items-stretch justify-center gap-4 sm:gap-5 max-w-3xl mx-auto">
           {serviceAreas.map((area, i) => (
             <div
               key={area.region}
               data-reveal
-              style={{ transitionDelay: `${i * 80}ms` }}
-              className={`rounded-xl p-6 border-2 card-hover ${
+              style={{ transitionDelay: `${i * 100}ms` }}
+              className={`group relative flex-1 rounded-2xl p-6 sm:p-7 border transition-all duration-300 hover:-translate-y-1 ${
                 area.primary
-                  ? "bg-[var(--wt-primary)]/5 border-[var(--wt-primary)]"
-                  : "bg-[var(--wt-bg)] border-gray-100"
+                  ? "bg-[var(--wt-primary)] border-[var(--wt-primary-light)]/30 shadow-xl shadow-[var(--wt-primary)]/20"
+                  : "bg-white/5 backdrop-blur-sm border-white/10 hover:bg-white/10"
               }`}
             >
-              <div className="flex items-center gap-3 mb-3">
-                <MapPin
-                  className={`w-5 h-5 ${
-                    area.primary ? "text-[var(--wt-primary)]" : "text-[var(--wt-gray)]"
+              {/* プライマリバッジ */}
+              {area.primary && (
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[var(--wt-accent)] text-[#0d2e1b] text-[10px] font-black px-3 py-1 rounded-full shadow-lg whitespace-nowrap">
+                  メイン対応エリア
+                </span>
+              )}
+
+              {/* アイコン + 地域名 */}
+              <div className="flex flex-col items-center text-center gap-3">
+                <div
+                  className={`w-12 h-12 rounded-full flex items-center justify-center ${
+                    area.primary
+                      ? "bg-white/20"
+                      : "bg-white/5 group-hover:bg-white/10"
+                  } transition-colors`}
+                >
+                  <MapPin
+                    className={`w-6 h-6 ${
+                      area.primary ? "text-white" : "text-[var(--wt-primary-light)]"
+                    }`}
+                  />
+                </div>
+                <h3 className="text-xl sm:text-2xl font-black">{area.region}</h3>
+                <p
+                  className={`text-sm leading-relaxed ${
+                    area.primary ? "text-white/80" : "text-white/50"
                   }`}
-                />
-                <h3 className="text-lg font-bold text-[var(--wt-dark)]">
-                  {area.region}
-                </h3>
-                {area.primary && (
-                  <span className="ml-auto text-[10px] font-bold bg-[var(--wt-primary)] text-white px-2 py-0.5 rounded-full">
-                    主要対応
-                  </span>
-                )}
+                >
+                  {area.prefs}
+                </p>
               </div>
-              <p className="text-sm text-[var(--wt-gray)] leading-relaxed">
-                {area.prefs}
-              </p>
             </div>
           ))}
         </div>
 
-        <p className="text-center text-xs text-[var(--wt-gray-light)] mt-8">
-          ※ 北海道・沖縄・離島など一部エリアは対応不可の場合があります。詳しくはお問い合わせ時にご確認ください。
+        {/* 注釈 */}
+        <p className="text-center text-xs text-white/30 mt-10" data-reveal>
+          ※ 上記以外のエリアもご相談に応じて対応可能な場合がございます。お気軽にお問い合わせください。
         </p>
+
+        {/* LINEで写真を送るだけテキスト */}
+        <div className="mt-10 text-center" data-reveal>
+          <p className="text-sm text-white/50 mb-1">
+            LINEで写真を送るだけ。お見積りは<span className="font-bold text-white">完全無料</span>。
+          </p>
+        </div>
       </div>
     </section>
   );

@@ -85,7 +85,7 @@ export function AirconHero() {
             style={{ animationDelay: "100ms", animationFillMode: "backwards" }}
           >
             <span className="block text-[var(--wt-primary-light)]">
-              業務用・家庭用
+              業務用
             </span>
             <span className="block">エアコンの</span>
             <span className="block mt-1">
@@ -105,10 +105,10 @@ export function AirconHero() {
             className="text-base sm:text-lg lg:text-xl text-white/90 leading-relaxed mb-7 max-w-2xl animate-in fade-in slide-in-from-bottom-3 duration-700"
             style={{ animationDelay: "200ms", animationFillMode: "backwards" }}
           >
-            現地調査から見積もりまで
+            LINEで写真を送るだけでお見積り
             <span className="font-bold text-[var(--wt-accent)]">完全無料</span>
-            の<br className="hidden sm:block" />
-            ウェルテックにお任せください！
+            。<br className="hidden sm:block" />
+            面倒な日程調整は不要です！
           </p>
 
           {/* 3点特徴バッジ（段階的リビール: 100msずつstagger） */}

@@ -5,14 +5,14 @@ import { AirconLp } from "@/components/sections/aircon-lp";
 
 export const metadata: Metadata = {
   title:
-    "業務用・家庭用エアコン販売・設置 | 月々2,700円〜 全メーカー対応 | WELLTECH",
+    "業務用エアコン販売・設置 | 全メーカー対応 | WELLTECH",
   description:
-    "エアコンの購入・設置・修理をワンストップで。下取りあり・分割手数料0円・長期保証・補助金対応。全メーカー取り扱い、最短2日で設置完了。まずは無料お見積りから。",
+    "業務用エアコンの購入・設置・修理をワンストップで。下取りあり・長期保証・補助金対応。全メーカー取り扱い、最短2日で設置完了。まずは無料お見積りから。",
   alternates: { canonical: "/aircon" },
   openGraph: {
-    title: "業務用・家庭用エアコン販売 | 月々2,700円〜 | WELLTECH",
+    title: "業務用エアコン販売・設置 | 全メーカー対応 | WELLTECH",
     description:
-      "下取り・分割手数料0円・長期保証。全メーカー対応、最短2日設置。無料見積り受付中。",
+      "下取り・長期保証。全メーカー対応、最短2日設置。無料見積り受付中。",
     url: "https://well-tech.top/aircon",
     type: "website",
   },
