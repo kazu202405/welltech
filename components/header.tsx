@@ -10,6 +10,7 @@ const navItems = [
   { label: "パートナー・対応エリア", href: "/area" },
   { label: "エアコン販売", href: "/aircon" },
   { label: "エコキュート補助金", href: "/ecocute-subsidy" },
+  { label: "資材販売 ウェルディ", href: "/welldy" },
 ];
 
 export function Header() {

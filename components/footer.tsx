@@ -83,7 +83,9 @@ export function Footer() {
             </h4>
             <ul className="space-y-2.5 text-sm text-white/35">
               <li><a href="/company" className="hover:text-white/60 transition-colors">会社概要</a></li>
+              <li><a href="/aircon" className="hover:text-white/60 transition-colors">エアコン販売</a></li>
               <li><a href="/ecocute-subsidy" className="hover:text-white/60 transition-colors">エコキュート補助金</a></li>
+              <li><a href="/welldy" className="hover:text-white/60 transition-colors">資材販売 ウェルディ</a></li>
               <li><a href="/privacy" className="hover:text-white/60 transition-colors">プライバシーポリシー</a></li>
               <li><a href="/terms" className="hover:text-white/60 transition-colors">利用規約</a></li>
               <li><a href="/tokushoho" className="hover:text-white/60 transition-colors">特定商取引法</a></li>
