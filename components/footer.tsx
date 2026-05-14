@@ -1,12 +1,17 @@
 "use client";
 
 import { useRef } from "react";
+import { usePathname } from "next/navigation";
 import { motion, useInView } from "framer-motion";
 
 /* eslint-disable @next/next/no-img-element */
 export function Footer() {
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-5%" });
+  const pathname = usePathname();
+  // ウェルディ（資材物販ブランド）はブランドカラーが黒×赤のため、緑系フッターから黒へ切替
+  const isWelldy = pathname?.startsWith("/welldy");
+  const bgClass = isWelldy ? "bg-[#0a0a0a]" : "bg-[var(--wt-bg-dark)]";
 
   const fadeUp = (delay: number) => ({
     initial: { opacity: 0, y: 20 },
@@ -15,7 +20,7 @@ export function Footer() {
   });
 
   return (
-    <footer ref={ref} className="relative bg-[var(--wt-bg-dark)] text-white pt-12 md:pt-16 pb-6 overflow-hidden">
+    <footer ref={ref} className={`relative ${bgClass} text-white pt-12 md:pt-16 pb-6 overflow-hidden`}>
       {/* 背景装飾 */}
       <div
         className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent"
