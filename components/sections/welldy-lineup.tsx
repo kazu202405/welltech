@@ -27,12 +27,12 @@ const products = [
   },
   {
     code: "WD-03",
-    category: "配管・ホース",
-    name: "汎用配管コイル",
-    spec: "径・長さ要相談",
-    sizes: "在庫品 / 短納期対応",
+    category: "電設資材",
+    name: "2.0×3C 100m巻　VVFケーブル",
+    spec: "VVF 2.0mm × 3芯 / 100m巻",
+    sizes: "1.6×2C / 2.0×2C / 2.0×3C",
     image: "/welldy/product-pipe-clear.png",
-    note: "在庫品は短納期対応。径・長さ別注もご相談ください。",
+    note: "電気工事の定番。少量からの卸し対応も可。",
   },
   {
     code: "WD-04",

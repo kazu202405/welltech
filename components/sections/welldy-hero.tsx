@@ -75,10 +75,10 @@ export function WelldyHero() {
             className="mb-10"
           >
             <Image
-              src="/welldy/logo-jp-darkbg.png"
+              src="/welldy/logo-jp-badge.png"
               alt="ウェルディ"
-              width={640}
-              height={260}
+              width={900}
+              height={300}
               priority
               className="h-auto w-[280px] sm:w-[360px] md:w-[440px]"
             />
